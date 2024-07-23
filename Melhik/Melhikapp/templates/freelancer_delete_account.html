@@ -1,0 +1,170 @@
+{% load static %}
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+{% include 'head.html' %}
+
+<body class="dashboard-page">
+
+    <div class="main-wrapper">
+        {% include 'freelance_header.html' with freelancer=request.user %}
+
+        <div class="bread-crumb-bar">
+            <div class="container">
+                <div class="row align-items-center inner-banner">
+                    <div class="col-md-12 col-12 text-center">
+                        <div class="breadcrumb-list">
+                            <nav aria-label="breadcrumb" class="page-breadcrumb">
+                                <ol class="breadcrumb">
+                                    <li class="breadcrumb-item"><a href="{% url 'dashboard' %}"><img
+                                                src="{% static 'assets/img/home-icon.svg' %}" alt="Post Author">
+                                            Home</a></li>
+                                    <li class="breadcrumb-item" aria-current="page">Freelancer</li>
+                                    <li class="breadcrumb-item" aria-current="page">Settings</li>
+                                </ol>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="content content-page">
+            <div class="container-fluid">
+                <div class="row">
+                    {% include 'dashboard_free_navbar_link.html' with freelancer=request.user %}
+
+                    <div class="settings-menu">
+                        <ul>
+                            <li class="nav-item">
+                                <a href="{% url 'freelancer_dashboard' %}" class="nav-link">
+                                    <i class="material-icons">verified_user</i> Dashboard
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="{% url 'freelancer_project_proposals' %}" class="nav-link">
+                                    <i class="material-icons">business_center</i> Projects
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="{% url 'freelancer_favourites' %}" class="nav-link">
+                                    <i class="material-icons">local_play</i> Favourites
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="{% url 'freelancer_review' %}" class="nav-link">
+                                    <i class="material-icons">record_voice_over</i> Reviews
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="{% url 'chats' %}" class="nav-link">
+                                    <i class="material-icons">chat</i> Messages
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="{% url 'freelancer_membership' %}" class="nav-link">
+                                    <i class="material-icons">person_add</i> Membership
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="{% url 'freelancer_verify_identity' %}" class="nav-link">
+                                    <i class="material-icons">person_pin</i> Verify Identity
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="{% url 'freelancer_withdraw_money' %}" class="nav-link">
+                                    <i class="material-icons">wifi_tethering</i> Payments
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="{% url 'freelancer_profile_settings' %}" class="nav-link active">
+                                    <i class="material-icons">settings</i> Settings
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="{% url 'index' %}" class="nav-link">
+                                    <i class="material-icons">power_settings_new</i> Logout
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-xl-9 col-md-8">
+                <nav class="user-tabs mb-4">
+                    <ul class="nav nav-tabs nav-tabs-bottom nav-justified">
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'freelancer_profile_settings' %}">Profile Settings</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'freelancer_change_password' %}">Change Password</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" href="{% url 'freelancer_delete_account' %}">Delete Account</a>
+                        </li>
+                    </ul>
+                </nav>
+                <div class="setting-content">
+                    <div class="pro-card">
+                        <div class="pro-head">
+                            <h3 class="pro-title without-border mb-0">Delete Account</h3>
+                        </div>
+                        <div class="pro-body">
+                            <form method="post">
+                                {% if messages %}
+                                <ul class="messages">
+                                    {% for message in messages %}
+                                    <li>{{ message }}</li>
+                                    {% endfor %}
+                                </ul>
+                                {% endif %}
+                                {% csrf_token %}
+                                {{ form.as_p }}
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <button type="submit" class="btn btn-primary click-btn btn-plan">Delete
+                                            Account</button>
+                                    </div>
+                                </div>
+                            </form>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+
+    {% include 'footer.html' %}
+
+    </div>
+
+
+    <div class="modal fade custom-modal" id="delete-acc">
+        <div class="modal-dialog modal-dialog-centered modal-md">
+            <div class="modal-content">
+                <div class="modal-body del-modal">
+                    <form action="{% url 'index' %}">
+                        <div class="text-center pt-0 mb-5">
+                            <i class="fas fa-exclamation-triangle fa-3x"></i>
+                            <h3>Are you sure? Want to delete Account</h3>
+                        </div>
+                        <div class="submit-section text-center">
+                            <button data-bs-dismiss="modal" class="btn btn-primary black-btn click-btn">Cancel</button>
+                            <button type="submit" class="btn btn-primary click-btn">Submit</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {% include 'scripts.html' %}
+</body>
+
+</html>

@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang="en">
+
+{% include 'admin_head.html' %}
+<body>
+
+<div class="main-wrapper">
+
+<div class="header">
+
+<div class="header-left">
+<a href="index.html" class="logo">
+<img src="assets/img/logo.png" alt="Logo">
+</a>
+<a href="index.html" class="logo logo-small">
+<img src="assets/img/logo-small.png" alt="Logo" width="30" height="30">
+</a>
+
+<a href="javascript:void(0);" id="toggle_btn">
+<i class="feather-chevrons-left"></i>
+</a>
+
+
+<a class="mobile_btn" id="mobile_btn">
+<i class="feather-chevrons-left"></i>
+</a>
+
+</div>
+
+
+<div class="top-nav-search">
+<form>
+<input type="text" class="form-control" placeholder="Start typing your Search...">
+<button class="btn" type="submit"><i class="feather-search"></i></button>
+</form>
+</div>
+
+
+<ul class="nav user-menu">
+
+<li class="nav-item dropdown">
+<a href="#" class="dropdown-toggle nav-link" data-bs-toggle="dropdown">
+<i class="feather-bell"></i> <span class="badge badge-pill">5</span>
+</a>
+<div class="dropdown-menu notifications">
+<div class="topnav-dropdown-header">
+<span class="notification-title">Notifications</span>
+<a href="javascript:void(0)" class="clear-noti"> Clear All</a>
+</div>
+<div class="noti-content">
+<ul class="notification-list">
+<li class="notification-message">
+<a href="#">
+<div class="media d-flex">
+<span class="avatar avatar-sm flex-shrink-0">
+<img class="avatar-img rounded-circle" alt src="assets/img/profiles/avatar-02.jpg">
+</span>
+<div class="media-body flex-grow-1">
+<p class="noti-details"><span class="noti-title">Brian Johnson</span> paid the invoice <span class="noti-title">#DF65485</span></p>
+<p class="noti-time"><span class="notification-time">4 mins ago</span></p>
+</div>
+</div>
+</a>
+</li>
+<li class="notification-message">
+<a href="#">
+<div class="media d-flex">
+<span class="avatar avatar-sm flex-shrink-0">
+<img class="avatar-img rounded-circle" alt src="assets/img/profiles/avatar-03.jpg">
+</span>
+<div class="media-body flex-grow-1">
+<p class="noti-details"><span class="noti-title">Marie Canales</span> has accepted your estimate <span class="noti-title">#GTR458789</span></p>
+<p class="noti-time"><span class="notification-time">6 mins ago</span></p>
+</div>
+</div>
+</a>
+</li>
+<li class="notification-message">
+<a href="#">
+<div class="media d-flex">
+<div class="avatar avatar-sm flex-shrink-0">
+<span class="avatar-title rounded-circle bg-primary-light"><i class="far fa-user"></i></span>
+</div>
+<div class="media-body flex-grow-1">
+<p class="noti-details"><span class="noti-title">New user registered</span></p>
+<p class="noti-time"><span class="notification-time">8 mins ago</span></p>
+</div>
+</div>
+</a>
+</li>
+<li class="notification-message">
+<a href="#">
+<div class="media d-flex">
+<span class="avatar avatar-sm flex-shrink-0">
+<img class="avatar-img rounded-circle" alt src="assets/img/profiles/avatar-04.jpg">
+</span>
+<div class="media-body flex-grow-1">
+<p class="noti-details"><span class="noti-title">Barbara Moore</span> declined the invoice <span class="noti-title">#RDW026896</span></p>
+<p class="noti-time"><span class="notification-time">12 mins ago</span></p>
+</div>
+</div>
+</a>
+</li>
+<li class="notification-message">
+<a href="#">
+<div class="media d-flex">
+<div class="avatar avatar-sm flex-shrink-0">
+<span class="avatar-title rounded-circle bg-info-light"><i class="far fa-comment"></i></span>
+</div>
+<div class="media-body flex-grow-1">
+<p class="noti-details"><span class="noti-title">You have received a new message</span></p>
+<p class="noti-time"><span class="notification-time">2 days ago</span></p>
+</div>
+</div>
+</a>
+</li>
+</ul>
+</div>
+<div class="topnav-dropdown-footer">
+<a href="#">View all Notifications</a>
+</div>
+</div>
+</li>
+
+
+<li class="nav-item dropdown has-arrow main-drop">
+<a href="#" class="dropdown-toggle nav-link" data-bs-toggle="dropdown">
+<span class="user-img">
+<img src="assets/img/profiles/avatar-07.jpg" alt>
+<span class="status online"></span>
+</span>
+</a>
+<div class="dropdown-menu">
+<a class="dropdown-item" href="profile.html"><i data-feather="user" class="me-1"></i> Profile</a>
+<a class="dropdown-item" href="settings.html"><i data-feather="settings" class="me-1"></i> Settings</a>
+<a class="dropdown-item" href="login.html"><i data-feather="log-out" class="me-1"></i> Logout</a>
+</div>
+</li>
+
+</ul>
+
+</div>
+
+
+<div class="sidebar" id="sidebar">
+<div class="sidebar-inner slimscroll">
+<div id="sidebar-menu" class="sidebar-menu">
+<ul>
+<li class="menu-title"><span>Main</span></li>
+<li>
+<a href="index.html"><i data-feather="home"></i> <span>Dashboard</span></a>
+</li>
+<li>
+<a href="categories.html"><i data-feather="copy"></i> <span>Categories</span></a>
+</li>
+<li>
+<a href="projects.html"><i data-feather="database"></i> <span>Projects</span></a>
+</li>
+<li class="active">
+<a href="users.html"><i data-feather="users"></i> <span>Freelancer</span></a>
+</li>
+<li>
+<a href="deposit.html"><i data-feather="user-check"></i> <span>Deposit</span></a>
+</li>
+<li>
+<a href="withdrawn.html"><i data-feather="user-check"></i> <span>Withdrawn</span></a>
+</li>
+<li>
+<a href="transaction.html"><i data-feather="clipboard"></i> <span>Transaction</span></a>
+</li>
+<li>
+<a href="providers.html"><i data-feather="user-check"></i> <span>Providers</span></a>
+</li>
+<li>
+<a href="subscription.html"><i data-feather="user-check"></i> <span>Subscription</span></a>
+</li>
+<li>
+<a href="reports.html"><i data-feather="pie-chart"></i> <span>Reports</span></a>
+</li>
+<li>
+<a href="roles.html"><i data-feather="clipboard"></i> <span>Roles</span></a>
+</li>
+<li>
+<a href="skills.html"><i data-feather="award"></i> <span>Skills</span></a>
+</li>
+<li>
+<a href="verify-identity.html"><i data-feather="user-check"></i> <span>Verify Identity</span></a>
+</li>
+<li>
+<a href="settings.html"><i data-feather="settings"></i> <span>Settings</span></a>
+</li>
+<li class="menu-title"><span>UI Interface</span></li>
+<li>
+<a href="components.html"><i data-feather="pocket"></i> <span>Components</span></a>
+</li>
+<li class="submenu">
+<a href="#"><i data-feather="file-minus"></i> <span> Forms</span> <span class="menu-arrow"></span></a>
+<ul>
+<li><a href="form-basic-inputs.html">Basic Inputs</a></li>
+<li><a href="form-input-groups.html">Input Groups</a></li>
+<li><a href="form-horizontal.html">Horizontal Form</a></li>
+<li><a href="form-vertical.html">Vertical Form</a></li>
+<li><a href="form-mask.html">Form Mask</a></li>
+<li><a href="form-validation.html">Form Validation</a></li>
+</ul>
+</li>
+<li class="submenu">
+<a href="#"><i data-feather="align-justify"></i> <span> Tables</span> <span class="menu-arrow"></span></a>
+<ul>
+<li><a href="tables-basic.html">Basic Tables</a></li>
+<li><a href="data-tables.html">Data Table</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+</div>
+
+
+<div class="page-wrapper">
+<div class="content report-box container-fluid">
+
+<div class="page-header subscribe-head">
+<div class="row align-items-center">
+<div class="col">
+<h3 class="page-title">Freelancer Profile</h3>
+<ul class="breadcrumb">
+<li class="breadcrumb-item"><a href="index.html">Home</a></li>
+<li class="breadcrumb-item active">Freelancer Profile</li>
+</ul>
+</div>
+<div class="col-auto">
+<a class="btn  back-user" href="users.html">
+<img src="assets/img/icon/icon-08.svg" alt> Back to list
+</a>
+</div>
+</div>
+</div>
+
+
+<div class="profile-status">
+<div class="row">
+<div class="col-lg-6 col-md-6">
+<div class="profile-user-box">
+<a href="profile.html"><img class="avatar-img rounded-circle " src="assets/img/profiles/avatar-16.jpg" alt="User Image"></a>
+<div class="profile-name-box">
+<h2><a href="profile.html">William Cooper</a></h2>
+<p>Date of Join: 22 May 2021 </p>
+</div>
+</div>
+</div>
+<div class="col-lg-2 col-md-2">
+<div class="additional-info">
+<p>Freelancer ID</p>
+<h5>UID00003</h5>
+</div>
+</div>
+<div class="col-lg-2 col-md-2">
+<div class="additional-info">
+<p>Email </p>
+<h5 class="verify-mail"><i data-feather="check-circle" class="me-1 text-success"></i> Verified </h5>
+</div>
+</div>
+<div class="col-lg-2 col-md-2">
+<div class="additional-info">
+<p>Account Status</p>
+<h5 class="text-danger">Active</h5>
+</div>
+</div>
+</div>
+</div>
+
+<div class="row">
+<div class="col-sm-12">
+<div class="card profile-home">
+<div class="subscribe-employe users-list transaction-list">
+<ul>
+<li class="active"><a href="user-profile.html"><img class="me-2" src="assets/img/icon/icon-12.svg" alt>Personal </a></li>
+<li><a href="profile-transactions.html"><img class="me-2" src="assets/img/icon/icon-10.svg" alt>Transactions </a></li>
+<li><a href="activities.html"><img class="me-2" src="assets/img/icon/icon-11.svg" alt>Activities</a></li>
+</ul>
+<div class="profile-icon-group">
+<div class="d-flex">
+<a href="javascript:void(0);" class="reset-icon me-1">
+<img src="assets/img/icon/icon-03.svg" alt>
+</a>
+<a class="suspend-icon" href="javascript:void(0);">
+<img src="assets/img/icon/icon-04.svg" alt>
+</a>
+</div>
+</div>
+</div>
+
+<div class="page-header profile-information">
+<div class="row align-items-center">
+<div class="col-12">
+<h3 class="page-title">Personal Information</h3>
+<p> Basic info, like name and address etc that used on platform.</p>
+</div>
+</div>
+</div>
+
+
+<div class="row">
+<div class="col-md-6">
+<div class="basic-info">
+<h4>BASIC INFORMATION</h4>
+<ul class="information-list">
+<li>Username <span>William</span></li>
+<li>Email Address <span><a href="https://kofejob.dreamguystech.com/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="07706e6b6b6e666a47627f666a776b622964686a">[email&#160;protected]</a></span></li>
+<li>Full Name <span>William Cooper</span></li>
+<li>Display Name <span>Ishtiyak</span></li>
+<li>Mobile Number <span>707 229 8991</span></li>
+<li>Date of Birth <span>Jan 08, 1997</span></li>
+<li>Gender <span>Not updated yet</span></li>
+</ul>
+</div>
+</div>
+<div class="col-md-6">
+<div class="basic-info">
+<h4>RESIDENTIAL ADDRESS</h4>
+<ul class="information-list">
+<li>Address Line <span>Not updated yet</span></li>
+<li>City<span>Not updated yet</span></li>
+<li>State / Province<span>Not updated yet</span></li>
+<li>Zip / Postal Code<span>Not updated yet</span></li>
+<li>Country <span>Us</span></li>
+</ul>
+</div>
+</div>
+<div class="col-md-12">
+<div class="basic-info additional-space">
+<h4>ADDITIONAL INFORMATION</h4>
+</div>
+<div class="row">
+<div class="col-lg-3 col-md-6">
+<div class="additional-info">
+<p>Join Date </p>
+<h5>May 20, 2021</h5>
+</div>
+</div>
+<div class="col-lg-3 col-md-6">
+<div class="additional-info">
+<p>Reg Method</p>
+<h5>By Email</h5>
+</div>
+</div>
+<div class="col-lg-3 col-md-6">
+<div class="additional-info">
+<p>Email Verified At</p>
+<h5>May 20, 2021 04:53 AM</h5>
+</div>
+</div>
+<div class="col-lg-3 col-md-6">
+<div class="additional-info mb-0">
+<p>Save Activity Logs</p>
+<h5>Enabled</h5>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+
+
+<div class="modal fade custom-modal" id="add-category">
+<div class="modal-dialog modal-dialog-centered">
+<div class="modal-content">
+<div class="modal-header flex-wrap">
+<div class="text-center w-100 mb-3">
+<img src="assets/img/logo-small.png" alt>
+</div>
+<h4 class="modal-title">Add New User</h4>
+<button type="button" class="close" data-bs-dismiss="modal"><span>&times;</span></button>
+</div>
+<div class="modal-body">
+<form>
+<div class="form-group">
+<label>Full Name</label>
+<input type="text" class="form-control">
+</div>
+<div class="form-group">
+<label>Email</label>
+<input type="email" class="form-control">
+</div>
+<div class="form-group">
+<label>Password</label>
+<input type="password" class="form-control">
+</div>
+<div class="form-group">
+<label>Confirm Password</label>
+<input type="password" class="form-control">
+</div>
+<div class="form-group">
+<label>User Type</label>
+<select class="form-control form-select">
+<option>Select</option>
+<option>Frontend Developer</option>
+<option>Graphic Designer</option>
+</select>
+</div>
+<div class="mt-4">
+<button type="submit" class="btn btn-primary btn-block">Submit</button>
+</div>
+</form>
+</div>
+</div>
+</div>
+</div>
+
+
+<div class="modal fade custom-modal" id="edit-category">
+<div class="modal-dialog modal-dialog-centered">
+<div class="modal-content">
+<div class="modal-header flex-wrap">
+<div class="text-center w-100 mb-3">
+<img src="assets/img/logo-small.png" alt>
+</div>
+<h4 class="modal-title">Edit User</h4>
+<button type="button" class="close" data-bs-dismiss="modal"><span>&times;</span></button>
+</div>
+<div class="modal-body">
+<form>
+<div class="form-group">
+<label>Full Name</label>
+<input type="text" class="form-control" value=" George Wells">
+</div>
+<div class="form-group">
+<label>Email</label>
+<input type="email" class="form-control" value="georgewells@example.com">
+</div>
+<div class="form-group">
+<label>Password</label>
+<input type="password" class="form-control" value="*******">
+</div>
+<div class="form-group">
+<label>Confirm Password</label>
+<input type="password" class="form-control" value="********">
+</div>
+<div class="form-group">
+<label>User Type</label>
+<select class="form-control form-select">
+<option>Select</option>
+<option selected>Frontend Developer</option>
+<option>Graphic Designer</option>
+</select>
+</div>
+<div class="mt-4">
+<button type="submit" class="btn btn-primary btn-block">Submit</button>
+</div>
+</form>
+</div>
+</div>
+</div>
+</div>
+
+
+<div class="modal custom-modal fade" id="delete_category" role="dialog">
+<div class="modal-dialog modal-dialog-centered">
+<div class="modal-content">
+<div class="modal-body">
+<div class="form-header">
+<h3>Delete</h3>
+<p>Are you sure want to delete?</p>
+</div>
+<div class="modal-btn delete-action">
+<div class="row">
+<div class="col-6">
+<a href="javascript:void(0);" class="btn btn-primary continue-btn">Delete</a>
+</div>
+<div class="col-6">
+<a href="javascript:void(0);" data-bs-dismiss="modal" class="btn btn-primary cancel-btn">Cancel</a>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+
+<script data-cfasync="false" src="../../cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="assets/js/jquery-3.6.0.min.js"></script>
+
+<script src="assets/js/bootstrap.bundle.min.js"></script>
+
+<script src="assets/js/feather.min.js"></script>
+
+<script src="assets/plugins/slimscroll/jquery.slimscroll.min.js"></script>
+
+<script src="assets/plugins/select2/js/select2.min.js"></script>
+
+<script src="assets/plugins/moment/moment.min.js"></script>
+<script src="assets/js/bootstrap-datetimepicker.min.js"></script>
+
+<script src="assets/plugins/datatables/jquery.dataTables.min.js"></script>
+<script src="assets/plugins/datatables/datatables.min.js"></script>
+
+<script src="assets/js/script.js"></script>
+</body>
+
+<!-- Mirrored from kofejob.dreamguystech.com/template/admin/user-profile.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 23 Aug 2023 20:32:47 GMT -->
+</html>

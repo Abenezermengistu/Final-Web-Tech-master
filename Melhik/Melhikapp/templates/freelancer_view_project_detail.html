@@ -1,0 +1,179 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+{% include 'head.html' %}
+
+<body class="dashboard-page">
+
+    <div class="main-wrapper">
+        {% include 'freelance_header.html' with freelancer=request.user %}
+
+
+<div class="content">
+<div class="container-fluid">
+<div class="row">
+    {% include 'dashboard_free_navbar_link.html' with freelancer=request.user %}
+
+    <div class="settings-menu">
+        <ul>
+        <li class="nav-item">
+        <a href="{% url 'freelancer_dashboard' %}" class="nav-link">
+        <i class="material-icons">verified_user</i> Dashboard
+        </a>
+        </li>
+        <li class="nav-item">
+        <a href="{% url 'freelancer_project_proposals' %}" class="nav-link active">
+        <i class="material-icons">business_center</i> Projects
+        </a>
+        </li>
+        <li class="nav-item">
+        <a href="{% url 'freelancer_review' %}" class="nav-link">
+        <i class="material-icons">record_voice_over</i> Reviews
+        </a>
+        </li>
+        <li class="nav-item">
+        <a href="{% url 'chats' %}" class="nav-link">
+        <i class="material-icons">chat</i> Messages
+        </a>
+        </li>
+        <li class="nav-item">
+        <a href="{% url 'freelancer_withdraw_money' %}" class="nav-link">
+        <i class="material-icons">wifi_tethering</i> Payments
+        </a>
+        </li>
+        <li class="nav-item">
+        <a href="{% url 'freelancer_profile_settings' %}" class="nav-link">
+        <i class="material-icons">settings</i> Settings
+        </a>
+        </li>
+        <li class="nav-item">
+        <a href="{% url 'index' %}" class="nav-link">
+        <i class="material-icons">power_settings_new</i> Logout
+        </a>
+        </li>
+        </ul>
+        </div>
+        </div>
+        </div>
+
+<div class="col-xl-9 col-md-8">
+<div class="page-title">
+<h3>Manage Projects</h3>
+</div>
+<nav class="user-tabs mb-4">
+<ul class="nav nav-tabs nav-tabs-bottom nav-justified">
+<li class="nav-item">
+<a class="nav-link active" href="{% url 'freelancer_view_project_detail' %}">Overview & Discussions</a>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="{% url 'freelancer_milestones' %}">Milestones</a>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="{% url 'freelancer_task' %}">Tasks</a>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="{% url 'freelancer_files' %}">Files</a>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="{% url 'freelancer_payment' %}">Payments</a>
+</li>
+</ul>
+</nav>
+
+<div class="my-projects">
+<div class="row">
+<div class="col-lg-9 d-flex">
+<div class="pro-post w-100">
+<div class="card-body">
+<div class="projects-list">
+<h2>3D Renders and Amazon Product Store images/Video</h2>
+<ul class="prolist-details">
+<li>
+<div class="list-slot">
+<h5>Client Final Price</h5>
+<p class="price">$19.00</p>
+<p class="mb-0">( FIXED )</p>
+</div>
+</li>
+<li>
+<div class="list-slot">
+<h5>Job Type</h5>
+<p class="red-text">Hourly</p>
+</div>
+</li>
+<li>
+<div class="list-slot">
+<h5>Location</h5>
+<p><img src="{% static 'assets/img/en.png' %}" height="13" alt="Lang"> Germany</p>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="col-lg-3 mb-3 d-flex flex-wrap">
+<div class="pro-post mb-3 w-100">
+<div class="card-body">
+<div class="hire-box text-center">
+<h6>Hired</h6>
+<img alt="profile image" src="{% static 'assets/img/img-04.jpg' %}" class="avatar-lg rounded-circle">
+<p>Hannah Finn - Client</p>
+<a href="{% url 'chats' %}" class="btn btn-chat">Chat Now</a>
+</div>
+</div>
+</div>
+<div class="hire-select w-100">
+<select class="form-control select">
+<option> Is job completed? </option>
+<option>Ongoing</option>
+<option>Completed</option>
+</select>
+</div>
+</div>
+</div>
+</div>
+
+
+<div class="pro-post widget-box">
+<h3 class="pro-title">Overview</h3>
+<div class="pro-overview">
+<h4>Senior Animator</h4>
+<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque tempor aliquam felis, nec condimentum ipsum commodo id. Vivamus sit amet augue nec urna efficitur tincidunt. Vivamus consectetur aliquam lectus commodo viverra. Nunc eu augue nec arcu efficitur faucibus. Aliquam accumsan ac magna convallis bibendum. Quisque laoreet augue eget augue fermentum scelerisque. Vivamus dignissim mollis est dictum blandit. Nam porta auctor neque sed congue. Nullam rutrum eget ex at maximus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec eget vestibulum lorem.</p>
+<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque tempor aliquam felis, nec condimentum ipsum commodo id. Vivamus sit amet augue nec urna efficitur tincidunt. Vivamus consectetur aliquam lectus commodo viverra. Nunc eu augue nec arcu efficitur faucibus. </p>
+<p class="mb-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque tempor aliquam felis, nec condimentum ipsum commodo id. Vivamus sit amet augue nec urna efficitur tincidunt. Vivamus consectetur aliquam lectus commodo viverra. Nunc eu augue nec arcu efficitur faucibus.</p>
+</div>
+</div>
+
+
+<div class="pro-post widget-box">
+<h3 class="pro-title">Skills Required</h3>
+<div class="pro-content">
+<div class="tags">
+<span class="badge badge-pill badge-design">After Effects</span>
+<span class="badge badge-pill badge-design">Illustrator</span>
+<span class="badge badge-pill badge-design">HTML</span>
+<span class="badge badge-pill badge-design">Whiteboard</span>
+<span class="badge badge-pill badge-design">HTML</span>
+<span class="badge badge-pill badge-design">Whiteboard</span>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+{% include 'footer.html' %}
+
+</div>
+
+
+{% include 'scripts.html' %}
+</body>
+
+<!-- Mirrored from kofejob.dreamguystech.com/template/freelancer-view-project-detail.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 23 Aug 2023 20:31:10 GMT -->
+</html>

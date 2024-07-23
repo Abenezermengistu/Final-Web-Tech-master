@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+   
+
+<h1>Register via Telegram</h1>
+
+<p>Please select your role:</p>
+
+<button onclick="document.getElementById('role').value='freelancer'; document.getElementById('form').submit();">
+  Freelancer
+</button>
+
+<button onclick="document.getElementById('role').value='employer'; document.getElementById('form').submit();">
+  Employer  
+</button>
+
+<form id="form" method="post" action="{% url 'register_with_telegram' %}">
+  {% csrf_token %}
+
+  <input type="hidden" id="role" name="role">
+
+  {{ form.as_p }}
+
+  <button type="submit">Register</button>
+
+</form>
+
+</body>
+</html>

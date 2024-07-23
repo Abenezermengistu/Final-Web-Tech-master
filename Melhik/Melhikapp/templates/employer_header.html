@@ -1,0 +1,55 @@
+{% load static %}
+
+<header class="header header-bg">
+    <nav class="navbar navbar-expand-lg header-nav">
+        <div class="navbar-header">
+            <a id="mobile_btn" href="javascript:void(0);">
+                <span class="bar-icon">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </span>
+            </a>
+            <a href="{% url 'dashboard' %}" class="navbar-brand logo">
+                <img src="{% static 'assets/img/logo.png' %}" class="img-fluid" alt="Logo">
+            </a>
+        </div>
+        <div class="main-menu-wrapper">
+            <div class="menu-header">
+                <a href="{% url 'index' %}" class="menu-logo">
+                    <img src="{% static 'assets/img/logo.png' %}" class="img-fluid" alt="Logo">
+                </a>
+                <a id="menu_close" class="menu-close" href="javascript:void(0);">
+                    <i class="fas fa-times"></i>
+                </a>
+            </div>
+        </div>
+        <ul class="nav header-navbar-rht">
+
+            <li class="nav-item dropdown main-drop account-item">
+            <a href="#" class="dropdown-toggle nav-link" data-bs-toggle="dropdown">
+            <span class="user-img">
+            <img src="{{ user.photo.url }}" alt>
+            </span>
+            <span>{{ user.first_name }}</span>
+            </a>
+            <div class="dropdown-menu emp">
+            <div class="drop-head">Account Details</div>
+         
+            <a class="dropdown-item" href="{% url 'developer_list' %}"><i class="material-icons">dashboard</i> Freelancer</a>
+            <div class="drop-head">Projects Settings</div>
+            <a class="dropdown-item" href="{% url 'dashboard' %}"><i class="material-icons">dashboard</i> Dashboard</a>
+            <a class="dropdown-item" href="{% url 'project' %}"><i class="material-icons">dashboard</i> View Jobs</a>
+            <a class="dropdown-item" href="{% url 'manage_projects' %}"><i class="material-icons">business_center</i> Projects</a>
+            <a class="dropdown-item" href="{% url 'favourites_list' %}"><i class="material-icons">local_play</i> Favourites</a>
+            <a class="dropdown-item" href="{% url 'review' %}"><i class="material-icons">pie_chart</i> Reviews</a>
+            <div class="drop-head">Account Details</div>
+            <a class="dropdown-item" href="{% url 'profile_settings' %}"> <i class="material-icons">settings</i> Profile Settings</a>
+            <a class="dropdown-item" href="{% url 'User_logout' %}"><i class="material-icons">power_settings_new</i> Logout</a>
+            </div>
+            </li>
+            
+            <li><a href="{% url 'post_project' %}" class="login-btn">Post a Project </a></li>
+            </ul>
+            </nav>
+            </header>

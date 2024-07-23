@@ -1,0 +1,262 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+{% include 'head.html' %}
+
+<body class="dashboard-page">
+
+    <div class="main-wrapper">
+        {% include 'employer_header.html' with employer=request.user %}
+
+<div class="bread-crumb-bar">
+<div class="container">
+<div class="row align-items-center inner-banner">
+<div class="col-md-12 col-12 text-center">
+<div class="breadcrumb-list">
+<nav aria-label="breadcrumb" class="page-breadcrumb">
+<ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="{% url 'dashboard' %}"><img src="{% static 'assets/img/home-icon.svg' %}" alt="Post Author"> Home</a></li>
+<li class="breadcrumb-item" aria-current="page">Freelancers</li>
+</ol>
+</nav>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+
+<div class="content">
+<div class="container">
+<div class="row">
+<div class="col-md-12 col-lg-4 col-xl-3 theiaStickySidebar">
+
+<div class="card search-filter">
+<div class="card-header d-flex justify-content-between">
+<h4 class="card-title mb-0">FILTERS</h4>
+<a href="javascript:void(0);">Clear All</a>
+</div>
+<div class="card-body">
+<div class="filter-widget">
+<h4>Keywords</h4>
+<div class="form-group">
+<input type="text" class="form-control" placeholder="Enter Keywords">
+</div>
+</div>
+<div class="filter-widget">
+<h4>Pricing Type</h4>
+<div class="form-group">
+<select class="form-control select">
+<option>Hourly Price</option>
+<option>Biding Price</option>
+</select>
+</div>
+</div>
+<div class="filter-widget">
+<h4>Experience</h4>
+<div>
+<label class="custom_check">
+<input type="checkbox" name="select_specialist">
+<span class="checkmark"></span> Junior
+</label>
+</div>
+<div>
+<label class="custom_check">
+<input type="checkbox" name="select_exp">
+<span class="checkmark"></span> Intermedite
+</label>
+</div>
+<div>
+<label class="custom_check">
+<input type="checkbox" name="select_exp">
+<span class="checkmark"></span> Professional
+</label>
+</div>
+</div>
+<div class="filter-widget">
+<h4>Reviews</h4>
+<div>
+<label class="custom_check">
+<input type="checkbox" name="pro_ratings">
+<span class="checkmark"></span>
+<span class="rating">
+<i class="fas fa-star filled"></i>
+<i class="fas fa-star filled"></i>
+<i class="fas fa-star filled"></i>
+<i class="fas fa-star filled"></i>
+<i class="fas fa-star filled"></i>
+<span class="average-rating">(5)</span>
+</span>
+</label>
+</div>
+<div>
+<label class="custom_check">
+<input type="checkbox" name="pro_ratings">
+<span class="checkmark"></span>
+<span class="rating">
+<i class="fas fa-star filled"></i>
+<i class="fas fa-star filled"></i>
+<i class="fas fa-star filled"></i>
+<i class="fas fa-star filled"></i>
+<i class="far fa-star"></i>
+<span class="average-rating">(4)</span>
+</span>
+</label>
+</div>
+<div>
+<label class="custom_check">
+<input type="checkbox" name="pro_ratings">
+<span class="checkmark"></span>
+<span class="rating">
+<i class="fas fa-star filled"></i>
+<i class="fas fa-star filled"></i>
+<i class="fas fa-star filled"></i>
+<i class="far fa-star"></i>
+<i class="far fa-star"></i>
+<span class="average-rating">(3)</span>
+</span>
+</label>
+</div>
+<div>
+<label class="custom_check">
+<input type="checkbox" name="pro_ratings">
+<span class="checkmark"></span>
+<span class="rating">
+<i class="fas fa-star filled"></i>
+<i class="fas fa-star filled"></i>
+<i class="far fa-star"></i>
+<i class="far fa-star"></i>
+<i class="far fa-star"></i>
+<span class="average-rating">(2)</span>
+</span>
+</label>
+</div>
+<div>
+<label class="custom_check">
+<input type="checkbox" name="pro_ratings">
+<span class="checkmark"></span>
+<span class="rating">
+<i class="fas fa-star filled"></i>
+<i class="far fa-star"></i>
+<i class="far fa-star"></i>
+<i class="far fa-star"></i>
+<i class="far fa-star"></i>
+<span class="average-rating">(1)</span>
+</span>
+</label>
+</div>
+</div>
+<div class="btn-search">
+<button type="button" class="btn btn-block">Search</button>
+</div>
+</div>
+</div>
+
+</div>
+<div class="col-md-12 col-lg-8 col-xl-9">
+<div class="sort-tab develop-list-select">
+<div class="row align-items-center">
+<div class="col-xl-6 col-lg-6 col-md-6 col-sm-6">
+<div class="d-flex align-items-center">
+<div class="freelance-view">
+  <h4>Showing {{ freelancers|length }} - 12 of {{ total_freelancers }} freelancers</h4>
+</div>
+</div>
+</div>
+<div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 d-flex">
+<ul class="list-grid d-flex align-items-center">
+</ul>
+</div>
+</div>
+</div>
+<div class="list-book-mark book-mark favour-book">
+<div class="row">
+<div class="col-lg-12">
+<div class="card list-develop-group">
+    {% for freelancer in freelancers %}
+<div class="about-author d-flex align-items-center">
+<div class="about-list-author d-flex align-items-center">
+<div class="about-author-img">
+<div class="author-img-wrap">
+<a href="{% url 'freelancer_profile' freelancer.id %}">
+<img class="img-fluid" alt src="{{ freelancer.profile_picture.url }}">
+<span class="verified"><i class="fas fa-check-circle"></i></span>
+</a>
+</div>
+</div>
+<div class="author-details">
+<div class="freelance-info">
+<h3><a href="{% url 'freelancer_profile' freelancer.id %}">{{ freelancer.user.first_name }} {{ freelancer.user.last_name }}</a></h3>
+<div class="freelance-specific">{{ freelancer.degree }}</div>
+<div class="freelance-location"><i class="fas fa-map-marker-alt me-1"></i>{{ freelancer.country }}</div>
+<div class="freelance-tags">
+<a href="javascript:void(0);"><span class="badge badge-pill badge-design">Web Design</span></a>
+<a href="javascript:void(0);"><span class="badge badge-pill badge-design">UI Design</span></a>
+<a href="javascript:void(0);"><span class="badge badge-pill badge-design">Node Js</span></a>
+</div>
+</div>
+</div>
+</div>
+<div class="develop-list-pro">
+<div class="freelancers-price">${{ freelancer.hourly_rate }} Hourly</div>
+<div class="cart-hover">
+<a href="{% url 'freelancer_profile' freelancer.id %}" class="btn-cart" tabindex="-1">View Profile</a>
+</div>
+</div>
+</div>
+{% endfor %}
+</div>
+</div>
+</div>
+<div class="row">
+<div class="col-md-12">
+<ul class="paginations list-pagination">
+<li class="page-item"><a href="#">Previous</a></li>
+<li class="page-item"><a href="#" class="active">1</a></li>
+<li class="page-item"><a href="#">Next</a></li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+{% include 'footer.html' %}
+
+</div>
+
+
+<div class="modal fade" id="rating">
+<div class="modal-dialog modal-dialog-centered modal-md">
+<div class="modal-content">
+<div class="modal-header d-block b-0 pb-0">
+<span class="modal-close float-end"><a href="#" data-bs-dismiss="modal" aria-label="Close"><i class="far fa-times-circle orange-text"></i></a></span>
+</div>
+<div class="modal-body">
+<form action="https://kofejob.dreamguystech.com/template/project.html">
+<div class="modal-info">
+<div class="text-center pt-0 mb-5">
+<h3>Please login to Favourite Freelancer</h3>
+</div>
+<div class="submit-section text-center">
+<button data-bs-dismiss="modal" class="btn btn-primary black-btn click-btn">Cancel</button>
+<button type="submit" class="btn btn-primary click-btn">Submit</button>
+</div>
+</div>
+</form>
+</div>
+</div>
+</div>
+</div>
+
+
+{% include 'scripts.html' %}
+</body>
+
+<!-- Mirrored from kofejob.dreamguystech.com/template/developer-list.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 23 Aug 2023 20:30:45 GMT -->
+</html>

@@ -1,0 +1,820 @@
+<!DOCTYPE html>
+<html lang="en">
+
+{% include 'admin_head.html' %}
+<body>
+
+<div class="main-wrapper">
+
+<div class="header">
+
+<div class="header-left">
+<a href="index.html" class="logo">
+<img src="assets/img/logo.png" alt="Logo">
+</a>
+<a href="index.html" class="logo logo-small">
+<img src="assets/img/logo-small.png" alt="Logo" width="30" height="30">
+</a>
+
+<a href="javascript:void(0);" id="toggle_btn">
+<i class="feather-chevrons-left"></i>
+</a>
+
+
+<a class="mobile_btn" id="mobile_btn">
+<i class="feather-chevrons-left"></i>
+</a>
+
+</div>
+
+
+<div class="top-nav-search">
+<form>
+<input type="text" class="form-control" placeholder="Start typing your Search...">
+<button class="btn" type="submit"><i class="feather-search"></i></button>
+</form>
+</div>
+
+
+<ul class="nav user-menu">
+
+<li class="nav-item dropdown">
+<a href="#" class="dropdown-toggle nav-link" data-bs-toggle="dropdown">
+<i class="feather-bell"></i> <span class="badge badge-pill">5</span>
+</a>
+<div class="dropdown-menu notifications">
+<div class="topnav-dropdown-header">
+<span class="notification-title">Notifications</span>
+<a href="javascript:void(0)" class="clear-noti"> Clear All</a>
+</div>
+<div class="noti-content">
+<ul class="notification-list">
+<li class="notification-message">
+<a href="#">
+<div class="media d-flex">
+<span class="avatar avatar-sm flex-shrink-0">
+<img class="avatar-img rounded-circle" alt src="assets/img/profiles/avatar-02.jpg">
+</span>
+<div class="media-body flex-grow-1">
+<p class="noti-details"><span class="noti-title">Brian Johnson</span> paid the invoice <span class="noti-title">#DF65485</span></p>
+<p class="noti-time"><span class="notification-time">4 mins ago</span></p>
+</div>
+</div>
+</a>
+</li>
+<li class="notification-message">
+<a href="#">
+<div class="media d-flex">
+<span class="avatar avatar-sm flex-shrink-0">
+<img class="avatar-img rounded-circle" alt src="assets/img/profiles/avatar-03.jpg">
+</span>
+<div class="media-body flex-grow-1">
+<p class="noti-details"><span class="noti-title">Marie Canales</span> has accepted your estimate <span class="noti-title">#GTR458789</span></p>
+<p class="noti-time"><span class="notification-time">6 mins ago</span></p>
+</div>
+</div>
+</a>
+</li>
+<li class="notification-message">
+<a href="#">
+<div class="media d-flex">
+<div class="avatar avatar-sm flex-shrink-0">
+<span class="avatar-title rounded-circle bg-primary-light"><i class="far fa-user"></i></span>
+</div>
+<div class="media-body flex-grow-1">
+<p class="noti-details"><span class="noti-title">New user registered</span></p>
+<p class="noti-time"><span class="notification-time">8 mins ago</span></p>
+</div>
+</div>
+</a>
+</li>
+<li class="notification-message">
+<a href="#">
+<div class="media d-flex">
+<span class="avatar avatar-sm flex-shrink-0">
+<img class="avatar-img rounded-circle" alt src="assets/img/profiles/avatar-04.jpg">
+</span>
+<div class="media-body flex-grow-1">
+<p class="noti-details"><span class="noti-title">Barbara Moore</span> declined the invoice <span class="noti-title">#RDW026896</span></p>
+<p class="noti-time"><span class="notification-time">12 mins ago</span></p>
+</div>
+</div>
+</a>
+</li>
+<li class="notification-message">
+<a href="#">
+<div class="media d-flex">
+<div class="avatar avatar-sm flex-shrink-0">
+<span class="avatar-title rounded-circle bg-info-light"><i class="far fa-comment"></i></span>
+</div>
+<div class="media-body flex-grow-1">
+<p class="noti-details"><span class="noti-title">You have received a new message</span></p>
+<p class="noti-time"><span class="notification-time">2 days ago</span></p>
+</div>
+</div>
+</a>
+</li>
+</ul>
+</div>
+<div class="topnav-dropdown-footer">
+<a href="#">View all Notifications</a>
+</div>
+</div>
+</li>
+
+
+<li class="nav-item dropdown has-arrow main-drop">
+<a href="#" class="dropdown-toggle nav-link" data-bs-toggle="dropdown">
+<span class="user-img">
+<img src="assets/img/profiles/avatar-07.jpg" alt>
+<span class="status online"></span>
+</span>
+</a>
+<div class="dropdown-menu">
+<a class="dropdown-item" href="profile.html"><i data-feather="user" class="me-1"></i> Profile</a>
+<a class="dropdown-item" href="settings.html"><i data-feather="settings" class="me-1"></i> Settings</a>
+<a class="dropdown-item" href="login.html"><i data-feather="log-out" class="me-1"></i> Logout</a>
+</div>
+</li>
+
+</ul>
+
+</div>
+
+
+<div class="sidebar" id="sidebar">
+<div class="sidebar-inner slimscroll">
+<div id="sidebar-menu" class="sidebar-menu">
+<ul>
+<li class="menu-title"><span>Main</span></li>
+<li>
+<a href="index.html"><i data-feather="home"></i> <span>Dashboard</span></a>
+</li>
+<li>
+<a href="categories.html"><i data-feather="copy"></i> <span>Categories</span></a>
+</li>
+<li>
+<a href="projects.html"><i data-feather="database"></i> <span>Projects</span></a>
+</li>
+<li class="active">
+<a href="users.html"><i data-feather="users"></i> <span>Freelancer</span></a>
+</li>
+<li>
+<a href="deposit.html"><i data-feather="user-check"></i> <span>Deposit</span></a>
+</li>
+<li>
+<a href="withdrawn.html"><i data-feather="user-check"></i> <span>Withdrawn</span></a>
+</li>
+<li>
+<a href="transaction.html"><i data-feather="clipboard"></i> <span>Transaction</span></a>
+</li>
+<li>
+<a href="providers.html"><i data-feather="user-check"></i> <span>Providers</span></a>
+</li>
+<li>
+<a href="subscription.html"><i data-feather="user-check"></i> <span>Subscription</span></a>
+</li>
+<li>
+<a href="reports.html"><i data-feather="pie-chart"></i> <span>Reports</span></a>
+</li>
+<li>
+<a href="roles.html"><i data-feather="clipboard"></i> <span>Roles</span></a>
+</li>
+<li>
+<a href="skills.html"><i data-feather="award"></i> <span>Skills</span></a>
+</li>
+<li>
+<a href="verify-identity.html"><i data-feather="user-check"></i> <span>Verify Identity</span></a>
+</li>
+<li>
+<a href="settings.html"><i data-feather="settings"></i> <span>Settings</span></a>
+</li>
+<li class="menu-title"><span>UI Interface</span></li>
+<li>
+<a href="components.html"><i data-feather="pocket"></i> <span>Components</span></a>
+</li>
+<li class="submenu">
+<a href="#"><i data-feather="file-minus"></i> <span> Forms</span> <span class="menu-arrow"></span></a>
+<ul>
+<li><a href="form-basic-inputs.html">Basic Inputs</a></li>
+<li><a href="form-input-groups.html">Input Groups</a></li>
+<li><a href="form-horizontal.html">Horizontal Form</a></li>
+<li><a href="form-vertical.html">Vertical Form</a></li>
+<li><a href="form-mask.html">Form Mask</a></li>
+<li><a href="form-validation.html">Form Validation</a></li>
+</ul>
+</li>
+<li class="submenu">
+<a href="#"><i data-feather="align-justify"></i> <span> Tables</span> <span class="menu-arrow"></span></a>
+<ul>
+<li><a href="tables-basic.html">Basic Tables</a></li>
+<li><a href="data-tables.html">Data Table</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+</div>
+
+
+<div class="page-wrapper">
+<div class="content report-box container-fluid">
+
+<div class="page-header subscribe-head">
+<div class="row align-items-center">
+<div class="col">
+<h3 class="page-title">Freelancer Profile</h3>
+<ul class="breadcrumb">
+<li class="breadcrumb-item"><a href="index.html">Home</a></li>
+<li class="breadcrumb-item active">Freelancer Profile</li>
+</ul>
+</div>
+<div class="col-auto">
+<a class="btn  back-user" href="users.html">
+<img src="assets/img/icon/icon-08.svg" alt> Back to list
+</a>
+</div>
+</div>
+</div>
+
+
+<div class="profile-status">
+<div class="row">
+<div class="col-lg-6 col-md-6">
+<div class="profile-user-box">
+<a href="profile.html"><img class="avatar-img rounded-circle " src="assets/img/profiles/avatar-16.jpg" alt="User Image"></a>
+<div class="profile-name-box">
+<h2><a href="profile.html">William Cooper</a></h2>
+<p>Date of Join: 22 May 2021 </p>
+</div>
+</div>
+</div>
+<div class="col-lg-2 col-md-2">
+<div class="additional-info">
+<p>Freelancer ID</p>
+<h5>UID00003</h5>
+</div>
+</div>
+<div class="col-lg-2 col-md-2">
+<div class="additional-info">
+<p>Email </p>
+<h5 class="verify-mail"><i data-feather="check-circle" class="me-1 text-success"></i> Verified </h5>
+</div>
+</div>
+<div class="col-lg-2 col-md-2">
+<div class="additional-info">
+<p>Account Status</p>
+<h5 class="text-danger">Active</h5>
+</div>
+</div>
+</div>
+</div>
+
+<div class="row">
+<div class="col-sm-12">
+<div class="card profile-home">
+<div class="subscribe-employe users-list transaction-list">
+<ul>
+<li><a href="user-profile.html"><img class="me-2" src="assets/img/icon/icon-09.svg" alt>Personal </a></li>
+<li class="active"><a href="profile-transactions.html"><img class="me-2" src="assets/img/icon/icon-13.svg" alt>Transactions </a></li>
+<li><a href="activities.html"><img class="me-2" src="assets/img/icon/icon-11.svg" alt>Activities</a></li>
+</ul>
+<div class="profile-icon-group">
+<div class="d-flex">
+<a href="javascript:void(0);" class="reset-icon me-1">
+<img src="assets/img/icon/icon-03.svg" alt>
+</a>
+<a class="suspend-icon" href="javascript:void(0);">
+<img src="assets/img/icon/icon-04.svg" alt>
+</a>
+</div>
+</div>
+</div>
+
+<div class="page-header profile-information">
+<div class="row align-items-center">
+<div class="col">
+<h3 class="page-title">Recent Transaction</h3>
+<p> All the recent transaction made by user.</p>
+</div>
+</div>
+</div>
+
+<div class="card">
+<div class="card-body">
+<div class="table-responsive">
+<table class="table table-center table-hover mb-0 datatable">
+<thead>
+<tr>
+<th>
+<div class="form-check custom-checkbox">
+<input type="checkbox" class="form-check-input" id="select-all">
+<label class="form-check-label"></label>
+</div>
+</th>
+<th>Order</th>
+<th>Type</th>
+<th>Details</th>
+<th>Reference</th>
+<th>Amount</th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<div class="form-check custom-checkbox">
+<input type="checkbox" class="form-check-input">
+<label class="form-check-label"></label>
+</div>
+</td>
+<td>#24586414</td>
+<td>
+<div class="table-avatar user-profile">
+<a href="profile.html"><i class="fas fa-exchange-alt exchange"></i></a>
+<div>
+<h5><a href="profile.html">Received from Investment Account</a></h5>
+<p class="receive-date"> Mar 13, 2022<span>Completed</span></p>
+</div>
+</div>
+</td>
+<td><button class="btn received-btn">Recieved</button></td>
+<td>
+151410331
+</td>
+<td>
+<div class="table-avatar content-user">
+<div>
+<h5 class="text-success">+ 4,335.006 USD</h5>
+<p> Balance : 1,335.006 USD</p>
+</div>
+</div>
+</td>
+<td class="text-end complete-show">
+<a href="#"><i class="fas fa-arrow-right" data-bs-toggle="modal" data-bs-target="#transaction-category"></i></a>
+</td>
+</tr>
+<tr>
+<td>
+<div class="form-check custom-checkbox">
+<input type="checkbox" class="form-check-input">
+<label class="form-check-label"></label>
+</div>
+</td>
+<td>#34586414</td>
+<td>
+<div class="table-avatar user-profile">
+<a href="profile.html"><i class="fas fa-undo-alt refresh"></i></a>
+<div>
+<h5><a href="profile.html">Received from Investment Account</a></h5>
+<p class="receive-date"> Jun 13, 2022<span>Completed</span></p>
+</div>
+</div>
+</td>
+<td><button class="btn withdraw-btn text-danger">Withdrawn</button></td>
+<td>
+261410331
+</td>
+<td>
+<div class="table-avatar content-user">
+<div>
+<h5 class="text-danger">- 5,335.006 USD</h5>
+<p> Balance : 1,335.006 USD</p>
+</div>
+</div>
+</td>
+<td class="text-end complete-show">
+<a href="#"><i class="fas fa-arrow-right" data-bs-toggle="modal" data-bs-target="#transaction-category"></i></a>
+</td>
+</tr>
+<tr>
+<td>
+<div class="form-check custom-checkbox">
+<input type="checkbox" class="form-check-input">
+<label class="form-check-label"></label>
+</div>
+</td>
+<td>#34586414</td>
+<td>
+<div class="table-avatar user-profile">
+<a href="profile.html"><i class="fas fa-exchange-alt exchange"></i></a>
+<div>
+<h5><a href="profile.html">Received from Investment Account</a></h5>
+<p class="receive-date"> Mar 13, 2022<span>Completed</span></p>
+</div>
+</div>
+</td>
+<td><button class="btn received-btn">Recieved</button></td>
+<td>
+341410331
+</td>
+<td>
+<div class="table-avatar content-user">
+<div>
+<h5 class="text-success">+ 4,335.006 USD</h5>
+<p> Balance : 1,335.006 USD</p>
+</div>
+</div>
+</td>
+<td class="text-end complete-show">
+<a href="#"><i class="fas fa-arrow-right" data-bs-toggle="modal" data-bs-target="#transaction-category"></i></a>
+</td>
+</tr>
+<tr>
+<td>
+<div class="form-check custom-checkbox">
+<input type="checkbox" class="form-check-input">
+<label class="form-check-label"></label>
+</div>
+</td>
+<td>#34586414</td>
+<td>
+<div class="table-avatar user-profile">
+<a href="profile.html"><i class="fas fa-undo-alt refresh"></i></a>
+<div>
+<h5><a href="profile.html">Received from Investment Account</a></h5>
+<p class="receive-date"> Jun 13, 2022<span>Completed</span></p>
+</div>
+</div>
+</td>
+<td><button class="btn withdraw-btn text-danger">Withdrawn</button></td>
+<td>
+261410331
+</td>
+<td>
+<div class="table-avatar content-user">
+<div>
+<h5 class="text-danger">- 5,335.006 USD</h5>
+<p> Balance : 1,335.006 USD</p>
+</div>
+</div>
+</td>
+<td class="text-end complete-show">
+<a href="#"><i class="fas fa-arrow-right" data-bs-toggle="modal" data-bs-target="#transaction-category"></i></a>
+</td>
+</tr>
+<tr>
+<td>
+<div class="form-check custom-checkbox">
+<input type="checkbox" class="form-check-input">
+<label class="form-check-label"></label>
+</div>
+</td>
+<td>#24586414</td>
+<td>
+<div class="table-avatar user-profile">
+<a href="profile.html"><i class="fas fa-exchange-alt exchange"></i></a>
+<div>
+<h5><a href="profile.html">Received from Investment Account</a></h5>
+<p class="receive-date"> Mar 13, 2022<span>Completed</span></p>
+</div>
+</div>
+</td>
+<td><button class="btn received-btn">Recieved</button></td>
+<td>
+151410331
+</td>
+<td>
+<div class="table-avatar content-user">
+<div>
+<h5 class="text-success">+ 4,335.006 USD</h5>
+<p> Balance : 1,335.006 USD</p>
+</div>
+</div>
+</td>
+<td class="text-end complete-show">
+<a href="#"><i class="fas fa-arrow-right" data-bs-toggle="modal" data-bs-target="#transaction-category"></i></a>
+</td>
+</tr>
+<tr>
+<td>
+<div class="form-check custom-checkbox">
+<input type="checkbox" class="form-check-input">
+<label class="form-check-label"></label>
+</div>
+</td>
+<td>#34586414</td>
+<td>
+<div class="table-avatar user-profile">
+<a href="profile.html"><i class="fas fa-undo-alt refresh"></i></a>
+<div>
+<h5><a href="profile.html">Received from Investment Account</a></h5>
+<p class="receive-date"> Jun 13, 2022<span>Completed</span></p>
+</div>
+</div>
+</td>
+<td><button class="btn withdraw-btn text-danger">Withdrawn</button></td>
+<td>
+261410331
+</td>
+<td>
+<div class="table-avatar content-user">
+<div>
+<h5 class="text-danger">- 5,335.006 USD</h5>
+<p> Balance : 1,335.006 USD</p>
+</div>
+</div>
+</td>
+<td class="text-end complete-show">
+<a href="#"><i class="fas fa-arrow-right" data-bs-toggle="modal" data-bs-target="#transaction-category"></i></a>
+</td>
+</tr>
+<tr>
+<td>
+<div class="form-check custom-checkbox">
+<input type="checkbox" class="form-check-input">
+<label class="form-check-label"></label>
+</div>
+</td>
+<td>#34586414</td>
+<td>
+<div class="table-avatar user-profile">
+<a href="profile.html"><i class="fas fa-exchange-alt exchange"></i></a>
+<div>
+<h5><a href="profile.html">Received from Investment Account</a></h5>
+<p class="receive-date"> Mar 13, 2022<span>Completed</span></p>
+</div>
+</div>
+</td>
+<td><button class="btn received-btn">Recieved</button></td>
+<td>
+341410331
+</td>
+<td>
+<div class="table-avatar content-user">
+<div>
+<h5 class="text-success">+ 4,335.006 USD</h5>
+<p> Balance : 1,335.006 USD</p>
+</div>
+</div>
+</td>
+<td class="text-end complete-show">
+<a href="#"><i class="fas fa-arrow-right" data-bs-toggle="modal" data-bs-target="#transaction-category"></i></a>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+
+
+<div class="modal fade transaction-modal" id="transaction-category">
+<div class="modal-dialog modal-dialog-centered">
+<div class="modal-content">
+<div class="modal-header flex-wrap">
+<div class="transaction-group">
+<div class="head-transaction">
+<h4>Transaction</h4>
+<p> #TNX24586414</p>
+</div>
+<div class="complete-btn">
+<a href class="btn btn-primary">Completed</a>
+</div>
+</div>
+</div>
+<div class="modal-body">
+<div class="table-avatar user-profile invest-acount">
+<a href="profile.html"><i class="fas fa-exchange-alt exchange"></i>
+<div>
+<h5>Received from Investment Account</h5>
+<p class="receive-date"> Mar 13, 2022<span>Completed</span></p>
+</div>
+</a>
+</div>
+<div class="acount-transaction">
+<div class="row">
+<div class="col-md-6">
+<div class="basic-info ">
+<h4>IN ACCOUNT</h4>
+<div class="additional-info">
+<p> Amount </p>
+<h5>6,335.006 USD</h5>
+</div>
+<div class="additional-info">
+<p>Fees </p>
+<h5>0.00 USD</h5>
+</div>
+<div class="additional-info">
+<p> Total Investment </p>
+<h5>6,335.006 USD</h5>
+</div>
+</div>
+</div>
+<div class="col-md-6">
+<div class="basic-info">
+<h4>IN TRANSACTION</h4>
+<div class="additional-info">
+<p> Amount </p>
+<h5>6,335.006 USD</h5>
+</div>
+<div class="additional-info">
+<p>Fees </p>
+<h5>0.00 USD</h5>
+</div>
+<div class="additional-info">
+<p> Total Investment </p>
+<h5>6,335.006 USD</h5>
+</div>
+<div class="additional-info">
+<p> User Account </p>
+<h5>UID00003</h5>
+</div>
+<div class="additional-info">
+<p> User Email </p>
+<h5>abu...com</h5>
+</div>
+</div>
+</div>
+<div class="col-md-12">
+<div class="basic-info additional-detail top-border">
+<h4>Order Details</h4>
+<div class="row">
+<div class="col-lg-3 col-md-6">
+<div class="additional-info">
+<p>Order Date</p>
+<h5>Mar 13, 2022</h5>
+</div>
+</div>
+<div class="col-lg-3 col-md-6">
+<div class="additional-info">
+<p> Placed By</p>
+<h5>UID00001 </h5>
+</div>
+</div>
+<div class="col-lg-3 col-md-6">
+<div class="additional-info">
+<p>Completed At</p>
+<h5> Mar 13, 2022 07:00 PM</h5>
+</div>
+</div>
+<div class="col-lg-3 col-md-6">
+<div class="additional-info">
+<p>Completed By</p>
+<h5> Super Admin</h5>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="col-md-12">
+<div class="basic-info additional-detail">
+<h4 class="mt-0">Additional Details</h4>
+<div class="row">
+<div class="col-lg-3 col-md-6">
+<div class="additional-info">
+<p>Transaction</p>
+<h5>Mar 13, 2022</h5>
+</div>
+</div>
+<div class="col-lg-3 col-md-6">
+<div class="additional-info">
+<p> Payment Gateway</p>
+<h5>Paypal </h5>
+</div>
+</div>
+<div class="col-lg-3 col-md-6">
+<div class="additional-info">
+<p>Payment From</p>
+<h5> Dean Jones</h5>
+</div>
+</div>
+<div class="col-lg-3 col-md-6">
+<div class="additional-info">
+<p>Payment To</p>
+<h5> Main Account</h5>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="col-md-12">
+<div class="basic-info additional-detail">
+<div class="row">
+<div class="col-lg-12">
+<div class="additional-info">
+<p>Updated Balance</p>
+<h5 class="active-balance">13,144.626 USD</h5>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="col-md-12">
+<div class="basic-info additional-detail ">
+<div class="row">
+<div class="col-lg-12">
+<div class="additional-info mb-0">
+<p>Transaction Details</p>
+<h5> Received from Investment Account</h5>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+
+<div class="modal fade custom-modal" id="edit-category">
+<div class="modal-dialog modal-dialog-centered">
+<div class="modal-content">
+<div class="modal-header flex-wrap">
+<div class="text-center w-100 mb-3">
+<img src="assets/img/logo-small.png" alt>
+</div>
+<h4 class="modal-title">Edit User</h4>
+<button type="button" class="close" data-bs-dismiss="modal"><span>&times;</span></button>
+</div>
+<div class="modal-body">
+<form>
+<div class="form-group">
+<label>Full Name</label>
+<input type="text" class="form-control" value=" George Wells">
+</div>
+<div class="form-group">
+<label>Email</label>
+<input type="email" class="form-control" value="georgewells@example.com">
+</div>
+<div class="form-group">
+<label>Password</label>
+<input type="password" class="form-control" value="*******">
+</div>
+<div class="form-group">
+<label>Confirm Password</label>
+<input type="password" class="form-control" value="********">
+</div>
+<div class="form-group">
+<label>User Type</label>
+<select class="form-control form-select">
+<option>Select</option>
+<option selected>Frontend Developer</option>
+<option>Graphic Designer</option>
+</select>
+</div>
+<div class="mt-4">
+<button type="submit" class="btn btn-primary btn-block">Submit</button>
+</div>
+</form>
+</div>
+</div>
+</div>
+</div>
+
+
+<div class="modal custom-modal fade" id="delete_category" role="dialog">
+<div class="modal-dialog modal-dialog-centered">
+<div class="modal-content">
+<div class="modal-body">
+<div class="form-header">
+<h3>Delete</h3>
+<p>Are you sure want to delete?</p>
+</div>
+<div class="modal-btn delete-action">
+<div class="row">
+<div class="col-6">
+<a href="javascript:void(0);" class="btn btn-primary continue-btn">Delete</a>
+</div>
+<div class="col-6">
+<a href="javascript:void(0);" data-bs-dismiss="modal" class="btn btn-primary cancel-btn">Cancel</a>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+
+<script src="assets/js/jquery-3.6.0.min.js"></script>
+
+<script src="assets/js/bootstrap.bundle.min.js"></script>
+
+<script src="assets/js/feather.min.js"></script>
+
+<script src="assets/plugins/slimscroll/jquery.slimscroll.min.js"></script>
+
+<script src="assets/plugins/select2/js/select2.min.js"></script>
+
+<script src="assets/plugins/moment/moment.min.js"></script>
+<script src="assets/js/bootstrap-datetimepicker.min.js"></script>
+
+<script src="assets/plugins/datatables/jquery.dataTables.min.js"></script>
+<script src="assets/plugins/datatables/datatables.min.js"></script>
+
+<script src="assets/js/script.js"></script>
+</body>
+
+<!-- Mirrored from kofejob.dreamguystech.com/template/admin/profile-transactions.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 23 Aug 2023 20:32:51 GMT -->
+</html>

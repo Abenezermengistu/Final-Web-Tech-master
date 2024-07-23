@@ -1,0 +1,141 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+{% include 'head.html' %}
+
+<body class="dashboard-page">
+
+    <div class="main-wrapper">
+        {% include 'freelance_header.html' with freelancer=request.user %}
+
+<div class="bread-crumb-bar">
+<div class="container">
+<div class="row align-items-center inner-banner">
+<div class="col-md-12 col-12 text-center">
+<div class="breadcrumb-list">
+<nav aria-label="breadcrumb" class="page-breadcrumb">
+<ol class="breadcrumb">
+<li class="breadcrumb-item"><a href="{% url 'dashboard' %}"><img src="{% static 'assets/img/home-icon.svg' %}" alt="Post Author"> Home</a></li>
+<li class="breadcrumb-item" aria-current="page">Projects</li>
+</ol>
+</nav>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+
+<div class="content">
+<div class="container">
+<div class="row">
+<div class="col-md-12 col-lg-4 col-xl-3 theiaStickySidebar">
+
+<div class="card search-filter">
+<div class="card-header d-flex justify-content-between">
+    <a href="javascript:void(0);" id="clear">Clear</a>
+</div>
+<div class="card-body">
+<form id="filterForm" action="{% url 'project' %}" method="get">
+<div class="filter-widget">
+<h4>Keywords</h4>
+<div class="form-group">
+<input type="text" class="form-control" placeholder="Enter Keywords" name="project_title">
+</div>
+</div>
+<div class="btn-search">
+<button type="submit" class="btn btn-block">Search</button>
+</div>
+</form>
+</div>
+</div>
+
+</div>
+<div class="col-md-12 col-lg-8 col-xl-9">
+<div class="sort-tab">
+<div class="row align-items-center">
+<div class="col-xl-6 col-lg-6 col-md-6 col-sm-6">
+<div class="d-flex align-items-center">
+<div class="freelance-view">
+<h4>Showing 1 - {{ num_projects }} of {{ total_projects }}</h4>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+<!-- Single Freelancer -->
+<div class="row">
+    {% for job in jobs %}
+    <div class="col-6 col-mg-3 col-lg-6">
+        <div class="freelance-widget widget-author">
+            <div class="freelance-content">
+                <div class="author-heading">
+                    <div class="profile-img">
+                        <a href="#">
+                                <img src="{{ job.author.photo.url }}" alt="author" class="rounded">
+              </a>
+                    </div>
+                    <div class="profile-name">
+                        <div class="author-location">{{ job.author.first_name }}<i class="fas fa-check-circle text-success verified"></i></div>
+                    </div>
+                    <div class="freelance-info">
+                        <h3 name="project_title">{{ job.project_title }}</a></h3>
+                        <div class="freelance-location mb-1"><i class="fas fa-clock"></i> Posted On {{ job.timestamp|date:"M d, Y" }}</div>
+                    <div class="freelance-tags">
+                        <a href="javascript:void(0);"><span class="badge badge-pill badge-design"></span></a>
+                    </div>
+                    <div class="freelancers-price"><div class="author-location"> Fixed </div>{{ job.price }} Birr</div>
+                </div>
+                <div class="counter-stats">
+                    <ul>
+                   <li>
+                      <h3 class="counter-value">For {{ job.duration }}</h3>
+                      <h5>Duration</h5>
+                   </li>
+                   <li>
+                      <h3 class="counter-value">15</h3>
+                      <h5>Proposals</h5>
+                  </li>
+               </ul>
+            </div>
+          </div><br>
+          <div class="cart-hover">
+              <a href="{% url 'project_details' job.id %}" class="btn-cart" tabindex="-1">Bid Now</a>
+          </div>
+          </div>
+          </div>
+          </div>
+         {% endfor %}
+<br>
+
+{% include 'footer.html' %}
+
+</div>
+</div>
+</div>
+</div>
+</div>
+
+{% include 'scripts.html' %}
+
+</body>
+<script>
+    const clearFilter = document.querySelector('#clear');
+
+clearFilter.addEventListener('click', e => {
+  e.preventDefault();
+  
+  // Get form element
+  const form = document.getElementById('filterForm');  
+
+  // Reset input
+  form.reset();
+
+  // Submit form
+  form.submit();
+});
+</script>
+</html>

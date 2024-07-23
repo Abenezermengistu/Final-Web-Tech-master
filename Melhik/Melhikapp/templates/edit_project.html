@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+
+{% include 'head.html' %}
+
+<body class="dashboard-page">
+
+    <div class="main-wrapper">
+        {% include 'header.html' %}
+
+
+
+<div class="breadcrumb-bar">
+<div class="container">
+<div class="row align-items-center inner-banner">
+<div class="col-md-12 col-12 text-center">
+<h2 class="breadcrumb-title">Edit Projects</h2>
+<nav aria-label="breadcrumb" class="page-breadcrumb">
+<ol class="breadcrumb">
+<li class="breadcrumb-item"><a href="{% url 'dashboard' %}">Home</a></li>
+<li class="breadcrumb-item active" aria-current="page"> Edit Projects</li>
+</ol>
+</nav>
+</div>
+</div>
+</div>
+</div>
+
+
+<div class="content">
+<div class="container">
+<div class="row">
+<div class="col-md-12">
+<div class="text-end mb-4">
+<a href="manage-projects.html" class="btn btn-primary back-btn br-0"><i class="fas fa-long-arrow-alt-left"></i> Back to Project </a>
+</div>
+<div class="select-project mb-4">
+<form action="https://kofejob.dreamguystech.com/template/dashboard.html">
+<div class="title-box widget-box">
+
+<div class="title-content">
+<div class="title-detail">
+<h3>Project Name</h3>
+<div class="form-group mb-0">
+<input type="text" class="form-control" value="Edit Project">
+</div>
+</div>
+</div>
+
+
+<div class="title-content">
+<div class="title-detail">
+<h3>Category Type</h3>
+<div class="form-group mb-0">
+<select class="form-control select">
+<option value="0">Select</option>
+<option value="1" selected>Apps Development</option>
+<option value="2">UI Development</option>
+<option value="3">Jaa</option>
+</select>
+</div>
+</div>
+</div>
+
+
+<div class="title-content">
+<div class="title-detail">
+<h3>Pricing Type</h3>
+<div class="form-group price-cont mb-0" id="price_type">
+<select name="price" class="form-control select">
+<option value="0">Select</option>
+<option value="1" selected>Fixed Budget Price</option>
+<option value="2">Hourly Pricing</option>
+<option value="3">Biding Price</option>
+</select>
+</div>
+<div class="form-group mt-3" id="price_id">
+<div class="input-group">
+<button type="button" class="btn btn-white dropdown-toggle" data-bs-toggle="dropdown">$</button>
+<div class="dropdown-menu">
+<a class="dropdown-item" href="#">Dollars</a>
+<a class="dropdown-item" href="#">Euro</a>
+<a class="dropdown-item" href="#">Bitcoin</a>
+</div>
+<input type="text" class="form-control" placeholder="20.00">
+</div>
+</div>
+<div class="form-group mt-3" id="hour_id" style="display: none;">
+<div class="row">
+<div class="col-md-6 mb-2">
+<div class="input-group form-inline">
+<button type="button" class="btn btn-white dropdown-toggle" data-bs-toggle="dropdown">$</button>
+<div class="dropdown-menu">
+<a class="dropdown-item" href="#">Dollars</a>
+<a class="dropdown-item" href="#">Euro</a>
+<a class="dropdown-item" href="#">Bitcoin</a>
+</div>
+<input type="text" class="form-control me-2" placeholder="20.00"> <label> / hr</label>
+</div>
+</div>
+<div class="col-md-6">
+<div class="input-group form-inline">
+<label>For </label> <input type="text" class="form-control ms-2" placeholder=" ( eg: 2 Weeks)">
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+
+<div class="title-content">
+<div class="title-detail">
+<h3>Desired areas of expertise </h3>
+<div class="form-group mb-0">
+<input type="text" data-role="tagsinput" class="input-tags form-control" name="services" value="Web Design, Node JS" id="services" placeholder="UX, UI, App Design, Wireframing, Branding">
+<p class="text-muted mb-0">Enter skills for needed for project</p>
+</div>
+</div>
+</div>
+
+
+<div class="title-content">
+<div class="title-detail">
+<h3>Period of Project</h3>
+<div class="form-group mb-0" id="pro_period">
+<div class="radio">
+<label class="custom_radio">
+<input type="radio" value="period" name="period">
+<span class="checkmark"></span> Start immediately after the candidate is selected
+</label>
+</div>
+<div class="radio">
+<label class="custom_radio">
+<input type="radio" value="job" name="period" checked>
+<span class="checkmark"></span> Job will Start On
+</label>
+</div>
+</div>
+<div class="row">
+<div class="col-md-4">
+<div class="filter-widget mb-0" id="period_date">
+<div class="cal-icon">
+<input type="text" class="form-control datetimepicker" placeholder="Select Date">
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+
+<div class="title-content">
+<div class="title-detail">
+<h3>Add Documents</h3>
+<div class="custom-file">
+<input type="file" class="custom-file-input">
+<label class="custom-file-label"></label>
+</div>
+<p>Size of the Document should be Below 2MB</p>
+<div class="upload-wrap">
+<div class="upload-document">
+<img src="assets/img/document.jpg" alt="Image">
+<a href="javascript:void(0);" class="btn btn-icon btn-danger btn-sm"><i class="material-icons">delete_sweep</i></a>
+</div>
+<div class="upload-document">
+<img src="assets/img/document.jpg" alt="Image">
+<a href="javascript:void(0);" class="btn btn-icon btn-danger btn-sm"><i class="material-icons">delete_sweep</i></a>
+</div>
+</div>
+</div>
+</div>
+
+
+<div class="title-content">
+<div class="title-detail">
+<h3>Add Links</h3>
+<div class="links-info">
+<div class="row form-row links-cont">
+<div class="col-12 col-md-11">
+<div class="form-group">
+<input type="text" class="form-control">
+</div>
+</div>
+<div class="col-12 col-md-1">
+<a href="javascript:void(0);" class="btn btn-danger trash"><i class="far fa-trash-alt"></i></a>
+</div>
+</div>
+<div class="row form-row links-cont">
+<div class="col-12 col-md-11">
+<div class="form-group">
+<input type="text" class="form-control">
+</div>
+</div>
+<div class="col-12 col-md-1">
+<a href="javascript:void(0);" class="btn btn-danger trash"><i class="far fa-trash-alt"></i></a>
+</div>
+<div class="col-md-6">
+<p class="mb-0">Add Reference links if any</p>
+</div>
+<div class="col-md-5 text-end">
+<a href="javascript:void(0);" class="add-links more-link"><i class="fas fa-plus-circle orange-text"></i> Add more</a>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+
+<div class="title-content pb-0">
+<div class="title-detail">
+<h3>Write Description of Projects </h3>
+<div class="form-group mb-0">
+<textarea class="form-control summernote"></textarea>
+</div>
+</div>
+</div>
+
+<div class="text-end">
+<div class="btn-item">
+<button class="btn btn-primary black-btn click-btn b-0" type="submit">CANCEL</button>
+<button class="btn btn-primary click-btn b-0" type="submit">SUBMIT</button>
+</div>
+</div>
+</div>
+
+</form>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+
+<footer class="footer">
+<div class="footer-top">
+<div class="container">
+<div class="row">
+<div class="col-xl-3 col-md-6">
+<div class="footer-widget footer-menu">
+<h2 class="footer-title">Useful Links</h2>
+<ul>
+<li><a href="about.html"><i class="fas fa-angle-right me-1"></i>About Us</a></li>
+<li><a href="blog-list.html"><i class="fas fa-angle-right me-1"></i>Blog</a></li>
+<li><a href="login.html"><i class="fas fa-angle-right me-1"></i>Login</a></li>
+<li><a href="register.html"><i class="fas fa-angle-right me-1"></i>Register</a></li>
+<li><a href="forgot-password.html"><i class="fas fa-angle-right me-1"></i>Forgot Password</a></li>
+</ul>
+</div>
+</div>
+<div class="col-xl-3 col-md-6">
+<div class="footer-widget footer-menu">
+<h2 class="footer-title">Help & Support</h2>
+<ul>
+<li><a href="javascript:;"><i class="fas fa-angle-right me-1"></i>Browse Candidates</a></li>
+<li><a href="javascript:;"><i class="fas fa-angle-right me-1"></i>Employers Dashboard</a></li>
+<li><a href="javascript:;"><i class="fas fa-angle-right me-1"></i>Job Packages</a></li>
+<li><a href="javascript:;"><i class="fas fa-angle-right me-1"></i>Jobs Featured</a></li>
+<li><a href="javascript:;"><i class="fas fa-angle-right me-1"></i>Post A Job</a></li>
+</ul>
+</div>
+</div>
+<div class="col-xl-2 col-md-6">
+<div class="footer-widget footer-menu">
+<h2 class="footer-title">Other Links</h2>
+<ul>
+<li><a href="freelancer-dashboard.html"><i class="fas fa-angle-right me-1"></i>Freelancers</a></li>
+<li><a href="freelancer-portfolio.html"><i class="fas fa-angle-right me-1"></i>Freelancer Details</a></li>
+<li><a href="project.html"><i class="fas fa-angle-right me-1"></i>Project</a></li>
+<li><a href="project-details.html"><i class="fas fa-angle-right me-1"></i>Project Details</a></li>
+<li><a href="post-project.html"><i class="fas fa-angle-right me-1"></i>Post Project</a></li>
+</ul>
+</div>
+</div>
+<div class="col-xl-4 col-md-6">
+<div class="footer-widget footer-menu">
+<h2 class="footer-title">Join our Newsletter</h2>
+<p>We help our customers harness the power of AI to make smarter decisions</p>
+<div class="banner-content">
+<form class="form" name="store" method="post" action="https://kofejob.dreamguystech.com/template/project.html">
+<div class="form-inner">
+<div class="input-group">
+<input type="email" class="form-control" placeholder="Your Email address.....">
+<button class="btn btn-primary sub-btn" type="submit"><i class="fas fa-long-arrow-alt-right long-arrow"></i></button>
+</div>
+</div>
+</form>
+</div>
+<div class="social-icon d-flex">
+<span>Follow us on : </span>
+<ul>
+<li><a href="#" class="icon" target="_blank"><i class="fab fa-facebook-f"></i> </a></li>
+<li><a href="#" class="icon" target="_blank"><i class="fab fa-instagram"></i> </a></li>
+<li><a href="#" class="icon" target="_blank"><i class="fab fa-twitter"></i> </a></li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+
+<div class="footer-bottom">
+<div class="container">
+
+<div class="copyright">
+<div class="row">
+<div class="col-md-6 col-lg-6 ">
+<div class="footer-bottom-logo">
+<a href="{% url 'dashboard' %}" class="menu-logo">
+<img src="assets/img/logo.png" class="img-fluid" alt="Logo">
+</a>
+</div>
+</div>
+<div class="col-md-6 col-lg-6 right-text">
+<ul class="nav footer-bottom-nav">
+<li><a href="chats.html">Chat</a></li>
+<li><a href="faq.html">Faq</a></li>
+<li><a href="review.html">Reviews</a></li>
+<li><a href="privacy-policy.html">Privacy Policy</a></li>
+<li><a href="term-condition.html">Terms of use</a></li>
+</ul>
+<div class="copyright-text">
+<p class="mb-0">Copyright 2023 © KofeJob. All right reserved. Powered by Dreamguys Technologies</p>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+</footer>
+
+</div>
+
+{% include 'scripts.html' %}
+</body>
+
+<!-- Mirrored from kofejob.dreamguystech.com/template/edit-project.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 23 Aug 2023 20:31:05 GMT -->
+</html>

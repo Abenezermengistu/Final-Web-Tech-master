@@ -1,0 +1,236 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+    {% include 'admin_head.html' %}
+<body>
+    {% include 'admin_header.html' %}
+
+    <div class="sidebar" id="sidebar">
+        <div class="sidebar-inner slimscroll">
+        <div id="sidebar-menu" class="sidebar-menu">
+        <ul>
+        <li class="menu-title"><span>Main</span></li>
+        <li>
+        <a href="{% url 'admin_dashboard' %}"><i data-feather="home"></i> <span>Dashboard</span></a>
+        </li>
+        <li class="active">
+        <a href="{% url 'projects' %}"><i data-feather="database"></i> <span>Jobs</span></a>
+        </li>
+        <li>
+        <a href="{% url 'users' %}"><i data-feather="users"></i> <span>Freelancer</span></a>
+        </li>
+        <li>
+        <a href="{% url 'withdrawn' %}"><i data-feather="user-check"></i> <span>Withdrawn</span></a>
+        </li>
+        <li>
+        <a href="{% url 'reports' %}"><i data-feather="pie-chart"></i> <span>Reports</span></a>
+        </li>
+        <li>
+        <a href="{% url 'seo_settings' %}"><i data-feather="settings"></i> <span>Settings</span></a>
+        </li>
+        <li>
+        <a href="{% url 'admin_logout' %}"><i data-feather="box"></i> <span>Logout</span></a>
+        </li>
+        </div>
+        </div>
+        </div>
+
+
+<div class="page-wrapper">
+<div class="content container-fluid">
+
+<div class="page-header">
+<div class="row align-items-center">
+<div class="col">
+<h3 class="page-title">Jobs</h3>
+<ul class="breadcrumb">
+<li class="breadcrumb-item"><a href="{% url 'admin_dashboard' %}">Home</a></li>
+<li class="breadcrumb-item active">Jobs</li>
+</ul>
+</div>
+</div>
+</div>
+
+
+<div class="card bg-white projects-card">
+<div class="card-body pt-0">
+<div class="card-header">
+<h5 class="card-title">Jobs</h5>
+</div>
+<div class="reviews-menu-links">
+<ul role="tablist" class="nav nav-pills card-header-pills nav-justified">
+<li class="nav-item">
+<a href="#tab-4" data-bs-toggle="tab" class="nav-link active">Job List ({{ total_jobs }})</a>
+</li>
+</ul>
+</div>
+
+<!--All Projects-->
+
+<div class="tab-content pt-0">
+<div role="tabpanel" id="tab-4" class="tab-pane fade active show">
+<div class="table-responsive">
+<table class="table table-center table-hover mb-0 datatable">
+<thead>
+<tr>
+<th>Brand</th>
+<th>Job Title</th>
+<th>Budget</th>
+<th>Skill Needed</th>
+<th>Start date</th>
+<th>Due date</th>
+</tr>
+</thead>
+{% for job in jobs %}
+<tbody>
+<tr>   
+<td>   
+<h2 class="table-avatar">
+<a href=""><img class="me-2" src="{{ job.author.photo.url }}" alt="User Image"></a>
+</h2>
+</td>
+<td>{{ job.project_title }}</td>
+
+<td>{{ job.price }}</td>
+<td>{{ job.category_type }}</td>
+<td>{{ job.start_date }}</td>
+<td>{{ job.duration }}</td>
+
+</tr>
+</tbody>
+{% endfor %}
+</table>
+</div>
+</div>
+
+
+<!-- suspeded -->
+<div role="tabpanel" id="tab-6" class="tab-pane fade">
+<div class="table-responsive">
+<table class="table table-center table-hover mb-0 datatable">
+<thead>
+<tr>
+<th>Brand</th>
+<th>Job Title</th>
+<th>Budget</th>
+<th>Skill Needed</th>
+<th>Start date</th>
+<th>Due date</th>
+<th class="text-end">Actions</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<h2 class="table-avatar">
+<a href="profile.html"><img class="me-2" src="{% static 'asset/img/company/img-7.png' %}" alt="User Image"></a>
+</h2>
+</td>
+<td>Designer Required For Directory</td>
+<td>
+$2222
+</td>
+<td>
+Java
+</td>
+<td>22-05-2022</td>
+<td>22-05-2022</td>
+<td class="text-end">
+<a href="javascript:void(0);" class="btn btn-sm btn-danger" data-bs-toggle="modal" data-bs-target="#delete_projects"><i class="far fa-trash-alt"></i></a>
+</td>
+</tr>
+<tr>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+
+<div class="modal fade custom-modal" id="add-category">
+<div class="modal-dialog modal-dialog-centered">
+<div class="modal-content">
+<div class="modal-header">
+<h4 class="modal-title">Projects</h4>
+<button type="button" class="close" data-bs-dismiss="modal"><span>&times;</span></button>
+</div>
+<div class="modal-body">
+<form>
+<div class="form-group">
+<label>Title</label>
+<input type="text" class="form-control" value="{{ job.title }} Website Designer Required For Directory Theme">
+</div>
+<div class="form-group">
+<label>Budget</label>
+<input type="text" class="form-control" value="$2222 {{ job.price }}">
+</div>
+<div class="form-group">
+<label>Technology</label>
+<input type="text" class="form-control" value="Angler {{ job.category }}">
+</div>
+<div class="form-group">
+<label>Technology</label>
+<input type="text" class="form-control" value="AMAZE TECH {{ job.price }}">
+</div>
+<div class="form-group">
+<label>From Date</label>
+<div class="cal-icon">
+<input class="form-control datetimepicker" type="text" value=" {{ job.start_date }} 20-01-2022">
+</div>
+</div>
+<div class="form-group">
+<label>To Date</label>
+<div class="cal-icon">
+<input class="form-control datetimepicker" type="text" value=" {{ job.to_date }} 20-02-2022">
+</div>
+</div>
+<div class="mt-4">
+<button type="submit" class="btn btn-primary btn-block">Submit</button>
+</div>
+</form>
+</div>
+</div>
+</div>
+</div>
+
+
+<div class="modal custom-modal fade" id="delete_category" role="dialog">
+<div class="modal-dialog modal-dialog-centered">
+<div class="modal-content">
+<div class="modal-body">
+<div class="form-header">
+<h3>Delete</h3>
+<p>Are you sure want to delete?</p>
+</div>
+<div class="modal-btn delete-action">
+<div class="row">
+<div class="col-6">
+<a href="javascript:void(0);" class="btn btn-primary continue-btn">Delete</a>
+</div>
+<div class="col-6">
+<a href="javascript:void(0);" data-bs-dismiss="modal" class="btn btn-primary cancel-btn">Cancel</a>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+{% include 'admin_scripts.html' %}
+
+<script src="{% static 'asset/js/jquery-3.6.0.min.js' %}"></script>
+
+<script src="{% static 'asset/js/bootstrap.bundle.min.js' %}"></script>
+
+<script src="{% static 'asset/js/feather.min.js' %}"></script>
+
+<script src="{% static 'asset/plugins/slimscroll/jquery.slimscroll.min.js' %}"></script>
+
+<script src="{% static 'asset/plugins/moment/moment.min.js' %}"></script>
+</body>
+
+</html>

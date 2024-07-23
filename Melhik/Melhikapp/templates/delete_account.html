@@ -1,0 +1,266 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+{% include 'head.html' %}
+
+<body class="dashboard-page">
+
+    <div class="main-wrapper">
+        {% include 'employer_header.html' with employer=request.user %}
+
+<div class="bread-crumb-bar">
+<div class="container">
+<div class="row align-items-center inner-banner">
+<div class="col-md-12 col-12 text-center">
+<div class="breadcrumb-list">
+<nav aria-label="breadcrumb" class="page-breadcrumb">
+<ol class="breadcrumb">
+<li class="breadcrumb-item"><a href="{% url 'dashboard' %}"><img src="{% static 'assets/img/home-icon.svg' %}" alt="Post Author"> Home</a></li>
+<li class="breadcrumb-item" aria-current="page">Employee</li>
+<li class="breadcrumb-item" aria-current="page">Settings</li>
+</ol>
+</nav>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+
+<div class="content content-page">
+<div class="container-fluid">
+<div class="row">
+
+    {% include 'dashboard_navbar_link.html' with employer=request.user %}
+
+    <div class="settings-menu">
+        <ul>
+        <li class="nav-item">
+        <a href="{% url 'dashboard' %}" class="nav-link">
+        <i class="material-icons">verified_user</i> Dashboard
+        </a>
+        </li>
+        <li class="nav-item">
+        <a href="{% url 'manage_projects' %}" class="nav-link">
+        <i class="material-icons">business_center</i> Projects
+        </a>
+        </li>
+        <li class="nav-item">
+        <a href="{% url 'favourites_list' %}" class="nav-link">
+        <i class="material-icons">local_play</i> Favourites
+        </a>
+        </li>
+        <li class="nav-item">
+        <a href="{% url 'review' %}" class="nav-link">
+        <i class="material-icons">record_voice_over</i> Reviews
+        </a>
+        </li>
+        <li class="nav-item">
+        <a href="{% url 'chats' %}" class="nav-link">
+        <i class="material-icons">chat</i> Messages
+        </a>
+        </li>
+        <li class="nav-item">
+        <a href="{% url 'membership_plans' %}" class="nav-link">
+        <i class="material-icons">person_add</i> Membership
+        </a>
+        </li>
+        <li class="nav-item">
+        <a href="{% url 'verify_identity' %}" class="nav-link">
+        <i class="material-icons">person_pin</i> Verify Identity
+        </a>
+        </li>
+        <li class="nav-item">
+        <a href="{% url 'deposit_funds' %}" class="nav-link">
+        <i class="material-icons">wifi_tethering</i> Payments
+        </a>
+        </li>
+        <li class="nav-item">
+        <a href="{% url 'profile_settings' %}" class="nav-link active">
+        <i class="material-icons">settings</i> Settings
+        </a>
+        </li>
+        <li class="nav-item">
+        <a href="{% url 'index' %}" class="nav-link">
+        <i class="material-icons">power_settings_new</i> Logout
+        </a>
+        </li>
+        </ul>
+        </div>
+        </div>
+        </div>
+
+<div class="col-xl-9 col-md-8">
+<nav class="user-tabs mb-4">
+<ul class="nav nav-tabs nav-tabs-bottom nav-justified">
+<li class="nav-item">
+<a class="nav-link" href="{% url 'profile_settings' %}">Basic Settings</a>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="{% url 'change_password' %}">Change Password</a>
+</li>
+<li class="nav-item">
+<a class="nav-link active" href="{% url 'delete_account' %}">Delete Account</a>
+</li>
+</ul>
+</nav>
+<div class="setting-content">
+<div class="card">
+<div class="pro-head">
+<h3 class="pro-title without-border mb-0">Delete Account</h3>
+</div>
+<div class="pro-body">
+<form action="#">
+<div class="form-group">
+<label>Please Explain Further**</label>
+<textarea class="form-control" rows="5"></textarea>
+</div>
+<div class="form-group">
+<label>Password*</label>
+<input type="password" class="form-control">
+</div>
+<div class="row">
+<div class="col-md-12">
+<a class="btn btn-primary click-btn btn-plan" data-bs-toggle="modal" href="#delete-acc">Delete Account</a>
+</div>
+</div>
+</form>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+
+<footer class="footer">
+<div class="footer-top">
+<div class="container">
+<div class="row">
+<div class="col-xl-3 col-md-6">
+<div class="footer-widget footer-menu">
+<h2 class="footer-title">Useful Links</h2>
+<ul>
+<li><a href="about.html"><i class="fas fa-angle-right me-1"></i>About Us</a></li>
+<li><a href="blog-list.html"><i class="fas fa-angle-right me-1"></i>Blog</a></li>
+<li><a href="login.html"><i class="fas fa-angle-right me-1"></i>Login</a></li>
+<li><a href="register.html"><i class="fas fa-angle-right me-1"></i>Register</a></li>
+<li><a href="forgot-password.html"><i class="fas fa-angle-right me-1"></i>Forgot Password</a></li>
+</ul>
+</div>
+</div>
+<div class="col-xl-3 col-md-6">
+<div class="footer-widget footer-menu">
+<h2 class="footer-title">Help & Support</h2>
+<ul>
+<li><a href="javascript:;"><i class="fas fa-angle-right me-1"></i>Browse Candidates</a></li>
+<li><a href="javascript:;"><i class="fas fa-angle-right me-1"></i>Employers Dashboard</a></li>
+<li><a href="javascript:;"><i class="fas fa-angle-right me-1"></i>Job Packages</a></li>
+<li><a href="javascript:;"><i class="fas fa-angle-right me-1"></i>Jobs Featured</a></li>
+<li><a href="javascript:;"><i class="fas fa-angle-right me-1"></i>Post A Job</a></li>
+</ul>
+</div>
+</div>
+<div class="col-xl-2 col-md-6">
+<div class="footer-widget footer-menu">
+<h2 class="footer-title">Other Links</h2>
+<ul>
+<li><a href="freelancer-dashboard.html"><i class="fas fa-angle-right me-1"></i>Freelancers</a></li>
+<li><a href="freelancer-portfolio.html"><i class="fas fa-angle-right me-1"></i>Freelancer Details</a></li>
+<li><a href="project.html"><i class="fas fa-angle-right me-1"></i>Project</a></li>
+<li><a href="project-details.html"><i class="fas fa-angle-right me-1"></i>Project Details</a></li>
+<li><a href="post-project.html"><i class="fas fa-angle-right me-1"></i>Post Project</a></li>
+</ul>
+</div>
+</div>
+<div class="col-xl-4 col-md-6">
+<div class="footer-widget footer-menu">
+<h2 class="footer-title">Join our Newsletter</h2>
+<p>We help our customers harness the power of AI to make smarter decisions</p>
+<div class="banner-content">
+<form class="form" name="store" method="post" action="https://kofejob.dreamguystech.com/template/project.html">
+<div class="form-inner">
+<div class="input-group">
+<input type="email" class="form-control" placeholder="Your Email address.....">
+<button class="btn btn-primary sub-btn" type="submit"><i class="fas fa-long-arrow-alt-right long-arrow"></i></button>
+</div>
+</div>
+</form>
+</div>
+<div class="social-icon d-flex">
+<span>Follow us on : </span>
+<ul>
+<li><a href="#" class="icon" target="_blank"><i class="fab fa-facebook-f"></i> </a></li>
+<li><a href="#" class="icon" target="_blank"><i class="fab fa-instagram"></i> </a></li>
+<li><a href="#" class="icon" target="_blank"><i class="fab fa-twitter"></i> </a></li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+
+<div class="footer-bottom">
+<div class="container">
+
+<div class="copyright">
+<div class="row">
+<div class="col-md-6 col-lg-6 ">
+<div class="footer-bottom-logo">
+<a href="{% url 'dashboard' %}" class="menu-logo">
+<img src="{% static 'assets/img/logo.png' %}" class="img-fluid" alt="Logo">
+</a>
+</div>
+</div>
+<div class="col-md-6 col-lg-6 right-text">
+<ul class="nav footer-bottom-nav">
+<li><a href="chats.html">Chat</a></li>
+<li><a href="faq.html">Faq</a></li>
+<li><a href="review.html">Reviews</a></li>
+<li><a href="privacy-policy.html">Privacy Policy</a></li>
+<li><a href="term-condition.html">Terms of use</a></li>
+</ul>
+<div class="copyright-text">
+<p class="mb-0">Copyright 2023 © KofeJob. All right reserved. Powered by Dreamguys Technologies</p>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+</footer>
+
+</div>
+
+
+<div class="modal fade custom-modal" id="delete-acc">
+<div class="modal-dialog modal-dialog-centered modal-md">
+<div class="modal-content">
+<div class="modal-body del-modal">
+<form action="https://kofejob.dreamguystech.com/template/index.html">
+<div class="text-center pt-0 mb-5">
+<i class="fas fa-exclamation-triangle fa-3x"></i>
+<h3>Are you sure? Want to delete Account</h3>
+</div>
+<div class="submit-section text-center">
+<button data-bs-dismiss="modal" class="btn btn-primary black-btn click-btn btn-plan">Cancel</button>
+<button type="submit" class="btn btn-primary click-btn btn-plan">Submit</button>
+</div>
+</form>
+</div>
+</div>
+</div>
+</div>
+
+{% include 'scripts.html' %}
+</body>
+
+<!-- Mirrored from kofejob.dreamguystech.com/template/delete-account.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 23 Aug 2023 20:31:07 GMT -->
+</html>

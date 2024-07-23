@@ -1,0 +1,94 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+{% include 'head.html' %}
+
+<body class="dashboard-page" onload="generate()">
+
+    <div class="main-wrapper">
+
+        <header class="header">
+            <nav class="navbar navbar-expand-lg header-nav">
+            <div class="navbar-header">
+            <a id="mobile_btn" href="javascript:void(0);">
+            <span class="bar-icon">
+            <span></span>
+            <span></span>
+            <span></span>
+            </span>
+            </a>
+            <a href="{% url 'index' %}" class="navbar-brand logo">
+            <img src="{% static 'assets/img/logo.png' %}" class="img-fluid" alt="Logo">
+            </a>
+            </div>
+            <div class="main-menu-wrapper">
+            <div class="menu-header">
+            <a href="{% url 'index' %}" class="menu-logo">
+            <img src="{% static 'assets/img/logo.png' %}" class="img-fluid" alt="Logo">
+            </a>
+            <a id="menu_close" class="menu-close" href="javascript:void(0);">
+            <i class="fas fa-times"></i>
+            </a>
+            </div>
+            <ul class="main-nav">
+            <li class="has-submenu">
+            <a href>For Employers</a>
+            <li class="active has-submenu">
+            <a href>For Freelancer</a>
+            </div>
+            <ul class="nav header-navbar-rht reg-head">
+            <li><a href="{% url 'onboard_screen' %}" class="reg-btn"><img src="{% static 'assets/img/icon/reg-icon.svg' %}" class="me-1" alt="icon"> Register</a></li>
+            </ul>
+            </nav>
+            </header>
+            
+        <div class="content">
+        <div class="container">
+        <div class="row">
+        <div class="col-md-6 offset-md-3">
+        <div class="account-content">
+        <div class="align-items-center justify-content-center">
+        <div class="login-right">
+   <div class="login-header text-center">
+   <a href="{% url 'index' %}"><img src="{% static 'assets/img/logo-01.png' %}" alt="logo" class="img-fluid"></a>
+      <h3>Welcome Back</h3>
+       <p>Don't miss your next opportunity. Sign in to stay updated on your
+           professional world.</p>
+   </div>
+{% if messages %}
+<ul class="messages">
+{% for message in messages %}
+ <ul{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</ul>
+ {% endfor %}
+ </ul>
+ {% endif %}
+ <form method="post">
+    {% csrf_token %}
+    {{form.as_p}}
+    <button class="btn btn-primary btn-block btn-lg login-btn" type="submit">Login</button>
+</form>
+    
+<div class="row">
+    <div class="col-6 text-start">
+        <a class="forgot-link" href="{% url 'forgot_password' %}">Forgot Password ?</a>
+    </div>
+</div>
+                
+        </div>
+    </div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+{% include 'footer.html' %}
+
+</div>
+
+    {% include 'scripts.html' %}
+</body>
+
+</html>

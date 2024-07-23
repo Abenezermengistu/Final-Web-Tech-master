@@ -1,0 +1,239 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<style>
+.languages span {
+  display: inline-block;
+  margin-right: 10px;
+}
+</style>
+
+{% include 'head.html' %}
+
+<body class="dashboard-page">
+
+    <div class="main-wrapper">
+        {% include 'freelance_header.html' with freelancer=request.user %}
+
+
+<div class="bread-crumb-bar">
+<div class="container">
+<div class="row align-items-center inner-banner">
+<div class="col-md-12 col-12 text-center">
+<div class="breadcrumb-list">
+<nav aria-label="breadcrumb" class="page-breadcrumb">
+<ol class="breadcrumb">
+<li class="breadcrumb-item"><a href="{% url 'dashboard' %}"><img src="{% static 'assets/img/home-icon.svg' %}" alt> Home</a></li>
+<li class="breadcrumb-item" aria-current="page">Freelancer Profile</li>
+</ol>
+</nav>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+{% if freelancer %}
+<div class="content">
+<div class="container">
+<div class="row">
+<div class="col-md-12">
+<div class="profile profile-freelance">
+<div class="profile-box">
+<div class="provider-widget">
+
+<div class="provider-img "><img src="{{ freelancer.profile_picture.url }}" class="img-fluid" alt="User"></div>
+<div class="profile-info">
+<h2 class="profile-title">{{ freelancer.user.first_name }} {{ freelancer.user.last_name }}</h2>
+
+
+<p class="profile-position">{{ freelancer.email }}</p>
+<div><a href="#" class="btn full-btn">{{ freelancer.hourly_rate }} Birr / Hourly Rate </a></div>
+<ul class="profile-preword">
+<li><img src="{% static 'assets/img/flags/pl.png' %}" alt height="16">{{ freelancer.country}}</li>
+<li>
+<div class="rating">
+<span class="average-rating">4.6</span>
+<i class="fas fa-star filled"></i>
+<i class="fas fa-star filled"></i>
+<i class="fas fa-star filled"></i>
+<i class="fas fa-star filled"></i>
+<i class="fas fa-star"></i>
+</div>
+</li>
+</ul>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="row">
+<div class="col-lg-8 col-md-12">
+<div class="pro-view">
+
+<nav class="provider-tabs mb-4">
+<ul class="nav nav-tabs nav-tabs-solid nav-justified">
+<li class="nav-item">
+<a class="nav-link" href="#overview">
+<img src="{% static 'assets/img/icon/tab-icon-01.png' %}" height="25" alt="User Image">
+<p class="bg-red">Overview</p>
+</a>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="#project">
+<img src="{% static 'assets/img/icon/tab-icon-02.png' %}" height="25" alt="User Image">
+<p class="bg-blue">Projects</p>
+</a>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="#experience">
+<img src="{% static 'assets/img/icon/tab-icon-03.png' %}" height="25" alt="User Image">
+<p class="bg-violet">Experience</p>
+</a>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="#education">
+<img src="{% static 'assets/img/icon/tab-icon-04.png' %}" height="25" alt="User Image">
+<p class="bg-yellow">Education</p>
+</a>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="#skill">
+<img src="{% static 'assets/img/icon/tab-icon-05.png' %}" height="25" alt="User Image">
+<p class="bg-pink">Skills</p>
+</a>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="{% url 'freelancer_review' %}">
+<img src="{% static 'assets/img/icon/tab-icon-06.png' %}" height="25" alt="User Image">
+<p class="bg-green">Feedbacks</p>
+</a>
+</li>
+</ul>
+</nav>
+
+
+<div class="pro-post widget-box" id="overview">
+<h3 class="pro-title">Overview</h3>
+<div class="pro-content">
+<div class="mt-4">
+<ul class="pro-list">
+  {{ freelancer.overview }}
+</ul>
+</div>
+</div>
+</div>
+
+
+<div class="pro-post project-widget widget-box" id="experience">
+<h3 class="pro-title">Experience</h3>
+<div class="pro-content">
+<div class="widget-list mb-0">
+<ul class="clearfix">
+      <li>
+        <h4>{{ freelancer.experience_name }}</h4>
+        <h5>{{ freelancer.experience_experience_company }} {{ freelancer.experience_start_date }} - {{ freelancer.experience_end_date }}</h5>
+        <p>{{ freelancer.experience_summary }}</p>
+      </li>
+
+</ul>
+</div>
+</div>
+</div>
+
+
+<div class="pro-post project-widget widget-box" id="education">
+<h3 class="pro-title">Educational Details</h3>
+<div class="pro-content">
+<div class="widget-list mb-0">
+<ul class="clearfix">
+<li>
+<h4>{{ freelancer.degree }}</h4>
+<h5>{{ freelancer.Institution }}  {{ freelancer.start_year }} - {{ freelancer.end_year }}</h5>
+<p>{{ freelancer.education_summary }}</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+
+
+<div class="pro-post project-widget widget-box" id="skill">
+<h3 class="pro-title">Technical Skills</h3>
+<div class="pro-content">
+<div class="tags">
+<span class="badge badge-pill badge-skills">Web Design</span>
+<span class="badge badge-pill badge-skills">UI Design</span>
+<span class="badge badge-pill badge-skills">Node Js</span>
+<span class="badge badge-pill badge-skills">Javascript</span>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="col-lg-4 col-md-12 sidebar-right theiaStickySidebar">
+  <div class="pro-post widget-box language-widget">
+  <h4 class="pro-title">LANGUAGE</h4>
+  <ul class="latest-posts pro-content pt-0">
+    {% for language in freelancer.language %}
+      <span>{{ language }}</span>
+    {% endfor %}
+  </ul>
+  </div>
+  <div class="pro-post widget-box about-widget">
+  <h4 class="pro-title mb-0">ABOUT ME</h4>
+  <ul class="latest-posts pro-content">
+  <li><p>Gender</p>
+      <p>
+        {% if freelancer.gender == 'M' %}
+          Male
+        {% elif freelancer.gender == 'F' %}
+          Female
+        {% else %}
+          Prefer not to say
+        {% endif %}
+      </p></li>
+  <li><p>Location</p><h6>{{ freelancer.address }}/{{ freelancer.country|default:"Unknown" }}</h6></li>
+  </ul>
+  </div>
+
+<div class="pro-post widget-box social-widget develop-social-link">
+  <div class="profile-head">
+  <h4 class="pro-title">SOCIAL LINKS</h4>
+  </div>
+  <ul class="social-link-profile">
+  <li><a href="{{ freelancer.git_hub }}"><i class="fas fa-share-alt"></i></a></li>
+  <li><a href="#"><i class="fab fa-facebook"></i></a></li>
+  <li><a href="#"><i class="fab fa-twitter"></i></a></li>
+  <li><a href="#"><i class="fab fa-instagram"></i></a></li>
+  <li><a href="{{ freelancer.linked_in }}"><i class="fab fa-linkedin"></i></a></li>
+  <li><a href="#"><i class="fab fa-telegram"></i></a></li>
+  </ul>
+  </div>
+  
+{% else %}
+
+<p>No profile found.</p>
+{% endif %}
+</div>
+
+</div>
+
+</div>
+</div>
+</div>
+
+{% include 'footer.html' %}
+
+</div>
+
+{% include 'scripts.html' %}
+</body>
+
+<!-- Mirrored from kofejob.dreamguystech.com/template/freelancer-profile.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 23 Aug 2023 20:31:08 GMT -->
+</html>

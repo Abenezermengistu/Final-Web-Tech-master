@@ -1,0 +1,130 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+{% include 'head.html' %}
+
+<body class="dashboard-page">
+
+    <div class="main-wrapper">
+        {% include 'freelance_header.html' with freelancer=request.user %}
+
+<div class="bread-crumb-bar">
+<div class="container">
+<div class="row align-items-center inner-banner">
+<div class="col-md-12 col-12 text-center">
+<div class="breadcrumb-list">
+<nav aria-label="breadcrumb" class="page-breadcrumb">
+<ol class="breadcrumb">
+<li class="breadcrumb-item"><a href="{% url 'index_2' %}"><img src="{% static 'assets/img/home-icon.svg' %}" alt="Post Author"> Home</a></li>
+<li class="breadcrumb-item" aria-current="page">Freelancer</li>
+<li class="breadcrumb-item" aria-current="page">Reviews</li>
+</ol>
+</nav>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+
+<div class="content content-page">
+<div class="container-fluid">
+<div class="row">
+    {% include 'dashboard_free_navbar_link.html' with freelancer=request.user %}
+
+    <div class="settings-menu">
+        <ul>
+        <li class="nav-item">
+        <a href="{% url 'freelancer_dashboard' %}" class="nav-link">
+        <i class="material-icons">verified_user</i> Dashboard
+        </a>
+        </li>
+        <li class="nav-item">
+        <a href="{% url 'freelancer_project_proposals' %}" class="nav-link">
+        <i class="material-icons">business_center</i> Projects
+        </a>
+        </li>
+        <li class="nav-item">
+        <a href="{% url 'freelancer_review' %}" class="nav-link active">
+        <i class="material-icons">record_voice_over</i> Reviews
+        </a>
+        </li>
+        <li class="nav-item">
+        <a href="{% url 'chats' %}" class="nav-link">
+        <i class="material-icons">chat</i> Messages
+        </a>
+        </li>
+        <li class="nav-item">
+        <a href="{% url 'freelancer_withdraw_money' %}" class="nav-link">
+        <i class="material-icons">wifi_tethering</i> Payments
+        </a>
+        </li>
+        <li class="nav-item">
+        <a href="{% url 'freelancer_profile_settings' %}" class="nav-link">
+        <i class="material-icons">settings</i> Settings
+        </a>
+        </li>
+        <li class="nav-item">
+        <a href="{% url 'index' %}" class="nav-link">
+        <i class="material-icons">power_settings_new</i> Logout
+        </a>
+        </li>
+        </ul>
+        </div>
+        </div>
+        </div>
+        
+               
+<div class="col-xl-9 col-md-8">
+    
+<div class="card">
+<div class="card-header">
+<h3 class="pro-title without-border">Reviews</h3></div>
+
+<div class="card-body">
+    {% for review in reviews %}
+<div class="reviews">
+<div class="review-content no-padding">
+    <p class="mb-0">{{ review.message }}</p>
+<div class="review-top tab-reviews d-flex align-items-center">
+<div class="review-img">
+<a href=""><img class="img-fluid" src="{% static 'assets/img/review/review-03.jpg' %}" alt="Post Image"></a>
+</div>
+<div class="review-info">
+<h3><a href="">James</a></h3>
+<h5>{{ review.timestamp|date:"F d, Y" }}</h5>
+</div>
+{% for i in review.rating|stringformat:"s" %}
+{% if forloop.counter <= review.rating %}
+    <div class="rating">
+Rating:&nbsp;<i class="fa fa-star checked"></i> {{ reviews.rating }} / 5
+{% else %}
+    <i class="fa fa-star"></i>
+{% endif %}
+{% endfor %}
+<form method="POST" action="{% url 'delete_review' review.id %}">
+    {% csrf_token %}
+    <button type="submit" class="btn-delete" style="float: right; color: rgb(254, 254, 255); margin-left: 37rem; background-color: brown; border-radius: 5px;">Delete</button>
+</form>
+{% endfor %}
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+{% include 'footer.html' %}
+
+</div>
+
+{% include 'scripts.html' %}
+</body>
+
+<!-- Mirrored from kofejob.dreamguystech.com/template/freelancer-review.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 23 Aug 2023 20:29:30 GMT -->
+</html>

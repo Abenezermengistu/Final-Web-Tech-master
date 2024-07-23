@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+
+{% include 'head.html' %}
+
+<body class="dashboard-page">
+
+    <div class="main-wrapper">
+        {% include 'freelance_header.html' with freelancer=request.user %}
+
+<div class="content">
+<div class="container-fluid">
+<div class="row">
+    {% include 'dashboard_free_navbar_link.html' with freelancer=request.user %}
+<div class="col-xl-9 col-md-8 mb-5">
+<div class="page-title">
+<h3>Manage Projects</h3>
+</div>
+<nav class="user-tabs mb-4">
+<ul class="nav nav-tabs nav-tabs-bottom nav-justified">
+<li class="nav-item">
+<a class="nav-link" href="freelancer-view-project-detail.html">Overview & Discussions</a>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="freelancer-milestones.html">Milestones</a>
+</li>
+<li class="nav-item">
+<a class="nav-link active" href="freelancer-task.html">Tasks</a>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="freelancer-files.html">Files</a>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="freelancer-payment.html">Payments</a>
+</li>
+</ul>
+</nav>
+
+<div class="my-projects-view">
+<div class="row">
+<div class="col-lg-12">
+<div class="pro-post">
+<div class="project-table">
+<div class="card-body">
+<h4>TASKS</h4>
+<div class="table-responsive table-box">
+<table class="table table-center table-hover datatable">
+<thead class="thead-pink">
+<tr>
+<th>Task Name</th>
+<th>Milestone</th>
+<th>Due Date</th>
+<th>Description</th>
+<th>Status</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Research 101</td>
+<td>Research</td>
+<td>20th Oct 2021</td>
+<td><p class="mb-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>
+<a href="#" class="read-text">Readmore</a>
+</td>
+<td>
+<span class="badge badge-pill bg-outline-green">
+Completed
+</span>
+</td>
+</tr>
+<tr>
+<td>Research 102</td>
+<td>Research</td>
+<td>25th Oct 2021</td>
+<td><p class="mb-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>
+<a href="#" class="read-text">Readmore</a>
+</td>
+<td>
+<span class="badge badge-pill bg-outline-red">
+Pending
+</span>
+</td>
+</tr>
+<tr>
+<td>Research 103</td>
+<td>Research</td>
+<td>27th Oct 2021</td>
+<td><p class="mb-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>
+<a href="#" class="read-text">Readmore</a>
+</td>
+<td>
+<span class="badge badge-pill bg-outline-red">
+Pending
+</span>
+</td>
+</tr>
+<tr>
+<td>Research 104</td>
+<td>Research</td>
+<td>27th Oct 2021</td>
+<td><p class="mb-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>
+<a href="#" class="read-text">Readmore</a>
+</td>
+<td>
+<span class="badge badge-pill bg-outline-red">
+Pending
+</span>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+{% include 'footer.html' %}
+
+</div>
+
+
+{% include 'scripts.html' %}
+</body>
+
+<!-- Mirrored from kofejob.dreamguystech.com/template/freelancer-task.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 23 Aug 2023 20:32:38 GMT -->
+</html>

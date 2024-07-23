@@ -1,0 +1,198 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+{% include 'head.html' %}
+
+<body class="dashboard-page">
+    <div class="main-wrapper">
+        {% include 'freelance_header.html' with freelancer=request.user %}
+
+<div class="bread-crumb-bar">
+<div class="container">
+<div class="row align-items-center inner-banner">
+<div class="col-md-12 col-12 text-center">
+<div class="breadcrumb-list">
+<nav aria-label="breadcrumb" class="page-breadcrumb">
+<ol class="breadcrumb">
+<li class="breadcrumb-item"><a href="{% url 'dashboard' %}"><img src="{% static 'assets/img/home-icon.svg' %}" alt="Post Author"> Home</a></li>
+<li class="breadcrumb-item" aria-current="page">Freelancer</li>
+<li class="breadcrumb-item" aria-current="page">Projects</li>
+</ol>
+</nav>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+
+<div class="content content-page">
+<div class="container-fluid">
+<div class="row">
+    {% include 'dashboard_free_navbar_link.html' with freelancer=request.user %}
+
+    <div class="settings-menu">
+        <ul>
+        <li class="nav-item">
+        <a href="{% url 'freelancer_dashboard' %}" class="nav-link">
+        <i class="material-icons">verified_user</i> Dashboard
+        </a>
+        </li>
+        <li class="nav-item">
+        <a href="{% url 'freelancer_project_proposals' %}" class="nav-link active">
+        <i class="material-icons">business_center</i> Projects
+        </a>
+        </li>
+        <li class="nav-item">
+        <a href="{% url 'freelancer_review' %}" class="nav-link">
+        <i class="material-icons">record_voice_over</i> Reviews
+        </a>
+        </li>
+        <li class="nav-item">
+        <a href="{% url 'chats' %}" class="nav-link">
+        <i class="material-icons">chat</i> Messages
+        </a>
+        </li>
+        <li class="nav-item">
+        <a href="{% url 'freelancer_withdraw_money' %}" class="nav-link">
+        <i class="material-icons">wifi_tethering</i> Payments
+        </a>
+        </li>
+        <li class="nav-item">
+        <a href="{% url 'freelancer_profile_settings' %}" class="nav-link">
+        <i class="material-icons">settings</i> Settings
+        </a>
+        </li>
+        <li class="nav-item">
+        <a href="{% url 'index' %}" class="nav-link">
+        <i class="material-icons">power_settings_new</i> Logout
+        </a>
+        </li>
+        </ul>
+        </div>
+        </div>
+        </div>
+
+<div class="col-xl-9 col-md-8">
+<div class="page-title">
+<h3>Manage Projects</h3>
+</div>
+<nav class="user-tabs mb-4">
+<ul class="nav nav-tabs nav-tabs-bottom nav-justified">
+<li class="nav-item">
+<a class="nav-link" href="{% url 'freelancer_project_proposals' %}">My Proposals</a>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="{% url 'freelancer_ongoing_projects' %}">Ongoing Projects</a>
+</li>
+<li class="nav-item">
+<a class="nav-link active" href="{% url 'freelancer_completed_projects' %}">Completed Projects</a>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="{% url 'freelancer_cancelled_projects' %}">Cancelled Projects</a>
+</li>
+</ul>
+</nav>
+
+<div class="my-projects-list">
+<div class="row">
+<div class="col-lg-12 flex-wrap">
+<div class="projects-card flex-fill">
+<div class="card-body">
+<div class="projects-details align-items-center">
+<div class="project-info project">
+<span>Dreamguystech</span>
+<h2>Laravel Backend Developer to finish ongoing project</h2>
+<div class="proposal-client">
+<h4 class="title-info">Client Price</h4>
+<div class="d-flex">
+<h3 class="client-price me-2">$500.00</h3>
+<p class="amnt-type">( FIXED )</p>
+</div>
+</div>
+</div>
+<div class="project-hire-info project">
+<div class="content-divider"></div>
+<div class="proposer-info project">
+<div class="proposer-img">
+<img src="{% static 'assets/img/developer/developer-03.jpg' %}" alt class="img-fluid">
+</div>
+<div class="proposer-detail">
+<h4>Tony Ingle</h4>
+<ul class="proposal-details">
+<li> October 26, 2021</li>
+<li><i class="fas fa-star text-primary"></i> 4 Reviews</li>
+</ul>
+</div>
+</div>
+<div class="content-divider"></div>
+<div class="projects-action text-center project">
+    <a href="{% static 'freelancer_view_project_detail' %}" class="projects-btn">View Details </a>
+<h4 class="completed-badge"><span><i class="fas fa-medal me-2"></i></span>Completed</h4>
+<a data-bs-toggle="modal" href="#file" class="rating-btn">Write Review</a>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+
+<div class="row">
+<div class="col-md-12">
+<ul class="paginations list-pagination">
+<li class="page-item"><a href="#">Previous</a></li>
+<li class="page-item"><a href="#" class="active">1</a></li>
+<li class="page-item"><a href="#">Next</a></li>
+</ul>
+</div>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+{% include 'footer.html' %}
+
+<div class="modal fade" id="file">
+<div class="modal-dialog modal-dialog-centered modal-md">
+<div class="modal-content">
+<div class="modal-header">
+<h4 class="modal-title">Review Freelancer</h4>
+<span class="modal-close"><a href="#" data-bs-dismiss="modal" aria-label="Close"><i class="far fa-times-circle"></i></a></span>
+</div>
+<div class="modal-body">
+<div class="modal-info">
+<form method="POST">
+  {% csrf_token %}
+
+  <div class="form-group">
+    {{ freelancer_review.message }} 
+  </div>
+
+  <div class="form-group">
+    {{ freelancer_review.rating }}
+  </div>
+
+  <button type="submit" class="btn btn-primary">
+    Submit
+  </button>
+
+</form>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+{% include 'scripts.html' %}
+</body>
+
+<!-- Mirrored from kofejob.dreamguystech.com/template/freelancer-completed-projects.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 23 Aug 2023 20:31:08 GMT -->
+</html>

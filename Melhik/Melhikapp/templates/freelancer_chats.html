@@ -1,0 +1,204 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+{% include 'head.html' %}
+
+<body class="dashboard-page">
+
+    <div class="main-wrapper">
+        {% include 'freelance_header.html' with freelancer=request.user %}
+
+
+        <div class="content">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-12 back-text">
+                        <a href="{% url 'dashboard' %}" class="btn btn-primary back-btn"><i class="fa fa-chevron-left"></i>
+                            Back </a>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="chat-window">
+
+                            <div class="chat-cont-right">
+                                <div class="chat-header">
+                                    <a id="back_user_list" href="javascript:void(0)" class="back-user-list">
+                                        <i class="material-icons">chevron_left</i>
+                                    </a>
+                                    <div class="media d-flex">
+                                        <div class="media-img-wrap flex-shrink-0">
+                                            <div class="avatar avatar-online">
+                                                <img src="{% static 'assets/img/img-05.jpg' %}" alt="User Image"
+                                                    class="avatar-img rounded-circle">
+                                            </div>
+                                        </div>
+                                        <div class="media-body flex-grow-1">
+                                            <div class="user-name">Doris Brown </div>
+                                            <div class="user-status">online</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="chat-body">
+                                    <div class="chat-scroll">
+                                        <ul class="list-unstyled">
+                                            {% for message in messages %}
+                                            <li class="media sent d-flex">
+                                                <div class="avatar flex-shrink-0">
+                                                    <img src="{% static 'assets/img/img-05.jpg' %}" alt="User Image"
+                                                        class="avatar-img rounded-circle">
+                                                </div>
+                                                <div class="media-body flex-grow-1">
+                                                    <div class="msg-box">
+                                                        <div>
+
+                                                            {% if message.sender == user %}
+                                                            <!-- Message sent by user -->
+
+                                                            <p> {{ message.content }}</p>
+                                                            <ul class="chat-msg-info">
+                                                                <li>
+                                                                    <div class="chat-time">
+                                                                        <span>10:02 AM</span>
+                                                                    </div>
+                                                                </li>
+                                                            </ul>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                            
+                                            <li class="media received d-flex">
+                                                <div class="avatar flex-shrink-0">
+                                                    <img src="{% static 'assets/img/img-02.jpg' %}" alt="User Image"
+                                                        class="avatar-img rounded-circle">
+                                                </div>
+                                                <div class="media-body flex-grow-1">
+                                                    <div class="msg-box">
+                                                        <div>
+                                                            {% else %}
+                                                            <!-- Message sent by other user -->
+                                                            {{ message.sender.name }}:  
+                                                          <p>{{ message.content }}</p>
+                                                          {% endif %}
+                                                            <ul class="chat-msg-info">
+                                                                <li>
+                                                                    <div class="chat-time">
+                                                                        <span>10:03 AM</span>
+                                                                    </div>
+                                                                </li>
+                                                            </ul>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                            {% endfor %}
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="chat-footer">
+                                    <div class="input-group">
+                                        <div class="avatar">
+                                            <img src="{% static 'assets/img/img-05.jpg' %}" alt="User Image"
+                                                class="avatar-img rounded-circle">
+                                        </div>
+                                        <input type="text" class="input-msg-send form-control" placeholder="Reply...">
+                                        <div class="btn-file btn">
+                                            <i class="far fa-grin fa-1x"></i>
+                                        </div>
+                                        <div class="btn-file btn">
+                                            <i class="fa fa-paperclip"></i>
+                                            <input type="file">
+                                        </div>
+                                        <button type="button" class="btn btn-primary msg-send-btn rounded-pill"><i
+                                                class="fab fa-telegram-plane"></i></button>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        {% include 'footer.html' %}
+
+    </div>
+
+
+    <div class="modal fade call-modal" id="voice_call">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-body">
+
+                    <div class="call-box incoming-box">
+                        <div class="call-wrapper">
+                            <div class="call-inner">
+                                <div class="call-user">
+                                    <img alt="User Image" src="{% static 'assets/img/img-05.jpg' %}"
+                                        class="call-avatar">
+                                    <h4>Darren Elder</h4>
+                                    <span>Connecting...</span>
+                                </div>
+                                <div class="call-items">
+                                    <a href="javascript:void(0);" class="btn call-item call-end" data-bs-dismiss="modal"
+                                        aria-label="Close"><i class="material-icons">call_end</i></a>
+                                    <a href="voice-call.html" class="btn call-item call-start"><i
+                                            class="material-icons">call</i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="modal fade call-modal" id="video_call">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-body">
+
+                    <div class="call-box incoming-box">
+                        <div class="call-wrapper">
+                            <div class="call-inner">
+                                <div class="call-user">
+                                    <img class="call-avatar" src="{% static 'assets/img/img-05.jpg' %}"
+                                        alt="User Image">
+                                    <h4>Darren Elder</h4>
+                                    <span>Calling ...</span>
+                                </div>
+                                <div class="call-items">
+                                    <a href="javascript:void(0);" class="btn call-item call-end" data-bs-dismiss="modal"
+                                        aria-label="Close"><i class="material-icons">call_end</i></a>
+                                    <a href="video-call.html" class="btn call-item call-start"><i
+                                            class="material-icons">videocam</i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {% include 'scripts.html' %}
+</body>
+
+<script>
+    const form = document.querySelector('form');
+
+form.addEventListener('keypress', (e) => {
+  if (e.key === 'Enter') {
+    e.preventDefault();
+    form.submit(); 
+  }
+})
+</script>
+
+</html>

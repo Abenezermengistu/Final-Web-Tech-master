@@ -1,0 +1,347 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+{% include 'head.html' %}
+
+<body class="dashboard-page">
+
+    <div class="main-wrapper">
+        {% include 'freelance_header.html' with freelancer=request.user %}
+
+<div class="bread-crumb-bar">
+<div class="container">
+<div class="row align-items-center inner-banner">
+<div class="col-md-12 col-12 text-center">
+<div class="breadcrumb-list">
+<nav aria-label="breadcrumb" class="page-breadcrumb">
+<ol class="breadcrumb">
+<li class="breadcrumb-item"><a href="{% url 'dashboard' %}"><img src="{% static 'assets/img/home-icon.svg' %}" alt> Home</a></li>
+<li class="breadcrumb-item" aria-current="page">PROJECT DETAILS</li>
+</ol>
+</nav>
+</div>
+</div>
+</div>
+</div>
+</div>
+{% if messages %}
+  {% for message in messages %}
+    <div class="alert alert-success">
+      {{ message }}
+    </div>
+  {% endfor %}
+{% endif %}
+<div class="content">
+<div class="container">
+<div class="row">
+<div class="col-lg-8 col-md-12">
+<div class="developer-box project-box-view">
+<h2>{{ project.project_title }}</h2>
+<h3><a href="{% url 'project_proposals' job_id=project.id %}">{{ project.author.first_name }}</a> <i class="fas fa-check-circle"></i></h3>
+<ul class="develope-list-rate project-rate align-items-center">
+<li><i class="fas fa-clock"></i>Posted On {{ project.timestamp|date:"M d, Y" }}</li>
+</ul>
+<div class="proposal-box">
+<a data-bs-toggle="modal" href="#hire" class="btn favourites-btn btn-primary favour-border">Message <i class="fas fa-heart"></i></a>
+<a data-bs-toggle="modal" href="#file" class="btn proposal-btn btn-primary">Send Proposal <i class="fas fa-long-arrow-alt-right"></i> </a>
+</div>
+</div>
+<div class="pro-view project-details-view">
+  
+
+<div class="post-widget">
+<div class="pro-content">
+<div class="row">
+<div class="col-12 col-sm-6 col-md-6 col-lg-3 d-flex">
+<div class="pro-post job-type d-flex align-items-center">
+<div class="pro-post-head">
+<p>Start Date </p>
+<h6>{{ project.start_date}}</h6>
+</div>
+<div class="post-job-icon blue-color">
+<img class="img-fluid" alt src="{% static 'assets/img/icon/icon-15.svg' %}">
+</div>
+</div>
+</div>
+<div class="col-12 col-sm-6 col-md-6 col-lg-3 d-flex">
+<div class="pro-post job-type d-flex align-items-center">
+<div class="pro-post-head">
+<p>Location</p>
+<h6><img src="{% static 'assets/img/flags/de.png' %}" height="16" alt="Lang"> Germany</h6>
+</div>
+<div class="post-job-icon orange-color">
+<img class="img-fluid" alt src="{% static 'assets/img/icon/icon-14.svg' %}">
+</div>
+</div>
+</div>
+<div class="col-12 col-sm-6 col-md-6 col-lg-3 d-flex">
+<div class="pro-post job-type d-flex align-items-center">
+<div class="pro-post-head">
+<p>Proposals</p>
+<h6>15 Received</h6>
+</div>
+<div class="post-job-icon pink-color">
+<img class="img-fluid" alt src="{% static 'assets/img/icon/icon-13.svg' %}">
+</div>
+</div>
+</div>
+<div class="col-12 col-sm-6 col-md-6 col-lg-3 d-flex">
+<div class="pro-post job-type d-flex align-items-center">
+<div class="pro-post-head">
+<p>Price:</p>
+<h6>{{ project.price }} Birr</h6>
+</div>
+<div class="post-job-icon green-color">
+<img class="img-fluid" alt src="{% static 'assets/img/icon/icon-12.svg' %}">
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="post-widget project-duration">
+<div class="pro-content">
+<div class="row">
+<div class="col-12 col-sm-6 col-md-4 d-flex">
+<div class="pro-post job-type d-flex align-items-center">
+<div class="pro-post-head">
+<p>Developer Type </p>
+<h6>Individual</h6>
+</div>
+<div class="post-job-icon">
+<img class="img-fluid" alt src="{% static 'assets/img/icon/exp-icon-01.png' %}">
+</div>
+</div>
+</div>
+<div class="col-12 col-sm-6 col-md-4 d-flex">
+<div class="pro-post job-type d-flex align-items-center">
+<div class="pro-post-head">
+<p>Project Duration</p>
+<h6>{{ project.duration }}</h6>
+</div>
+<div class="post-job-icon">
+<img class="img-fluid" alt src="{% static 'assets/img/icon/exp-icon-02.png' %}">
+</div>
+</div>
+</div>
+<div class="col-12 col-sm-6 col-md-4 d-flex">
+<div class="pro-post job-type d-flex align-items-center">
+<div class="pro-post-head">
+<p>Level </p>
+<h6>Intermediate </h6>
+</div>
+<div class="post-job-icon">
+<img class="img-fluid" alt src="{% static 'assets/img/icon/exp-icon-03.png' %}">
+</div>
+</div>
+</div>
+<div class="col-12 col-sm-6 col-md-4 d-flex">
+<div class="pro-post job-type d-flex align-items-center">
+<div class="pro-post-head">
+<p>Job Type</p>
+<h6>Remote Job</h6>
+</div>
+<div class="post-job-icon">
+<img class="img-fluid" alt src="{% static 'assets/img/icon/exp-icon-04.png' %}">
+</div>
+</div>
+</div>
+<div class="col-12 col-sm-6 col-md-4 d-flex">
+<div class="pro-post job-type d-flex align-items-center">
+<div class="pro-post-head">
+<p>Experience</p>
+<h6>+5 years</h6>
+</div>
+<div class="post-job-icon">
+<img class="img-fluid" alt src="{% static 'assets/img/icon/exp-icon-05.png' %}">
+</div>
+</div>
+</div>
+<div class="col-12 col-sm-6 col-md-4 d-flex">
+<div class="pro-post job-type d-flex align-items-center">
+<div class="pro-post-head">
+<p>Qualifications</p>
+<h6>Under Garduate</h6>
+</div>
+<div class="post-job-icon">
+<img class="img-fluid" alt src="{% static 'assets/img/icon/exp-icon-06.png' %}">
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+
+<div class="pro-post widget-box">
+<h3 class="pro-title">Senior Animator</h3>
+<div class="pro-content">
+<p>{{ project.description }}</p>
+</div>
+</div>
+
+
+<div class="pro-post project-widget widget-box">
+<h3 class="pro-title">Skills Required</h3>
+<div class="pro-content">
+<div class="tags">
+<a href="javascript:void(0);"><span class="badge badge-pill badge-design">After Effects</span></a>
+<a href="javascript:void(0);"><span class="badge badge-pill badge-design">Illustrator</span></a>
+<a href="javascript:void(0);"><span class="badge badge-pill badge-design">HTML</span></a>
+<a href="javascript:void(0);"><span class="badge badge-pill badge-design">Whiteboard</span></a>
+</div>
+</div>
+</div>
+
+
+<div class="pro-post project-widget widget-box">
+<h3 class="pro-title">project documentation</h3>
+<div class="pro-content">
+<div class="row">
+<div class="col-md-3">
+<div class="requirement-img"><br>
+<a href="{{ project.documents }}"><img class="img-fluid" alt src="{% static 'assets/img/require-01.jpg' %}"></a>
+<div class="file-name">
+<h4>Filename</h4>
+<h5>Document</h5>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="col-lg-4 col-md-12 sidebar-right theiaStickySidebar project-client-view">
+
+<div class="pro-post widget-box post-widget develop-social-link">
+<h3 class="pro-title">Contact Us</h3>
+<ul class="social-link-profile">
+<li><a href="#"><i class="fas fa-share-alt"></i></a></li>
+<li><a href="#"><i class="fab fa-facebook"></i></a></li>
+<li><a href="#"><i class="fab fa-twitter"></i></a></li>
+<li><a href="#"><i class="fab fa-instagram"></i></a></li>
+<li><a href="#"><i class="fab fa-linkedin"></i></a></li>
+<li><a href="#"><i class="fab fa-telegram"></i></a></li>
+</ul>
+</div>
+
+</div>
+
+</div>
+</div>
+</div>
+
+
+{% include 'footer.html' %}
+
+</div>
+
+
+<div class="modal fade custom-modal" id="hire">
+<div class="modal-dialog modal-dialog-centered">
+<div class="modal-content bg-modal">
+<div class="modal-header">
+<button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+<span aria-hidden="true">×</span>
+</button>
+</div>
+<div class="modal-body">
+<div class="text-center pt-0 mb-4">
+<img src="{% static 'assets/img/logo-01.png' %}" alt="logo" class="img-fluid mb-1">
+<h5 class="modal-title">Discuss your project with David</h5>
+</div>
+<form action="https://kofejob.dreamguystech.com/template/dashboard.html">
+<div class="modal-info">
+<div class="row">
+<div class="col-12 col-md-12">
+<div class="form-group">
+<input type="text" name="name" class="form-control" placeholder="First name & Lastname">
+</div>
+<div class="form-group">
+<input type="email" name="name" class="form-control" placeholder="Email Address">
+</div>
+<div class="form-group">
+<input type="text" name="name" class="form-control" placeholder="Phone Number">
+</div>
+<div class="form-group">
+<textarea class="form-control" name="message" rows="5" placeholder="Message"></textarea>
+</div>
+<div class="form-group row">
+<div class="col-12 col-md-4 pr-0">
+<label class="file-upload">
+Add Attachment <input type="file" />
+</label>
+</div>
+<div class="col-12 col-md-8">
+<p class="mb-1">Allowed file types: zip, pdf, png' %}, jpg</p>
+<p>Max file size: 50 MB</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="submit-section text-center">
+<button type="submit" class="btn btn-primary btn-block submit-btn">Hire Now</button>
+</div>
+</form>
+</div>
+</div>
+</div>
+</div>
+
+
+<div class="modal fade" id="file">
+<div class="modal-dialog modal-dialog-centered modal-lg">
+<div class="modal-content">
+<div class="modal-header">
+<h4 class="modal-title">SEND PROPOSALS</h4>
+<span class="modal-close"><a href="#" data-bs-dismiss="modal" aria-label="Close"><i class="far fa-times-circle orange-text"></i></a></span>
+</div>
+<div class="modal-body">
+<div class="modal-info">
+  <form method="POST">
+    {% csrf_token %}
+    <div class="feedback-form">
+      <div class="row">
+        <div class="col-md-6 form-group">
+          {{ form.price.label_tag }}
+          {{ form.price }}
+        </div>
+        <div class="col-md-6 form-group">
+          {{ form.hours.label_tag }}
+          {{ form.hours }}
+        </div>
+        <div class="col-md-12 form-group">
+          {{ form.cover_letter.label_tag }}
+          {{ form.cover_letter }}
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12 submit-section">
+        <label class="custom_check">
+          {{ form.agree_terms }}
+          <span class="checkmark"></span> I agree to the Terms And Conditions
+        </label>
+      </div>
+      <div class="col-md-12 submit-section text-end">
+        <button class="btn btn-primary submit-btn" type="submit">SUBMIT PROPOSAL</button>
+      </div>
+    </div>
+  </form>
+    </div>
+</div>
+</div>
+</div>
+</div>
+
+
+{% include 'scripts.html' %}
+</body>
+
+</html>

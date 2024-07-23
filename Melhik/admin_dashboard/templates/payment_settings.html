@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="en">
+
+{% include 'admin_head.html' %}
+<body>
+
+<div class="main-wrapper">
+
+<div class="header">
+
+<div class="header-left">
+<a href="index.html" class="logo">
+<img src="assets/img/logo.png" alt="Logo">
+</a>
+<a href="index.html" class="logo logo-small">
+<img src="assets/img/logo-small.png" alt="Logo" width="30" height="30">
+</a>
+
+<a href="javascript:void(0);" id="toggle_btn">
+<i class="feather-chevrons-left"></i>
+</a>
+
+
+<a class="mobile_btn" id="mobile_btn">
+<i class="feather-chevrons-left"></i>
+</a>
+
+</div>
+
+
+<div class="top-nav-search">
+<form>
+<input type="text" class="form-control" placeholder="Start typing your Search...">
+<button class="btn" type="submit"><i class="feather-search"></i></button>
+</form>
+</div>
+
+
+<ul class="nav user-menu">
+
+<li class="nav-item dropdown">
+<a href="#" class="dropdown-toggle nav-link" data-bs-toggle="dropdown">
+<i class="feather-bell"></i> <span class="badge badge-pill">5</span>
+</a>
+<div class="dropdown-menu notifications">
+<div class="topnav-dropdown-header">
+<span class="notification-title">Notifications</span>
+<a href="javascript:void(0)" class="clear-noti"> Clear All</a>
+</div>
+<div class="noti-content">
+<ul class="notification-list">
+<li class="notification-message">
+<a href="#">
+<div class="media d-flex">
+<span class="avatar avatar-sm flex-shrink-0">
+<img class="avatar-img rounded-circle" alt src="assets/img/profiles/avatar-02.jpg">
+</span>
+<div class="media-body flex-grow-1">
+<p class="noti-details"><span class="noti-title">Brian Johnson</span> paid the invoice <span class="noti-title">#DF65485</span></p>
+<p class="noti-time"><span class="notification-time">4 mins ago</span></p>
+</div>
+</div>
+</a>
+</li>
+<li class="notification-message">
+<a href="#">
+<div class="media d-flex">
+<span class="avatar avatar-sm flex-shrink-0">
+<img class="avatar-img rounded-circle" alt src="assets/img/profiles/avatar-03.jpg">
+</span>
+<div class="media-body flex-grow-1">
+<p class="noti-details"><span class="noti-title">Marie Canales</span> has accepted your estimate <span class="noti-title">#GTR458789</span></p>
+<p class="noti-time"><span class="notification-time">6 mins ago</span></p>
+</div>
+</div>
+</a>
+</li>
+<li class="notification-message">
+<a href="#">
+<div class="media d-flex">
+<div class="avatar avatar-sm flex-shrink-0">
+<span class="avatar-title rounded-circle bg-primary-light"><i class="far fa-user"></i></span>
+</div>
+<div class="media-body flex-grow-1">
+<p class="noti-details"><span class="noti-title">New user registered</span></p>
+<p class="noti-time"><span class="notification-time">8 mins ago</span></p>
+</div>
+</div>
+</a>
+</li>
+<li class="notification-message">
+<a href="#">
+<div class="media d-flex">
+<span class="avatar avatar-sm flex-shrink-0">
+<img class="avatar-img rounded-circle" alt src="assets/img/profiles/avatar-04.jpg">
+</span>
+<div class="media-body flex-grow-1">
+<p class="noti-details"><span class="noti-title">Barbara Moore</span> declined the invoice <span class="noti-title">#RDW026896</span></p>
+<p class="noti-time"><span class="notification-time">12 mins ago</span></p>
+</div>
+</div>
+</a>
+</li>
+<li class="notification-message">
+<a href="#">
+<div class="media d-flex">
+<div class="avatar avatar-sm flex-shrink-0">
+<span class="avatar-title rounded-circle bg-info-light"><i class="far fa-comment"></i></span>
+</div>
+<div class="media-body flex-grow-1">
+<p class="noti-details"><span class="noti-title">You have received a new message</span></p>
+<p class="noti-time"><span class="notification-time">2 days ago</span></p>
+</div>
+</div>
+</a>
+</li>
+</ul>
+</div>
+<div class="topnav-dropdown-footer">
+<a href="#">View all Notifications</a>
+</div>
+</div>
+</li>
+
+
+<li class="nav-item dropdown has-arrow main-drop">
+<a href="#" class="dropdown-toggle nav-link" data-bs-toggle="dropdown">
+<span class="user-img">
+<img src="assets/img/profiles/avatar-07.jpg" alt>
+<span class="status online"></span>
+</span>
+</a>
+<div class="dropdown-menu">
+<a class="dropdown-item" href="profile.html"><i data-feather="user" class="me-1"></i> Profile</a>
+<a class="dropdown-item" href="settings.html"><i data-feather="settings" class="me-1"></i> Settings</a>
+<a class="dropdown-item" href="login.html"><i data-feather="log-out" class="me-1"></i> Logout</a>
+</div>
+</li>
+
+</ul>
+
+</div>
+
+
+<div class="sidebar" id="sidebar">
+    <div class="sidebar-inner slimscroll">
+    <div id="sidebar-menu" class="sidebar-menu">
+    <ul>
+    <li class="menu-title"><span>Main</span></li>
+    <li>
+    <a href="{% url 'admin_dashboard' %}"><i data-feather="home"></i> <span>Dashboard</span></a>
+    </li>
+    <li>
+    <a href="{% url 'categories' %}"><i data-feather="copy"></i> <span>Categories</span></a>
+    </li>
+    <li>
+    <a href="{% url 'projects' %}"><i data-feather="database"></i> <span>Projects</span></a>
+    </li>
+    <li>
+    <a href="{% url 'users' %}"><i data-feather="users"></i> <span>Freelancer</span></a>
+    </li>
+    <li>
+    <a href="{% url 'deposit' %}"><i data-feather="user-check"></i> <span>Deposit</span></a>
+    </li>
+    <li>
+    <a href="{% url 'withdrawn' %}"><i data-feather="user-check"></i> <span>Withdrawn</span></a>
+    </li>
+    <li>
+    <a href="{% url 'transaction' %}"><i data-feather="clipboard"></i> <span>Transaction</span></a>
+    </li>
+    <li>
+    <a href="{% url 'providers' %}"><i data-feather="user-check"></i> <span>Providers</span></a>
+    </li>
+    <li class="active">
+    <a href="{% url 'subscription' %}"><i data-feather="user-check"></i> <span>Subscription</span></a>
+    </li>
+    <li>
+    <a href="{% url 'reports' %}"><i data-feather="pie-chart"></i> <span>Reports</span></a>
+    </li>
+    <li>
+    <a href="{% url 'roles' %}"><i data-feather="clipboard"></i> <span>Roles</span></a>
+    </li>
+    <li>
+    <a href="{% url 'skills' %}"><i data-feather="award"></i> <span>Skills</span></a>
+    </li>
+    <li>
+    <a href="{% url 'verify_identity' %}"><i data-feather="user-check"></i> <span>Verify Identity</span></a>
+    </li>
+    <li>
+    <a href="{% url 'settings' %}"><i data-feather="settings"></i> <span>Settings</span></a>
+    </li>
+    </div>
+    </div>
+    </div>
+
+
+<div class="page-wrapper">
+<div class="content container-fluid">
+<div class="page-header">
+<div class="row">
+<div class="col-sm-6">
+<h3 class="page-title">Settings</h3>
+<ul class="breadcrumb">
+<li class="breadcrumb-item"><a href="index.html">Home</a></li>
+<li class="breadcrumb-item"><a href="settings.html">Settings</a></li>
+<li class="breadcrumb-item active">Payment Settings</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="row">
+<div class="col-lg-12">
+
+<div class="settings-menu-links">
+<ul class="nav nav-tabs menu-tabs">
+<li class="nav-item">
+<a class="nav-link" href="settings.html">General Settings</a>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="localization-details.html">Localization</a>
+</li>
+<li class="nav-item active">
+<a class="nav-link" href="payment-settings.html">Payment Settings</a>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="email-settings.html">Email Settings</a>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="social-settings.html">Social Media Login</a>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="social-links.html">Social Links</a>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="seo-settings.html">SEO Settings</a>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="others-settings.html">Others</a>
+</li>
+</ul>
+</div>
+
+<div class="row">
+<div class="col-md-6">
+<div class="card">
+<div class="card-body pt-0">
+<div class="card-header d-flex justify-content-between align-items-center">
+<h5 class="card-title">Paypal</h5>
+<div class="status-toggle d-flex justify-content-between align-items-center">
+<input type="checkbox" id="status_1" class="check">
+<label for="status_1" class="checktoggle">checkbox</label>
+</div>
+</div>
+<form>
+<div class="settings-form">
+<div class="form-group">
+<p class="pay-cont">Paypal Option</p>
+<label class="custom_radio me-4">
+<input type="radio" name="budget" value="Yes" checked>
+<span class="checkmark"></span> Sandbox
+</label>
+<label class="custom_radio">
+<input type="radio" name="budget" value="Yes">
+<span class="checkmark"></span> Live
+</label>
+</div>
+<div class="form-group form-placeholder">
+<label>Braintree Tokenization key <span class="star-red">*</span></label>
+<input type="text" class="form-control" placeholder="sandbox_pgjcppvs_pd6gznv7zbrx9hb8">
+</div>
+<div class="form-group form-placeholder">
+<label>Braintree Merchant ID <span class="star-red">*</span></label>
+<input type="text" class="form-control" placeholder="pd6gznv7zbrx9hb8">
+</div>
+<div class="form-group form-placeholder">
+<label>Braintree Public key <span class="star-red">*</span></label>
+<input type="text" class="form-control" placeholder="h8bydrz7gcjkp7d4">
+</div>
+<div class="form-group form-placeholder">
+<label>Braintree Private key <span class="star-red">*</span></label>
+<input type="text" class="form-control" placeholder="sandbox_pgjcppvs_pd6gznv7zbrx9hb8">
+</div>
+<div class="form-group form-placeholder">
+<label>Paypal APP ID <span class="star-red">*</span></label>
+<input type="text" class="form-control" placeholder="pd6gznv7zbrx9hb8">
+</div>
+<div class="form-group form-placeholder">
+<label>Paypal Secret Key <span class="star-red">*</span></label>
+<input type="text" class="form-control" placeholder="h8bydrz7gcjkp7d4">
+</div>
+<div class="form-group mb-0">
+<div class="settings-btns">
+<button type="submit" class="btn btn-orange">Save</button>
+<button type="submit" class="btn btn-grey">Cancel</button>
+</div>
+</div>
+</div>
+</form>
+</div>
+</div>
+</div>
+<div class="col-md-6">
+<div class="card">
+<div class="card-body pt-0">
+<div class="card-header d-flex justify-content-between align-items-center">
+<h5 class="card-title">Stripe</h5>
+<div class="status-toggle d-flex justify-content-between align-items-center">
+<input type="checkbox" id="status_2" class="check" checked>
+<label for="status_2" class="checktoggle">checkbox</label>
+</div>
+</div>
+<form>
+<div class="settings-form">
+<div class="form-group">
+<p class="pay-cont">Stripe Option</p>
+<label class="custom_radio me-4">
+<input type="radio" name="budget" value="Yes" checked>
+<span class="checkmark"></span> Sandbox
+</label>
+<label class="custom_radio">
+<input type="radio" name="budget" value="Yes">
+<span class="checkmark"></span> Live
+</label>
+</div>
+<div class="form-group form-placeholder">
+<label>Gateway Name <span class="star-red">*</span></label>
+<input type="text" class="form-control" placeholder="Stripe">
+</div>
+<div class="form-group form-placeholder">
+<label>API Key <span class="star-red">*</span></label>
+<input type="text" class="form-control" placeholder="pk_test_AealxxOygZz84AruCGadWvUV00mJQZdLvr">
+</div>
+<div class="form-group form-placeholder">
+<label>Rest Key <span class="star-red">*</span></label>
+<input type="text" class="form-control" placeholder="sk_test_8HwqAWwBd4C4E77bgAO1jUgk00hDlERgn3">
+</div>
+<div class="form-group mb-0">
+<div class="settings-btns">
+<button type="submit" class="btn btn-orange">Save</button>
+<button type="submit" class="btn btn-grey">Cancel</button>
+</div>
+</div>
+</div>
+</form>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+
+
+<script src="assets/js/jquery-3.6.0.min.js"></script>
+
+<script src="assets/js/bootstrap.bundle.min.js"></script>
+
+<script src="assets/js/feather.min.js"></script>
+
+<script src="assets/plugins/slimscroll/jquery.slimscroll.min.js"></script>
+
+<script src="assets/plugins/select2/js/select2.min.js"></script>
+
+<script src="assets/js/script.js"></script>
+</body>
+
+<!-- Mirrored from kofejob.dreamguystech.com/template/admin/payment-settings.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 23 Aug 2023 20:32:41 GMT -->
+</html>

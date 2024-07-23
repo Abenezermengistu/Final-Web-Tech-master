@@ -1,0 +1,234 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+{% include 'head.html' %}
+
+<body class="dashboard-page">
+
+    <div class="main-wrapper">
+        {% include 'employer_header.html' with employer=request.user %}
+
+<div class="bread-crumb-bar">
+<div class="container">
+<div class="row align-items-center inner-banner">
+<div class="col-md-12 col-12 text-center">
+<div class="breadcrumb-list">
+<nav aria-label="breadcrumb" class="page-breadcrumb">
+<ol class="breadcrumb">
+<li class="breadcrumb-item"><a href="{% url 'dashboard' %}"><img src="{% static 'assets/img/home-icon.svg' %}" alt="Post Author"> Home</a></li>
+<li class="breadcrumb-item" aria-current="page">Employee</li>
+<li class="breadcrumb-item" aria-current="page">Settings</li>
+</ol>
+</nav>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+
+<div class="content content-page">
+<div class="container-fluid">
+<div class="row">
+
+    {% include 'dashboard_navbar_link.html' with employer=request.user %}
+
+    <div class="settings-menu">
+        <ul>
+        <li class="nav-item">
+        <a href="{% url 'dashboard' %}" class="nav-link">
+        <i class="material-icons">verified_user</i> Dashboard
+        </a>
+        </li>
+        <li class="nav-item">
+        <a href="{% url 'manage_projects' %}" class="nav-link">
+        <i class="material-icons">business_center</i> Projects
+        </a>
+        </li>
+        <li class="nav-item">
+        <a href="{% url 'review' %}" class="nav-link">
+        <i class="material-icons">record_voice_over</i> Reviews
+        </a>
+        </li>
+        <li class="nav-item">
+        <a href="{% url 'chats' %}" class="nav-link">
+        <i class="material-icons">chat</i> Messages
+        </a>
+        </li>
+        <li class="nav-item">
+        <a href="{% url 'verify_identity' %}" class="nav-link">
+        <i class="material-icons">person_pin</i> Verify Identity
+        </a>
+        </li>
+        <li class="nav-item">
+        <a href="{% url 'deposit_funds' %}" class="nav-link">
+        <i class="material-icons">wifi_tethering</i> Payments
+        </a>
+        </li>
+        <li class="nav-item">
+        <a href="{% url 'profile_settings' %}" class="nav-link active">
+        <i class="material-icons">settings</i> Settings
+        </a>
+        </li>
+        <li class="nav-item">
+        <a href="{% url 'index' %}" class="nav-link">
+        <i class="material-icons">power_settings_new</i> Logout
+        </a>
+        </li>
+        </ul>
+        </div>
+        </div>
+        </div>
+
+<div class="col-xl-9 col-md-8">
+<div class="page-title">
+<h3>Proposals</h3>
+</div>
+<nav class="user-tabs mb-4">
+<ul class="nav nav-tabs nav-tabs-bottom nav-justified">
+<li class="nav-item">
+<a class="nav-link" href="manage-projects.html">All Projects</a>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="pending-projects.html">Pending Projects</a>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="ongoing-projects.html">Ongoing Projects</a>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="completed-projects.html">Completed Projects</a>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="cancelled-projects.html">Cancelled Projects</a>
+</li>
+</ul>
+</nav>
+
+<div class="my-projects-list">
+    <div class="row">
+      <div class="col-lg-10 flex-wrap">
+        {% with first_proposal=proposals.first %}
+    <div class="projects-card flex-fill">
+        <div class="card-body">
+            <div class="projects-details align-items-center">
+                <div class="project-info">
+                    <span>{{ first_proposal.job.author.first_name }}</span>
+                    <h2>{{ first_proposal.job.project_title }}</h2>
+                    <div class="customer-info">
+                        <ul class="list-details">
+                            <li>
+                                <div class="slot">
+                                    <p>Category type</p>
+                                    <h5>{{ first_proposal.job.category_type }}</h5>
+                                </div>
+                            </li>
+                            <li>
+                              <div class="slot">
+                              <p>Start Date</p>
+                              <h5> {{ first_proposal.job.start_date }}</h5>
+                              </div>
+                              </li>
+                            <li>
+                                <div class="slot">
+                                    <p>Expiry</p>
+                                    <h5>{{ first_proposal.job.duration }}</h5>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="project-hire-info">
+                    <div class="projects-amount proposals">
+                        <h3>${{ first_proposal.job.price }}</h3>
+                        <h5>in {{ first_proposal.job.duration }}</h5>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endwith %}
+    </div>
+      <div class="col-lg-2 d-flex flex-wrap">
+        <div class="projects-card flex-fill">
+          <div class="card-body p-2">
+            {% for proposal in proposals %}
+            <!-- Display proposal count for the job -->
+            <div class="prj-proposal-count text-center">
+                <span>{{ proposal_count }}</span>
+                <h3>Proposals</h3>
+            </div>
+            <!-- End of display proposal count for a project -->
+        {% endfor %}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="proposals-section mb-4">
+    <h3 class="page-subtitle">Proposals By freelancer</h3>
+    <div class="proposal-card">
+        <div class="project-proposals align-items-center">
+            {% for proposal in proposals %}
+                <p>Proposal ID: {{ proposal.id }}</p>
+                <div class="proposals-info">
+                    <div class="proposer-info">
+                        <div class="proposer-img">
+     
+                        </div>
+                        <div class="proposer-detail">
+                            <h4>{{ proposal.freelancer.first_name }} {{ proposal.freelancer.last_name }}</h4>
+                            <ul class="proposal-details">
+                                <li>{{ proposal.submitted_at|date:"F j, Y" }}</li>
+                                <li><i class="fas fa-star text-primary"></i>{{ proposal.freelancer.reviews.count }}</li>
+                                <li><a href="{% url 'freelancer_profile' proposal.freelancer.id %}" class="font-semibold text-primary">View Profile</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="proposer-bid-info">
+                        <div class="proposer-bid">
+                            <h3>${{ proposal.price }}</h3>
+                            <h5>in {{ proposal.hours }} Hours</h5>
+                        </div>
+                        
+                            <a href="{% url 'check-room' proposal.freelancer.pk  %}" class="projects-btn">Message Now~</a>
+                        
+                    </div>
+                </div>
+                <div class="description-proposal">
+                    <h5 class="desc-title">Description</h5>
+                    <p>{{ proposal.cover_letter }}</p>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+
+<div class="row">
+<div class="col-md-12">
+<ul class="paginations list-pagination">
+<li class="page-item"><a href="#">Previous</a></li>
+<li class="page-item"><a href="#" class="active">1</a></li>
+<li class="page-item"><a href="#">Next</a></li>
+</ul>
+</div>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+
+{% include 'footer.html' %}
+
+</div>
+
+{% include 'scripts.html' %}
+</body>
+
+<!-- Mirrored from kofejob.dreamguystech.com/template/project-proposals.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 23 Aug 2023 20:31:04 GMT -->
+</html>

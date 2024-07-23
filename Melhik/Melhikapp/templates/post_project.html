@@ -1,0 +1,79 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+{% include 'head.html' %}
+<link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-bs4.min.css" rel="stylesheet">
+<body class="dashboard-page">
+
+    <div class="main-wrapper">
+      {% include 'employer_header.html' with employer=request.user %}
+
+<div class="bread-crumb-bar">
+<div class="container">
+<div class="row align-items-center inner-banner">
+<div class="col-md-12 col-12 text-center">
+<div class="breadcrumb-list">
+<nav aria-label="breadcrumb" class="page-breadcrumb">
+<ol class="breadcrumb">
+<li class="breadcrumb-item"><a href="{% url 'index' %}"><img src="{% static 'assets/img/home-icon.svg' %}" alt> Home</a></li>
+<li class="breadcrumb-item" aria-current="page">Post a Project</li>
+</ol>
+</nav>
+</div>
+</div>
+</div>
+</div>
+</div>
+{% if messages %}
+  {% for message in messages %}
+    <div class="alert alert-success">
+      {{ message }}
+    </div>
+  {% endfor %}
+{% endif %}
+<div class="content">
+<div class="container">
+<div class="row">
+<div class="col-md-12">
+<div class="select-project mb-4">
+ <form action="" method="POST">
+  {% if messages %}
+  <ul class="messages">
+  {% for message in messages %}
+  <ul{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</ul>
+  {% endfor %}
+  </ul>
+  {% endif %}
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </form>
+  
+</div>
+</div>
+</div>
+</div>
+</div>
+
+{% include 'footer.html' %}
+
+</div>
+
+{% include 'scripts.html' %}
+</body>
+
+<script>
+  document.getElementById('documents-input').addEventListener('change', function() {
+      var fileName = this.value.split("\\").pop();
+      this.nextElementSibling.innerText = fileName;
+  });
+</script>
+<script>
+  $(document).ready(function() {
+    $('.summernote').summernote();
+  });  
+  </script>
+<!-- Mirrored from kofejob.dreamguystech.com/template/post-project.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 23 Aug 2023 20:30:34 GMT -->
+</html>

@@ -1,0 +1,497 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+{% include 'admin_head.html' %}
+<body>
+
+    {% include 'admin_header.html' %}
+
+    <div class="sidebar" id="sidebar">
+        <div class="sidebar-inner slimscroll">
+        <div id="sidebar-menu" class="sidebar-menu">
+        <ul>
+        <li class="menu-title"><span>Main</span></li>
+        <li>
+        <a href="{% url 'admin_dashboard' %}"><i data-feather="home"></i> <span>Dashboard</span></a>
+        </li>
+        <li>
+        <a href="{% url 'categories' %}"><i data-feather="copy"></i> <span>Categories</span></a>
+        </li>
+        <li>
+        <a href="{% url 'projects' %}"><i data-feather="database"></i> <span>Projects</span></a>
+        </li>
+        <li class="active">
+        <a href="{% url 'users' %}"><i data-feather="users"></i> <span>Freelancer</span></a>
+        </li>
+        <li>
+        <a href="{% url 'deposit' %}"><i data-feather="user-check"></i> <span>Deposit</span></a>
+        </li>
+        <li>
+        <a href="{% url 'withdrawn' %}"><i data-feather="user-check"></i> <span>Withdrawn</span></a>
+        </li>
+        <li>
+        <a href="{% url 'transaction' %}"><i data-feather="clipboard"></i> <span>Transaction</span></a>
+        </li>
+        <li>
+        <a href="{% url 'providers' %}"><i data-feather="user-check"></i> <span>Providers</span></a>
+        </li>
+        <li>
+        <a href="{% url 'subscription' %}"><i data-feather="user-check"></i> <span>Subscription</span></a>
+        </li>
+        <li>
+        <a href="{% url 'reports' %}"><i data-feather="pie-chart"></i> <span>Reports</span></a>
+        </li>
+        <li>
+        <a href="{% url 'roles' %}"><i data-feather="clipboard"></i> <span>Roles</span></a>
+        </li>
+        <li>
+        <a href="{% url 'skills' %}"><i data-feather="award"></i> <span>Skills</span></a>
+        </li>
+        <li>
+        <a href="{% url 'verify_identity' %}"><i data-feather="user-check"></i> <span>Verify Identity</span></a>
+        </li>
+        <li>
+        <a href="{% url 'settings' %}"><i data-feather="settings"></i> <span>Settings</span></a>
+        </li>
+        </div>
+        </div>
+        </div>
+
+<div class="page-wrapper">
+<div class="content report-box container-fluid">
+
+<div class="page-header subscribe-head">
+<div class="row align-items-center">
+<div class="col">
+<h3 class="page-title">Freelancer</h3>
+<ul class="breadcrumb">
+<li class="breadcrumb-item"><a href="index.html">Home</a></li>
+<li class="breadcrumb-item active">Freelancer</li>
+</ul>
+</div>
+<div class="col-auto">
+<a class="btn  add-user" href="#" data-bs-toggle="modal" data-bs-target="#add-category">
+<i class="fas fa-plus "></i> Add Freelancer
+</a>
+</div>
+</div>
+</div>
+
+<div class="row">
+    <div class="col-sm-12">
+    <div class="subscribe-employe users-list">
+    <ul>
+    <li><a href="{% url 'users' %}">All Freelancer </a></li>
+    <li><a href="{% url 'user_active' %}">Active Freelancer</a></li>
+    <li><a href="{% url 'user_inactive' %}">Inactive Freelancer</a></li>
+    <li><a href="{% url 'user_suspended' %}">Suspended</a></li>
+    <li class="active"><a href="{% url 'user_administrator' %}">Administrator</a></li>
+    </ul>
+    </div>
+
+<div class="page-header user-active">
+<div class="row align-items-center">
+<div class="col">
+<h3 class="page-title">Administrator Freelancer</h3>
+<p>Total <span>25</span> Freelancer</p>
+</div>
+<div class="col-auto">
+<a href="#" class="btn export-btn me-1">
+<img src="{% static 'asset/img/export.svg' %}" alt> Export
+</a>
+<a class="btn filter-btn" href="javascript:void(0);" id="filter_search">
+<i class="fas fa-filter"></i>
+</a>
+</div>
+</div>
+</div>
+
+
+<div class="card filter-card" id="filter_inputs">
+<div class="card-body pb-0">
+<form action="#" method="post">
+<div class="row filter-row">
+<div class="col-sm-6 col-md-3">
+<div class="form-group">
+<label>Name</label>
+<input class="form-control" type="text">
+</div>
+</div>
+<div class="col-sm-6 col-md-3">
+<div class="form-group">
+<label>Email</label>
+<input type="email" class="form-control">
+</div>
+</div>
+<div class="col-sm-6 col-md-3">
+<div class="form-group">
+<label>Expertise</label>
+<input type="text" class="form-control">
+</div>
+</div>
+<div class="col-sm-6 col-md-3">
+<div class="form-group">
+<button class="btn btn-primary btn-block" type="submit">Submit</button>
+</div>
+</div>
+</div>
+</form>
+</div>
+</div>
+
+<div class="card">
+<div class="card-body">
+<div class="table-responsive">
+<table class="table table-center table-hover mb-0 datatable">
+<thead>
+<tr>
+<th>
+<div class="form-check custom-checkbox">
+<input type="checkbox" class="form-check-input" id="select-all">
+<label class="form-check-label"></label>
+</div>
+</th>
+<th>Freelancer</th>
+<th>Expertise</th>
+<th>Verified</th>
+<th>Created Date</th>
+<th>Last Login</th>
+<th>Status</th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<div class="form-check custom-checkbox">
+<input type="checkbox" class="form-check-input">
+<label class="form-check-label"></label>
+</div>
+</td>
+<td>
+<div class="table-avatar user-profile">
+<a href="profile.html"><img class="avatar-img rounded-circle " src="{% static 'asset/img/profiles/avatar-14.jpg' %}" alt="User Image"></a>
+<div>
+<h5><a href="profile.html">Andrew Glover</a></h5>
+<p><a href="https://kofejob.dreamguystech.com/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="91d0fff5e3f4e6f6fdfee7f4e3d1f4e9f0fce1fdf4bff2fefc">[email&#160;protected]</a></p>
+</div>
+</div>
+</td>
+<td>Admin</td>
+<td class="verify-mail"><i data-feather="check-circle" class="me-1 email-check"></i>Email</td>
+<td>01 April 2022</td>
+<td>14 Nov 2012</td>
+<td class="three-dots">
+<a href="#" class="dropdown-toggle nav-link  user-active-btn" data-bs-toggle="dropdown">Active</a>
+<div class="dropdown-menu user-menu-list">
+<a class="dropdown-item" href="#"><img class="me-2 " src="{% static 'asset/img/icon/icon-01.svg' %}" alt> View Details</a>
+<a class="dropdown-item" href="#"><i data-feather="edit" class="me-2"></i> Edit</a>
+<a class="dropdown-item mb-0" href="#"><i data-feather="trash-2" class="me-2 text-danger"></i> Delete</a>
+</div>
+</td>
+<td class="text-end three-dots">
+<a href="#" class="dropdown-toggle nav-link" data-bs-toggle="dropdown"><i class="fas fa-ellipsis-v"></i></a>
+<div class="dropdown-menu user-menu-list">
+<a class="dropdown-item" href="#"><img class="me-2 " src="{% static 'asset/img/icon/icon-01.svg' %}" alt> View Details</a>
+<a class="dropdown-item" href="#"><img class="me-2 " src="{% static 'asset/img/icon/icon-02.svg' %}" alt> Transaction</a>
+<a class="dropdown-item" href="#"><img class="me-2 " src="{% static 'asset/img/icon/icon-03.svg' %}" alt> Reset Password</a>
+<a class="dropdown-item" href="#"><img class="me-2 " src="{% static 'asset/img/icon/icon-04.svg' %}" alt> Suspend user</a>
+<a class="dropdown-item" href="#"><i data-feather="edit" class="me-2"></i> Edit</a>
+<a class="dropdown-item mb-0" href="#"><i data-feather="trash-2" class="me-2 text-danger"></i> Delete</a>
+</div>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+
+
+<div class="modal fade transaction-modal" id="transaction-category">
+<div class="modal-dialog modal-dialog-centered">
+<div class="modal-content">
+<div class="modal-header flex-wrap">
+<div class="transaction-group">
+<div class="head-transaction">
+<h4>Transaction</h4>
+<p> #TNX24586414</p>
+</div>
+<div class="complete-btn">
+<a href class="btn btn-primary">Completed</a>
+</div>
+</div>
+</div>
+<div class="modal-body">
+<div class="table-avatar user-profile invest-acount">
+<a href="profile.html"><i class="fas fa-exchange-alt exchange"></i>
+<div>
+<h5>Received from Investment Account</h5>
+<p class="receive-date"> Mar 13, 2022<span>Completed</span></p>
+</div>
+</a>
+</div>
+<div class="acount-transaction">
+<div class="row">
+<div class="col-md-6">
+<div class="basic-info ">
+<h4>IN ACCOUNT</h4>
+<div class="additional-info">
+<p> Amount </p>
+<h5>6,335.006 USD</h5>
+</div>
+<div class="additional-info">
+<p>Fees </p>
+<h5>0.00 USD</h5>
+</div>
+<div class="additional-info">
+<p> Total Investment </p>
+<h5>6,335.006 USD</h5>
+</div>
+</div>
+</div>
+<div class="col-md-6">
+<div class="basic-info">
+<h4>IN TRANSACTION</h4>
+<div class="additional-info">
+<p> Amount </p>
+<h5>6,335.006 USD</h5>
+</div>
+<div class="additional-info">
+<p>Fees </p>
+<h5>0.00 USD</h5>
+</div>
+<div class="additional-info">
+<p> Total Investment </p>
+<h5>6,335.006 USD</h5>
+</div>
+<div class="additional-info">
+<p> Freelancer Account </p>
+<h5>UID00003</h5>
+</div>
+<div class="additional-info">
+<p> Freelancer Email </p>
+<h5><a href="https://kofejob.dreamguystech.com/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="e5928c89898c8488a5809d8488958980cb868a88">[email&#160;protected]</a></h5>
+</div>
+</div>
+</div>
+<div class="col-md-12">
+<div class="basic-info additional-detail top-border">
+<h4>Order Details</h4>
+<div class="row">
+<div class="col-lg-3 col-md-6">
+<div class="additional-info">
+<p>Order Date</p>
+<h5>Mar 13, 2022</h5>
+</div>
+</div>
+<div class="col-lg-3 col-md-6">
+<div class="additional-info">
+<p> Placed By</p>
+<h5>UID00001 </h5>
+</div>
+</div>
+<div class="col-lg-3 col-md-6">
+<div class="additional-info">
+<p>Completed At</p>
+<h5> Mar 13, 2022 07:00 PM</h5>
+</div>
+</div>
+<div class="col-lg-3 col-md-6">
+<div class="additional-info">
+<p>Completed By</p>
+<h5> Super Admin</h5>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="col-md-12">
+<div class="basic-info additional-detail">
+<h4 class="mt-0">Additional Details</h4>
+<div class="row">
+<div class="col-lg-3 col-md-6">
+<div class="additional-info">
+<p>Transaction</p>
+<h5>Mar 13, 2022</h5>
+</div>
+</div>
+<div class="col-lg-3 col-md-6">
+<div class="additional-info">
+<p> Payment Gateway</p>
+<h5>Paypal </h5>
+</div>
+</div>
+<div class="col-lg-3 col-md-6">
+<div class="additional-info">
+<p>Payment From</p>
+<h5> Dean Jones</h5>
+</div>
+</div>
+<div class="col-lg-3 col-md-6">
+<div class="additional-info">
+<p>Payment To</p>
+<h5> Main Account</h5>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="col-md-12">
+<div class="basic-info additional-detail">
+<div class="row">
+<div class="col-lg-12">
+<div class="additional-info">
+<p>Updated Balance</p>
+<h5 class="active-balance">13,144.626 USD</h5>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="col-md-12">
+<div class="basic-info additional-detail ">
+<div class="row">
+<div class="col-lg-12">
+<div class="additional-info mb-0">
+<p>Transaction Details</p>
+<h5> Received from Investment Account</h5>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+
+<div class="modal fade custom-modal" id="add-category">
+<div class="modal-dialog modal-dialog-centered">
+<div class="modal-content">
+<div class="modal-header flex-wrap">
+<div class="text-center w-100 mb-3">
+<img src="{% static 'asset/img/logo-small.png" alt>
+</div>
+<h4 class="modal-title">Add New Freelancer</h4>
+<button type="button" class="close" data-bs-dismiss="modal"><span>&times;</span></button>
+</div>
+<div class="modal-body">
+<form>
+<div class="form-group">
+<label>Full Name</label>
+<input type="text" class="form-control">
+</div>
+<div class="form-group">
+<label>Email</label>
+<input type="email" class="form-control">
+</div>
+<div class="form-group">
+<label>Password</label>
+<input type="password" class="form-control">
+</div>
+<div class="form-group">
+<label>Confirm Password</label>
+<input type="password" class="form-control">
+</div>
+<div class="form-group">
+<label>Freelancer Type</label>
+<select class="form-control form-select">
+<option>Select</option>
+<option>Frontend Developer</option>
+<option>Graphic Designer</option>
+</select>
+</div>
+<div class="mt-4">
+<button type="submit" class="btn btn-primary btn-block">Submit</button>
+</div>
+</form>
+</div>
+</div>
+</div>
+</div>
+
+
+<div class="modal fade custom-modal" id="edit-category">
+<div class="modal-dialog modal-dialog-centered">
+<div class="modal-content">
+<div class="modal-header flex-wrap">
+<div class="text-center w-100 mb-3">
+<img src="{% static 'asset/img/logo-small.png" alt>
+</div>
+<h4 class="modal-title">Edit User</h4>
+<button type="button" class="close" data-bs-dismiss="modal"><span>&times;</span></button>
+</div>
+<div class="modal-body">
+<form>
+<div class="form-group">
+<label>Full Name</label>
+<input type="text" class="form-control" value=" George Wells">
+</div>
+<div class="form-group">
+<label>Email</label>
+<input type="email" class="form-control" value="georgewells@example.com">
+</div>
+<div class="form-group">
+<label>Password</label>
+<input type="password" class="form-control" value="*******">
+</div>
+<div class="form-group">
+<label>Confirm Password</label>
+<input type="password" class="form-control" value="********">
+</div>
+<div class="form-group">
+<label>User Type</label>
+<select class="form-control form-select">
+<option>Select</option>
+<option selected>Frontend Developer</option>
+<option>Graphic Designer</option>
+</select>
+</div>
+<div class="mt-4">
+<button type="submit" class="btn btn-primary btn-block">Submit</button>
+</div>
+</form>
+</div>
+</div>
+</div>
+</div>
+
+
+<div class="modal custom-modal fade" id="delete_category" role="dialog">
+<div class="modal-dialog modal-dialog-centered">
+<div class="modal-content">
+<div class="modal-body">
+<div class="form-header">
+<h3>Delete</h3>
+<p>Are you sure want to delete?</p>
+</div>
+<div class="modal-btn delete-action">
+<div class="row">
+<div class="col-6">
+<a href="javascript:void(0);" class="btn btn-primary continue-btn">Delete</a>
+</div>
+<div class="col-6">
+<a href="javascript:void(0);" data-bs-dismiss="modal" class="btn btn-primary cancel-btn">Cancel</a>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+{% include 'admin_scripts.html' %}
+</body>
+
+<!-- Mirrored from kofejob.dreamguystech.com/template/admin/user-administrator.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 23 Aug 2023 20:32:44 GMT -->
+</html>

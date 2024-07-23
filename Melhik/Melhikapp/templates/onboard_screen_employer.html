@@ -1,0 +1,136 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+{% include 'head.html' %}
+<body>
+
+    <body>
+
+<div class="main-wrapper">
+<div class="page-wrapper board-screen">
+<div class="content container-fluid">
+<div class="acc-content">
+<div class="row">
+<div class="col-sm-12">
+<div class="multistep-form">
+
+<div class="multistep-progress" id="freelance_step">
+<div class="first-progress">
+<div class="board-logo">
+<a href="{% url 'index' %}"><img src="{% static 'assets/img/logo-01.png' %}" alt class="img-fluid"></a>
+</div>
+<ul id="progressbar" class="progressbar">
+<li class="progress-active">
+<div class="multi-step">1</div>
+<h5>Account Type</h5>
+</li>
+<li class>
+<div class="multi-step">2</div>
+<h5>Professional info</h5>
+</li>
+</ul>
+<div class="progress-info">
+<h5>Completion rate</h5>
+<div class="progress-25">
+<div class="d-flex align-items-center">
+<div class="progress">
+<div class="progress-bar" role="progressbar" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">
+</div>
+</div>
+<p>25%</p>
+</div>
+</div>
+<div class="progress-50">
+<div class="d-flex align-items-center">
+<div class="progress">
+<div class="progress-bar" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100">
+</div>
+</div>
+<p>50%</p>
+</div>
+</div>
+<div class="progress-100">
+<div class="d-flex align-items-center">
+<div class="progress">
+<div class="progress-bar" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100">
+</div>
+</div>
+<p>75%</p>
+</div>
+</div>
+<div class="progress-100">
+<div class="d-flex align-items-center">
+<div class="progress">
+<div class="progress-bar" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100">
+</div>
+</div>
+<p>100%</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+
+<div id="first" class="text-center select-account">
+<div class="select-type">
+<div class="account-onborad onboard-head">
+<h2>Select Account Type</h2>
+<p>Don’t worry, this can be changed later.</p>
+
+<div class="select-box d-flex justify-content-center">
+<input id="freelance" type="radio" name="credit-card" value="visa" />
+<label class="employee-level free-lance-img accounts_type" data-id="freelance" for="freelance"><a href="{% url 'onboard_screen' %}"><img src="{% static 'assets/img/select-04.png' %}" alt class="img-fluid"><span>Freelancer</span></a></label>
+
+<input checked="checked" id="employee" class="accounts_type" type="radio" name="credit-card" value="mastercard" />
+<label class="employee-level employee-img accounts_type" data-id="employee" for="employee"><a href="{% url 'onboard_screen_employer' %}"><img src="{% static 'assets/img/select-05.png' %}" alt class="img-fluid"><span>Employer</span></a></label>
+</div>
+</div>
+<input class="btn next_btn btn-primary btn-get" name="next" type="button" value="Next">
+</div>
+</div>
+
+
+<div class="field-card on-board select-account select-btn">
+<div class="text-center onboard-head">
+<h2>Employer Info</h2>
+<p>Tell a bit about yourself. This information will appear on your public profile, so that potential buyers can get to know you better.</p>
+</div>
+<div class="field-item personal-info space-info">
+    <form action="{% url 'onboard_screen_employer' %}" enctype="multipart/form-data" method="post">
+        {% csrf_token %}
+        {{ emp.as_p}}
+</div>
+<div class="text-center">
+<input class="btn btn-prev prev_btn btn-back" name="next" type="button" value="Back">
+<input class="btn-primary" name="submit" type="submit" value="Submit">
+</div>
+</div>
+</form>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+</body>
+{% include 'scripts.html' %}
+
+<script src="{% static 'assets/js/jquery-3.6.1.min.js' %}"></script>
+
+<script src="{% static 'assets/js/bootstrap.bundle.min.js' %}"></script>
+
+<script src="{% static 'assets/js/circle-progress.min.js' %}"></script>
+
+<script src="{% static 'assets/plugins/moment/moment.min.js' %}"></script>
+<script src="{% static 'assets/js/bootstrap-datetimepicker.min.js' %}"></script>
+
+<script src="{% static 'assets/plugins/select2/js/select2.min.js' %}"></script>
+
+<script src="{% static 'assets/js/script.js' %}"></script>
+
+</html>

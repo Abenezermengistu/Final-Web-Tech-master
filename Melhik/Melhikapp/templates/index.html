@@ -1,0 +1,391 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+{% include 'head.html' %}
+
+<body class="home-page bg-one">
+
+<div id="global-loader">
+<div class="whirly-loader"> </div>
+<div class="loader-img">
+<img src="{% static 'assets/img/load-icon.svg' %}" class="img-fluid" alt>
+</div>
+</div>
+
+
+<div class="main-wrapper">
+
+
+<header class="header">
+<nav class="navbar navbar-expand-lg header-nav">
+<div class="navbar-header">
+<a id="mobile_btn" href="javascript:void(0);">
+<span class="bar-icon">
+<span></span>
+<span></span>
+<span></span>
+</span>
+</a>
+<a href="{% url 'index' %}" class="navbar-brand logo">
+<img src="{% static 'assets/img/logo.png' %}" class="img-fluid" alt="Logo">
+</a>
+</div>
+<div class="main-menu-wrapper">
+<div class="menu-header">
+<a href="{% url 'index' %}" class="menu-logo">
+<img src="{% static 'assets/img/logo.png' %}" class="img-fluid" alt="Logo">
+</a>
+<a id="menu_close" class="menu-close" href="javascript:void(0);">
+<i class="fas fa-times"></i>
+</a>
+</div>
+<ul class="main-nav">
+<li class="has-submenu">
+<a href="{% url 'login' %}">For Employers</a>
+<li class="active has-submenu">
+<a href="{% url 'login' %}">For Freelancer</a>
+</div>
+<ul class="nav header-navbar-rht reg-head">
+<li><a href="{% url 'onboard_screen' %}" class="reg-btn"><img src="{% static 'assets/img/icon/reg-icon.svg' %}" class="me-1" alt="icon"> Register</a></li>
+<li><a href="{% url 'login' %}" class="log-btn"><img src="{% static 'assets/img/icon/lock-icon.svg' %}" class="me-1" alt="icon"> Login</a></li>
+</ul>
+</nav>
+</header>
+
+
+<section class="section home-banner row-middle">
+<div class="container">
+<div class="row align-items-center">
+<div class="col-md-8 col-lg-7">
+<div class="banner-content aos" data-aos="fade-up">
+<div class="rating d-flex">
+<i class="fas fa-star checked"></i>
+<i class="fas fa-star checked"></i>
+<i class="fas fa-star checked"></i>
+<i class="fas fa-star checked"></i>
+<i class="fas fa-star checked"></i>
+<h5>Trused by over 2M+ users</h5>
+</div>
+<h1>{{ seo_data.meta_keywords}}<span class="orange-text"><br>{{ seo_data.meta_title }}</span></h1>
+<p>{{ seo_data.meta_description }}</p>
+</div>
+</div>
+<div class="col-md-4 col-lg-5">
+<div class="banner-img aos" data-aos="fade-up">
+<img src="{% static 'assets/img/banner-img.svg' %}" class="img-fluid" alt="banner">
+</div>
+</div>
+</div>
+</div>
+</section>
+
+
+<section class="section feature">
+<div class="container">
+<div class="row">
+
+<div class="col-xl-4 col-md-6">
+<div class="feature-item freelance-count aos" data-aos="fade-up">
+<div class="feature-icon">
+<img src="{% static 'assets/img/icon/icon-01.png' %}" class="img-fluid" alt>
+</div>
+<div class="feature-content course-count">
+    {% comment %} Count freelancers {% endcomment %}
+    {% with total_freelancers=freelancers.count %}
+    
+    <h3 class="counter-up">{{ total_freelancers }}</h3>
+    {% endwith %}
+<p>Freelance developers</p>
+</div>
+</div>
+</div>
+
+
+<div class="col-xl-4 col-md-6">
+<div class="feature-item aos" data-aos="fade-up">
+<div class="feature-icon">
+<img src="{% static 'assets/img/icon/icon-02.png' %}" class="img-fluid" alt>
+</div>
+<div class="feature-content course-count">
+{% comment %} Count projects {% endcomment %}
+{% with total_projects=jobs.count %}
+<h3><span class="counter-up">{{ total_projects }}</span><span>+</span></h3>
+{% endwith %}
+<p>Jobs Added</p>
+</div>
+</div>
+</div>
+
+<div class="col-xl-4 col-md-6">
+<div class="feature-item comp-project aos" data-aos="fade-up">
+<div class="feature-icon">
+<img src="{% static 'assets/img/icon/icon-03.png' %}" class="img-fluid" alt>
+</div>
+<div class="feature-content course-count">
+  {% comment %} Count employers {% endcomment %}
+  {% with total_employers=employers.count %}
+  
+  <h3 class="counter-up">{{ total_employers }}</h3>
+  
+  {% endwith %}
+<p>Companies Registered</p>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+</section>
+
+
+<section class="section work">
+<div class="container-fluid">
+<div class="row">
+
+<div class="col-md-6 work-box bg1">
+<div class="work-content aos" data-aos="fade-up">
+<h2>I need a Skilled <span>Freelancer</span></h2>
+<p>Get the perfect Developer for with budget from our community.</p>
+<a href="{% url 'developer_list' %}"><i class="fas fa-long-arrow-alt-right long-arrow"></i></a>
+</div>
+</div>
+
+<div class="col-md-6 work-box want-works bg2">
+<div class="work-content aos" data-aos="fade-up">
+<h2>Find Your Next Great <span>Job Opportunity!</span></h2>
+<p>Do you want to earn money, find unlimited clients and build your freelance career?</p>
+<a href="{% url 'project' %}"><i class="fas fa-long-arrow-alt-right long-arrow"></i></a>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section class="section developer">
+<div class="container">
+<div class="row">
+<div class="col-md-12 col-sm-12 col-12 mx-auto">
+<div class="section-header aos" data-aos="fade-up">
+<p>Work with talented people at the most affordable price</p>
+<h2 class="header-title">List Of Developers</h2>
+</div>
+</div>
+</div>
+<div id="developers-slider" class="owl-carousel owl-theme developers-slider aos" data-aos="fade-up">
+  <div class="freelance-widget">
+<div class="freelance-content">
+<div class="freelance-img">
+
+<img src="{% static 'assets/img/user/avatar-5.jpg' %}" alt="User Image">
+<span class="verified"><i class="fas fa-check-circle"></i></span>
+</a>
+</div>
+<div class="freelance-info">
+
+<div class="freelance-specific">UI/UX Designer</div>
+<div class="rating">
+<i class="fas fa-star filled"></i>
+<i class="fas fa-star filled"></i>
+<i class="fas fa-star filled"></i>
+<i class="fas fa-star filled"></i>
+<i class="fas fa-star"></i>
+<span class="average-rating">5.0 (4)</span>
+</div>
+<div class="freelance-tags">
+<a href="javascript:void(0);"><span class="badge badge-pill badge-design">Web Design</span></a>
+<a href="javascript:void(0);"><span class="badge badge-pill badge-design">UI Design</span></a>
+<a href="javascript:void(0);"><span class="badge badge-pill badge-design">Node Js</span></a>
+</div>
+<div class="freelance-blk-location">
+<div class="freelancers-price">$25 Hourly</div>
+<div class="freelance-location"><i class="fas fa-map-marker-alt me-1"></i>Alabama, USA</div>
+</div>
+</div>
+</div>
+<div class="cart-hover">
+</div>
+</div>
+    
+</div>
+</div>
+</section>
+
+
+<section class="section testimonial-section review">
+<div class="container">
+<div class="row">
+<div class="col-12">
+<div class="section-header aos" data-aos="fade-up">
+<p>High Performing Developers To Your</p>
+<h2 class="header-title">Review of the Users</h2>
+</div>
+</div>
+</div>
+{% for review in reviews %}
+<div id="testimonial-slider" class="owl-carousel owl-theme testimonial-slider aos" data-aos="fade-up">
+<div class="review-blog">
+<div class="review-top d-flex align-items-center">
+<div class="review-img">
+<a href="{% url 'review' %}"><img class="img-fluid" src="{% static 'assets/img/review/review-01.jpg' %}" alt="Post Image"></a>
+</div>
+<div class="review-info">
+<h3><a href="{% url 'review' %}">{{ freelancer.user.first_name }}</a></h3>
+<h5>{{ freelancer.user.name }}Project Lead</h5>
+<div class="rating">
+  {% for i in review.rating|stringformat:"s" %}
+  {% if forloop.counter <= review.rating %}
+    <div class="rating">
+      Rating:&nbsp;<i class="fa fa-star checked"></i> {{ review.rating }} / 5
+    </div>  
+  {% else %}
+    <i class="fa fa-star"></i>
+  {% endif %}
+{% endfor %}
+</div>  
+</div>
+<div class="test-quote-img">
+<img class="img-fluid" src="{% static 'assets/img/test-quote.svg' %}" alt="quote">
+</div>
+</div>
+<div class="review-content">
+<p>{{ review.message }}</p>
+</div>
+</div>
+</div>
+</section>
+{% endfor %}
+
+<section class="section job-register">
+<div class="container">
+<div class="row">
+<div class="col-12">
+<div class="register-job-blk">
+<div class="job-content-blk aos" data-aos="fade-up">
+<h1>Find Your Next Great Job Opportunity!</h1>
+<p>Quisque pretium dolor turpis, quis blandit turpis semper ut. Nam malesuada eros nec luctus laoreet.</p>
+</div>
+<div class="see-all mt-0 aos" data-aos="fade-up">
+<a href="{% url 'onboard_screen' %}" class="btn all-btn">Register Now</a>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<footer class="footer">
+<div class="footer-top aos" data-aos="fade-up">
+<div class="container">
+<div class="row">
+<div class="col-xl-3 col-md-6">
+<div class="footer-widget footer-menu">
+<h2 class="footer-title">Useful Links</h2>
+<ul>
+<li><a href="{% url 'about' %}"><i class="fas fa-angle-right me-1"></i>About Us</a></li>
+<li><a href="{% url 'blog_grid' %}"><i class="fas fa-angle-right me-1"></i>Blog</a></li>
+{% if request.user.is_authenticated %}
+    <li><a href="{% url 'login' %}"><i class="fas fa-angle-right me-1"></i>Login</a></li>
+{% else %}
+    <li><a href="{% url 'onboard_screen' %}"><i class="fas fa-angle-right me-1"></i>Register</a></li>
+{% endif %}
+<li><a href="{% url 'forgot_password' %}"><i class="fas fa-angle-right me-1"></i>Forgot Password</a></li>
+</ul>
+</div>
+</div>
+<div class="col-xl-3 col-md-6">
+<div class="footer-widget footer-menu">
+<h2 class="footer-title">Help & Support</h2>
+<ul>
+<li><a href="{% url 'error_404' %}"><i class="fas fa-angle-right me-1"></i>Browse Candidates</a></li>
+<li><a href="{% url 'error_404' %}"><i class="fas fa-angle-right me-1"></i>Employers Dashboard</a></li>
+<li><a href="{% url 'error_404' %}"><i class="fas fa-angle-right me-1"></i>Job Packages</a></li>
+<li><a href="{% url 'error_404' %}"><i class="fas fa-angle-right me-1"></i>Jobs Featured</a></li>
+<li><a href="{% url 'error_404' %}"><i class="fas fa-angle-right me-1"></i>Post A Job</a></li>
+</ul>
+</div>
+</div>
+<div class="col-xl-2 col-md-6">
+<div class="footer-widget footer-menu">
+<h2 class="footer-title">Other Links</h2>
+<ul>
+<li><a href="{% url 'error_404' %}"><i class="fas fa-angle-right me-1"></i>Freelancers</a></li>
+<li><a href="{% url 'error_404' %}"><i class="fas fa-angle-right me-1"></i>Freelancer Details</a></li>
+<li><a href="{% url 'error_404' %}"><i class="fas fa-angle-right me-1"></i>Project</a></li>
+<li><a href="{% url 'error_404' %}"><i class="fas fa-angle-right me-1"></i>Project Details</a></li>
+<li><a href="{% url 'error_404' %}"><i class="fas fa-angle-right me-1"></i>Post Project</a></li>
+</ul>
+</div>
+</div>
+<div class="col-xl-4 col-md-6">
+<div class="footer-widget footer-menu">
+<h2 class="footer-title">Join our Newsletter</h2>
+<p>We help our customers harness the power of AI to make smarter decisions</p>
+<div class="banner-content aos aos-init aos-animate" data-aos="fade-up">
+<form class="form" name="store" method="post" action="{% url 'project' %}">
+<div class="form-inner">
+<div class="input-group">
+<input type="email" class="form-control" placeholder="Your Email address.....">
+<button class="btn btn-primary sub-btn" type="submit"><i class="fas fa-long-arrow-alt-right long-arrow"></i></button>
+</div>
+</div>
+</form>
+</div>
+<div class="social-icon d-flex">
+<span>Follow us on : </span>
+<ul>
+<li><a href="#" class="icon" target="_blank"><i class="fab fa-facebook-f"></i> </a></li>
+<li><a href="#" class="icon" target="_blank"><i class="fab fa-instagram"></i> </a></li>
+<li><a href="#" class="icon" target="_blank"><i class="fab fa-twitter"></i> </a></li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+
+<div class="footer-bottom">
+<div class="container">
+
+<div class="copyright">
+<div class="row">
+<div class="col-md-6 col-lg-6 ">
+<div class="footer-bottom-logo">
+<a href="index.html" class="menu-logo">
+<img src="{% static 'assets/img/logo.png' %}" class="img-fluid" alt="Logo">
+</a>
+</div>
+</div>
+<div class="col-md-6 col-lg-6 right-text">
+<ul class="nav footer-bottom-nav">
+<li><a href="{% url 'chats' %}">Chat</a></li>
+<li><a href="{% url 'faq' %}">Faq</a></li>
+<li><a href="{% url 'review' %}">Reviews</a></li>
+<li><a href="{% url 'privacy_policy' %}">Privacy Policy</a></li>
+<li><a href="{% url 'term_condition' %}">Terms of use</a></li>
+</ul>
+<div class="copyright-text">
+<p class="mb-0">Copyright 2023 © KofeJob. All right reserved. Powered by Dreamguys Technologies</p>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+</footer>
+
+</div>
+
+<button class="scroll-top scroll-to-target" data-target="html">
+<span class="ti-angle-up"><img src="{% static 'assets/img/icon/top-icon.svg' %}" class="img-fluid" alt></span>
+</button>
+
+{% include 'scripts.html' %}
+</body>
+
+<!-- Mirrored from kofejob.dreamguystech.com/template/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 26 Aug 2023 03:43:37 GMT -->
+</html>

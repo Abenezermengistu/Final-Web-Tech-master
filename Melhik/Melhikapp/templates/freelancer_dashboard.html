@@ -1,0 +1,229 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+{% include 'head.html' %}
+
+<body class="dashboard-page">
+
+    <div class="main-wrapper">
+
+        {% include 'freelance_header.html' with freelancer=request.user %}
+
+<div class="bread-crumb-bar">
+<div class="container">
+<div class="row align-items-center inner-banner">
+<div class="col-md-12 col-12 text-center">
+<div class="breadcrumb-list">
+<nav aria-label="breadcrumb" class="page-breadcrumb">
+<ol class="breadcrumb">
+<li class="breadcrumb-item"><a href="{% url 'index_2' %}"><img src="{% static 'assets/img/home-icon.svg' %}" alt="Post Author"> Home</a></li>
+<li class="breadcrumb-item" aria-current="page">Freelancer</li>
+<li class="breadcrumb-item" aria-current="page">Dashboard</li>
+</ol>
+</nav>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+
+<div class="content content-page">
+<div class="container-fluid">
+<div class="row">
+{% include 'dashboard_free_navbar_link.html' with freelancer=request.user %}
+
+<div class="settings-menu">
+  <ul>
+  <li class="nav-item">
+  <a href="{% url 'freelancer_dashboard' %}" class="nav-link active">
+  <i class="material-icons">verified_user</i> Dashboard
+  </a>
+  </li>
+  <li class="nav-item">
+  <a href="{% url 'freelancer_project_proposals' %}" class="nav-link">
+  <i class="material-icons">business_center</i> Projects
+  </a>
+  </li>
+  <li class="nav-item">
+  <a href="{% url 'freelancer_review' %}" class="nav-link">
+  <i class="material-icons">record_voice_over</i> Reviews
+  </a>
+  </li>
+  <li class="nav-item">
+  <a href="{% url 'chats' %}" class="nav-link">
+  <i class="material-icons">chat</i> Messages
+  </a>
+  </li>
+  <li class="nav-item">
+  <a href="{% url 'freelancer_withdraw_money' %}" class="nav-link">
+  <i class="material-icons">wifi_tethering</i> Payments
+  </a>
+  </li>
+  <li class="nav-item">
+  <a href="{% url 'freelancer_profile_settings' %}" class="nav-link">
+  <i class="material-icons">settings</i> Settings
+  </a>
+  </li>
+  <li class="nav-item">
+  <a href="{% url 'index' %}" class="nav-link">
+  <i class="material-icons">power_settings_new</i> Logout
+  </a>
+  </li>
+  </ul>
+  </div>
+  </div>
+  </div>
+
+{% if user.is_freelancer %}
+<div class="col-xl-9 col-md-8">
+<div class="dashboard-sec">
+<div class="row">
+<div class="col-md-6 col-lg-6">
+<div class="dash-widget">
+<div class="dash-info">
+<div class="dash-widget-info">Completed Jobs</div>
+<div class="dash-widget-count">0</div>
+</div>
+<div class="dash-widget-more">
+<a href="{% url 'freelancer_completed_projects' %}" class="d-flex">View Details <i class="fas fa-arrow-right ms-auto"></i></a>
+</div>
+</div>
+</div>
+<div class="col-md-6 col-lg-6">
+<div class="dash-widget">
+<div class="dash-info">
+<div class="dash-widget-info">Reviews</div>
+<div class="dash-widget-count">0</div>
+</div>
+<div class="dash-widget-more">
+<a href="{% url 'freelancer_review' %}" class="d-flex">View Details <i class="fas fa-arrow-right ms-auto"></i></a>
+</div>
+</div>
+</div>
+</div>
+
+<div class="row">
+  
+<div class="col-xl-12 d-flex">
+<div class="card flex-fill">
+<div class="pro-head">
+<h2>New Projects</h2>
+<a href="{% url 'project' %}" class="btn fund-btn">View All</a>
+</div>
+{% for job in jobs %}
+<div class="pro-body p-0">
+<div class="on-project">
+<h5>{{ job.project_title }}</h5>
+<p>{{ job.overview }}</p>
+<div class="pro-info">
+<ul class="list-details">
+<li>
+<div class="slot">
+<p>Job Duration</p>
+<h5>{{ job.duration }}</h5>
+</div>
+</li>
+<li>
+<div class="slot">
+<p>Job Price</p>
+<h5>{{ job.price }}</h5>
+</div>
+</li>
+<li>
+<div class="slot">
+<p>Started Date</p>
+<h5>{{ job.start_date }}</h5>
+</div>
+</li>
+</ul>
+</div>
+</div>
+{% endfor%}
+</div>
+</div>
+</div>
+
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+{% endif %}
+
+{% include 'footer.html' %}
+
+</div>
+
+{% include 'scripts.html' %}
+</body>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+   <script>
+   document.addEventListener("DOMContentLoaded", function () {
+       var ctx = document.getElementById('chartprofile').getContext('2d');
+
+       // Assuming you have the visit count data passed from the view
+       var visitCountByDay = JSON.parse('{{ visit_count_day|safe }}');
+       var visitCountByMonth = JSON.parse('{{ visit_count_month|safe }}');
+       var visitCountByYear = JSON.parse('{{ visit_count_year|safe }}');
+       var chartData = {
+           labels: Object.keys(visitCountByDay),
+           datasets: [
+               {
+                   label: 'Visits per Day',
+                   data: Object.values(visitCountByDay),
+                   fill: false,
+                   borderColor: 'rgb(75, 192, 192)',
+                   tension: 0.1
+               },
+               {
+                   label: 'Visits per Month',
+                   data: Object.values(visitCountByMonth),
+                   fill: false,
+                   borderColor: 'rgb(255, 99, 132)',
+                   tension: 0.1
+               },
+               {
+                   label: 'Visits per Year',
+                   data: Object.values(visitCountByYear),
+                   fill: false,
+                   borderColor: 'rgb(54, 162, 235)',
+                   tension: 0.1
+               }
+           ]
+       };
+
+       var chartOptions = {
+           responsive: true,
+           scales: {
+               x: {
+                   display: true,
+                   title: {
+                       display: true,
+                       text: 'Date'
+                   }
+               },
+               y: {
+                   display: true,
+                   title: {
+                       display: true,
+                       text: 'Visits'
+                   }
+               }
+           }
+       };
+
+       new Chart(ctx, {
+           type: 'line',
+           data: chartData,
+           options: chartOptions
+       });
+   });
+   </script>
+   
+</html>

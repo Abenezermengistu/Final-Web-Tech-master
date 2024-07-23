@@ -1,0 +1,158 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+{% include 'head.html' %}
+
+<body class="dashboard-page">
+
+    <div class="main-wrapper">
+        {% include 'freelance_header.html' with freelancer=request.user %}
+
+
+<div class="bread-crumb-bar">
+<div class="container">
+<div class="row align-items-center inner-banner">
+<div class="col-md-12 col-12 text-center">
+<div class="breadcrumb-list">
+<nav aria-label="breadcrumb" class="page-breadcrumb">
+<ol class="breadcrumb">
+<li class="breadcrumb-item"><a href="{% url 'dashboard' %}"><img src="{% static 'assets/img/home-icon.svg' %}" alt="Post Author"> Home</a></li>
+<li class="breadcrumb-item" aria-current="page">Freelancer</li>
+<li class="breadcrumb-item" aria-current="page">Verify Identity</li>
+</ol>
+</nav>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+
+<div class="content content-page">
+<div class="container-fluid">
+<div class="row">
+    {% include 'dashboard_free_navbar_link.html' with freelancer=request.user %}
+
+    <div class="settings-menu">
+        <ul>
+        <li class="nav-item">
+        <a href="{% url 'freelancer_dashboard' %}" class="nav-link">
+        <i class="material-icons">verified_user</i> Dashboard
+        </a>
+        </li>
+        <li class="nav-item">
+        <a href="{% url 'freelancer_project_proposals' %}" class="nav-link">
+        <i class="material-icons">business_center</i> Projects
+        </a>
+        </li>
+        <li class="nav-item">
+        <a href="{% url 'freelancer_favourites' %}" class="nav-link">
+        <i class="material-icons">local_play</i> Favourites
+        </a>
+        </li>
+        <li class="nav-item">
+        <a href="{% url 'freelancer_review' %}" class="nav-link">
+        <i class="material-icons">record_voice_over</i> Reviews
+        </a>
+        </li>
+        <li class="nav-item">
+        <a href="{% url 'freelancer_chats' %}" class="nav-link">
+        <i class="material-icons">chat</i> Messages
+        </a>
+        </li>
+        <li class="nav-item">
+        <a href="{% url 'freelancer_membership' %}" class="nav-link">
+        <i class="material-icons">person_add</i> Membership
+        </a>
+        </li>
+        <li class="nav-item">
+        <a href="{% url 'freelancer_verify_identity' %}" class="nav-link active">
+        <i class="material-icons">person_pin</i> Verify Identity
+        </a>
+        </li>
+        <li class="nav-item">
+        <a href="{% url 'freelancer_withdraw_money' %}" class="nav-link">
+        <i class="material-icons">wifi_tethering</i> Payments
+        </a>
+        </li>
+        <li class="nav-item">
+        <a href="{% url 'freelancer_profile_settings' %}" class="nav-link">
+        <i class="material-icons">settings</i> Settings
+        </a>
+        </li>
+        <li class="nav-item">
+        <a href="{% url 'index' %}" class="nav-link">
+        <i class="material-icons">power_settings_new</i> Logout
+        </a>
+        </li>
+        </ul>
+        </div>
+        </div>
+        </div>
+
+
+<div class="col-xl-9 col-md-8">
+<div class="card">
+<div class="payment-list wallet card-body">
+<h3>Verification Details</h3>
+<form action="https://kofejob.dreamguystech.com/template/freelancer-dashboard.html">
+<div class="row">
+<div class="col-md-6">
+<div class="form-group">
+<label for="first_name">Your Name</label>
+<input class="form-control" id="first_name" type="text">
+</div>
+</div>
+<div class="col-md-6">
+<div class="form-group">
+<label for="last_name">Contact Number</label>
+<input class="form-control" id="last_name" type="text">
+</div>
+</div>
+<div class="col-md-12">
+<div class="form-group">
+<label for="card_number">CNIC / Passport / NIN / SSN</label>
+<input class="form-control" id="card_number" type="text">
+</div>
+</div>
+<div class="col-md-12">
+<div class="form-group">
+<label>Upload Document</label>
+<div class="uplod">
+<label class="file-upload image-upbtn">
+Select Document <input type="file">
+</label>
+</div>
+</div>
+</div>
+<div class="col-md-12">
+<div class="form-group">
+<label for="comment">Address</label>
+<textarea class="form-control" rows="5" id="comment"></textarea>
+<p class="mt-2">Your account information should match with the document that you are providing.</p>
+</div>
+</div>
+<div class="col-md-12 text-end">
+<button type="submit" class="btn-primary click-btn">Submit verification</button>
+</div>
+</div>
+</form>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+</div>
+
+{% include 'footer.html' %}
+
+</div>
+
+{% include 'scripts.html' %}
+</body>
+
+<!-- Mirrored from kofejob.dreamguystech.com/template/freelancer-verify-identity.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 23 Aug 2023 20:29:31 GMT -->
+</html>

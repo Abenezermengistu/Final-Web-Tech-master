@@ -1,0 +1,246 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+{% include 'head.html' %}
+
+<body class="dashboard-page">
+
+    <div class="main-wrapper">
+        {% include 'employer_header.html' with employer=request.user %}
+
+<div class="bread-crumb-bar">
+<div class="container">
+<div class="row align-items-center inner-banner">
+<div class="col-md-12 col-12 text-center">
+<div class="breadcrumb-list">
+<nav aria-label="breadcrumb" class="page-breadcrumb">
+<ol class="breadcrumb">
+<li class="breadcrumb-item"><a href="index_2.html"><img src="{% static 'assets/img/home-icon.svg' %}" alt="Post Author"> Home</a></li>
+<li class="breadcrumb-item" aria-current="page">Employee</li>
+<li class="breadcrumb-item" aria-current="page">Payments</li>
+</ol>
+</nav>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+
+<div class="content content-page">
+<div class="container-fluid">
+<div class="row">
+
+    {% include 'dashboard_navbar_link.html' with employer=request.user %}
+
+    <div class="settings-menu">
+        <ul>
+        <li class="nav-item">
+        <a href="{% url 'dashboard' %}" class="nav-link">
+        <i class="material-icons">verified_user</i> Dashboard
+        </a>
+        </li>
+        <li class="nav-item">
+        <a href="{% url 'manage_projects' %}" class="nav-link">
+        <i class="material-icons">business_center</i> Projects
+        </a>
+        </li>
+        <li class="nav-item">
+        <a href="{% url 'review' %}" class="nav-link">
+        <i class="material-icons">record_voice_over</i> Reviews
+        </a>
+        </li>
+        <li class="nav-item">
+        <a href="{% url 'chats' %}" class="nav-link">
+        <i class="material-icons">chat</i> Messages
+        </a>
+        </li>
+        <li class="nav-item">
+        <a href="{% url 'verify_identity' %}" class="nav-link">
+        <i class="material-icons">person_pin</i> Verify Identity
+        </a>
+        </li>
+        <li class="nav-item">
+        <a href="{% url 'deposit_funds' %}" class="nav-link active">
+        <i class="material-icons">wifi_tethering</i> Payments
+        </a>
+        </li>
+        <li class="nav-item">
+        <a href="{% url 'profile_settings' %}" class="nav-link">
+        <i class="material-icons">settings</i> Settings
+        </a>
+        </li>
+        <li class="nav-item">
+        <a href="{% url 'index' %}" class="nav-link">
+        <i class="material-icons">power_settings_new</i> Logout
+        </a>
+        </li>
+        </ul>
+        </div>
+        </div>
+        </div>
+
+
+<div class="col-xl-9 col-md-8">
+<div class="transaction-table card">
+<div class="card-header">
+<div class="row justify-content-between align-items-center">
+<div class="col">
+<h5 class="card-title">Wallet</h5>
+</div>
+<div class="col-auto d-flex align-items-center flex-wrap transaction-shortby wallet-btn">
+<a data-bs-toggle="modal" href="#wallet" class="btn btn-primary"><i class="fas fa-plus"></i> ADD WALLET</a>
+</div>
+</div>
+</div>
+<div class="card-body">
+<div class="row">
+<div class="col-lg-4 col-md-12 d-flex">
+<div class="wallet-group d-flex align-items-center">
+<div class="wallet-img">
+<img class="img-fluid" src="{% static 'assets/img/wallet-icon-1.svg' %}" alt>
+</div>
+<div class="balance-total">
+<h3>Available Balance</h3>
+<h2>$250.60</h2>
+</div>
+</div>
+</div>
+<div class="col-lg-4 col-md-12 d-flex">
+<div class="wallet-group total-depit d-flex align-items-center">
+<div class="wallet-img">
+<img class="img-fluid" src="{% static 'assets/img/wallet-icon-3.svg' %}" alt>
+</div>
+<div class="balance-total">
+<h3>Total UnPaid</h3>
+<h2>$250.60</h2>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="transaction-table card">
+<div class="card-header">
+<div class="row justify-content-between align-items-center">
+<div class="col">
+<h5 class="card-title">Transaction History</h5>
+</div>
+</div>
+</div>
+<div class="card-body">
+<div class="table-responsive table-box wallet-history">
+<table class="table datatable">
+<thead>
+<tr class="thead-pink">
+<th>Date</th>
+<th>Recipient</th>
+<th>Transaction Id</th>
+<th>Status</th>
+<th>Amount</th>
+</tr>
+</thead>
+<tbody class="table table-hover table-center">
+<tr>
+<td>16 Sep 2021<br><span>Today • 09:35 PM</span></td>
+<td>Amaze Tech</td>
+<td>3CW 4925 C715314<br><span>Yesterday • 10:24 PM</span></td>
+<td><i class="fas fa-check-circle"></i> Settled</td>
+<td> + $150</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+
+{% include 'footer.html' %}
+</div>
+
+
+<div class="modal fade wallet-rupee" id="wallet">
+<div class="modal-dialog modal-dialog-centered modal-md">
+<div class="modal-content">
+<div class="modal-header">
+<span class="modal-close"><a href="#" data-bs-dismiss="modal" aria-label="Close"><i class="far fa-times-circle orange-text"></i></a></span>
+</div>
+<div class="modal-body">
+<div class="payment-list wallet card-body wallet-list">
+<div class="wallet-head text-center">
+<img class="img-fluid" src="{% static 'assets/img/logo-01.png' %}" alt="app-store">
+<h2>Add wallet</h2>
+</div>
+<div class="form-group profile-group">
+<div class="input-group">
+<div class="input-group-prepend">
+<button class="dol-btn" type="submit">$</button>
+</div>
+<input type="text" class="form-control">
+</div>
+</div>
+<label class="radio-inline custom_radio me-4">
+<input type="radio" name="optradio" checked>
+<span class="checkmark"></span> Paypal
+</label>
+<label class="radio-inline custom_radio">
+<input type="radio" name="optradio">
+<span class="checkmark"></span> Card
+</label>
+<div class="bootstrap-tags text-start ps-0">
+<span class="badge badge-pill badge-skills">$50</span>
+<span class="badge badge-pill badge-skills">$100</span>
+<span class="badge badge-pill badge-skills">$150</span>
+</div>
+<div class="row">
+<div class="col-md-12">
+<div class="form-group">
+<label for="card_number">Card Number</label>
+<input class="form-control" id="card_number" type="text">
+</div>
+</div>
+<div class="col-md-6">
+<div class="form-group">
+<label for="first_name">First Name</label>
+<input class="form-control" id="first_name" type="text">
+</div>
+</div>
+<div class="col-md-6">
+<div class="form-group">
+<label for="last_name">Last Name</label>
+<input class="form-control" id="last_name" type="text">
+</div>
+</div>
+<div class="col-md-8">
+<div class="form-group">
+<label for="expiry_on">Expires on</label>
+<input class="form-control" id="expiry_on" type="text">
+</div>
+</div>
+<div class="col-md-4">
+<div class="form-group">
+<label for="cvv">CVV (Security Code) </label>
+<input class="form-control" id="cvv" type="text">
+</div>
+</div>
+<div class="col-md-8 btn-pad">
+<a href="#" class="click-btn btn-primary">Continue</a>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+{% include 'scripts.html' %}
+</body>
+
+<!-- Mirrored from kofejob.dreamguystech.com/template/deposit-funds.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 23 Aug 2023 20:29:13 GMT -->
+</html>

@@ -1,0 +1,214 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+{% include 'head.html' %}
+
+<body class="dashboard-page">
+
+    <div class="main-wrapper">
+        {% include 'freelance_header.html' with freelancer=request.user %}
+
+        <div class="bread-crumb-bar">
+            <div class="container">
+                <div class="row align-items-center inner-banner">
+                    <div class="col-md-12 col-12 text-center">
+                        <div class="breadcrumb-list">
+                            <nav aria-label="breadcrumb" class="page-breadcrumb">
+                                <ol class="breadcrumb">
+                                    <li class="breadcrumb-item"><a href="{% url 'index' %}"><img
+                                                src="{% static 'assets/img/home-icon.svg' %}" alt="Post Author">
+                                            Home</a></li>
+                                    <li class="breadcrumb-item" aria-current="page">Freelancer</li>
+                                    <li class="breadcrumb-item" aria-current="page">Payments</li>
+                                </ol>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="content content-page">
+            <div class="container-fluid">
+            <div class="row">
+            {% include 'dashboard_free_navbar_link.html' with freelancer=request.user %}
+            <div class="settings-menu">
+            <ul>
+            <li class="nav-item">
+            <a href="{% url 'freelancer_dashboard' %}" class="nav-link">
+            <i class="material-icons">verified_user</i> Dashboard
+            </a>
+            </li>
+            <li class="nav-item">
+            <a href="{% url 'freelancer_project_proposals' %}" class="nav-link">
+            <i class="material-icons">business_center</i> Projects
+            </a>
+            </li>
+            <li class="nav-item">
+            <a href="{% url 'freelancer_review' %}" class="nav-link">
+            <i class="material-icons">record_voice_over</i> Reviews
+            </a>
+            </li>
+            <li class="nav-item">
+            <a href="{% url 'chats' %}" class="nav-link">
+            <i class="material-icons">chat</i> Messages
+            </a>
+            </li>
+            <li class="nav-item">
+            <a href="{% url 'freelancer_withdraw_money' %}" class="nav-link active">
+            <i class="material-icons">wifi_tethering</i> Payments
+            </a>
+            </li>
+            <li class="nav-item">
+            <a href="{% url 'freelancer_profile_settings' %}" class="nav-link">
+            <i class="material-icons">settings</i> Settings
+            </a>
+            </li>
+            <li class="nav-item">
+            <a href="{% url 'index' %}" class="nav-link">
+            <i class="material-icons">power_settings_new</i> Logout
+            </a>
+            </li>
+            </ul>
+            </div>
+            </div>
+            </div>
+
+                    <div class="col-xl-9 col-md-8">
+                        <nav class="user-tabs mb-4">
+                            <ul class="nav nav-tabs nav-tabs-bottom nav-justified">
+                                <li class="nav-item">
+                                    <a class="nav-link active" href="{% url 'freelancer_withdraw_money' %}">Withdraw
+                                        Funds</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{% url 'freelancer_transaction_history' %}"> Transaction
+                                        History</a>
+                                </li>
+                            </ul>
+                        </nav>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="card">
+                                    <div class="payment-list wallet card-body">
+                                        <h3>Chapa</h3>
+                                        <form method="POST">
+                                            {% csrf_token %}
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label for="amount">Amount:</label>
+                                                    <input class="form-control" input type="number" name="amount"
+                                                        id="amount" required />
+                                                </div>
+                                            </div>
+                                            <label class="custom_radio me-4">
+                                                <input type="radio" name="payment_method" value="Chapa" checked>
+                                                <span class="checkmark"></span> Chapa
+                                            </label>
+                                            <div class="col-md-8 btn-pad">
+                                                <input type="hidden" name="currency" value="ETB" />
+
+                                                <div class="col-md-12">
+                                                    <div class="form-group">
+                                                        <label for="email">Email:</label>
+                                                        <input class="form-control" input type="email" name="email"
+                                                            id="email" required />
+                                                    </div>
+                                                </div>   
+                                                <div class="col-md-12">
+                                                    <div class="form-group">
+                                                        <label for="first_name">First Name:</label>
+                                                        <input class="form-control" type="text" name="first_name" id="first_name" required />
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-12">
+                                                    <div class="form-group">
+                                                        <label for="last_name">Last Name:</label>
+                                                        <input class="form-control" type="text" name="last_name" id="last_name" required />
+                                                    </div>
+                                                </div>    
+                                                <div class="col-md-12">
+                                                    <div class="form-group">
+                                                      <label for="phone_number">Phone Number:</label>
+                                                      <input class="form-control" type="tel" name="phone_number" id="phone_number" required />
+                                                    </div>
+                                                  </div>                          
+                                            <button type="submit" class="btn-primary click-btn">Withdraw with Chapa</button>
+                                        </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="card">
+                                    <div class="payment-list wallet card-body">
+                                        <h3>Yenepay</h3>
+                                        <form method="post" action="https://test.yenepay.com/">
+                                    
+                                         <div class="form-group">
+                                            <input type="hidden" name="Process" value="Express">
+                                            <input type="hidden" name="MerchantOrderId" value="{{ tx_ref }}">
+                                            <input type="hidden" name="MerchantId" value="SB2551">
+                                            <input type="hidden" name="IPNUrl" value="">
+                                            <input type="hidden" name="SuccessUrl" value="http://127.0.0.1:8000/freelancer_dashboard/">
+                                            <input type="hidden" name="CancelUrl" value="http://127.0.0.1:8000/freelancer_dashboard/">
+                                            <input type="hidden" name="ItemId" value="{{ Freelancer.id }}">
+                                        
+                                        
+                                            <div class="form-group">
+                                                <label for="last_name">Freelancer Name:</label>
+                                                <input class="form-control" name="ItemName" value="{{ Freelancer.name }}">
+                                             </div>
+                                        
+                                        
+                                            <div class="form-group">
+                                                <label for="last_name">Amount:</label>
+                                                <input class="form-control" name="UnitPrice" value="{{ amount }}">
+                                            </div>
+                                          
+                                            <input type="hidden" name="Quantity" value="1">
+                                            <input type="submit" class="btn-primary click-btn" value="Withdraw With YenePay">
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6 mb-2">
+                            <div class="card">
+                                <div class="wallet-detail card-body">
+                                    <div class="wallet-title pt-0 ps-0">
+                                        <h3 class="mb-0">Wallet</h3>
+                                    </div>
+                                    <div class="wallet-bal">
+                                        <span class="dol-circle"><i class="fa fa-sign"
+                                                aria-hidden="true"></i></span>
+                                        <div class="wallet-amt">
+                                            <p>Available Balance</p>
+                                            <h3 class="mb-0">0 Birr </h3>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+
+    {% include 'footer.html' %}
+
+</body>
+
+{% include 'scripts.html' %}
+
+</html>

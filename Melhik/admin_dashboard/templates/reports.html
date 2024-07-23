@@ -1,0 +1,180 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+{% include 'admin_head.html' %}
+
+    <script src="https://code.highcharts.com/highcharts.js"></script>
+<body>
+    {% include 'admin_header.html' with messages=messages %}
+
+<div class="sidebar" id="sidebar">
+    <div class="sidebar-inner slimscroll">
+    <div id="sidebar-menu" class="sidebar-menu">
+    <ul>
+    <li class="menu-title"><span>Main</span></li>
+    <li>
+    <a href="{% url 'admin_dashboard' %}"><i data-feather="home"></i> <span>Dashboard</span></a>
+    </li>
+    <li>
+    <a href="{% url 'projects' %}"><i data-feather="database"></i> <span>Jobs</span></a>
+    </li>
+    <li>
+    <a href="{% url 'users' %}"><i data-feather="users"></i> <span>Users</span></a>
+    </li>
+    <li>
+    <a href="{% url 'withdrawn' %}"><i data-feather="user-check"></i> <span>Withdrawn</span></a>
+    </li>
+    <li class="active">
+    <a href="{% url 'reports' %}"><i data-feather="pie-chart"></i> <span>Reports</span></a>
+    </li>
+    <li>
+    <a href="{% url 'seo_settings' %}"><i data-feather="settings"></i> <span>Settings</span></a>
+    </li>
+    <li>
+    <a href="{% url 'admin_logout' %}"><i data-feather="box"></i> <span>Logout</span></a>
+    </li>
+    </div>
+    </div>
+    </div>
+
+<div class="page-wrapper">
+<div class="content report-box container-fluid">
+
+<div class="page-header page-border">
+<div class="row align-items-center">
+<div class="col-lg-6">
+<h3 class="page-title">Reports</h3>
+<ul class="breadcrumb">
+<li class="breadcrumb-item"><a href="index.html">Home</a></li>
+<li class="breadcrumb-item active">Reports</li>
+</ul>
+</div>
+</div>
+</div>
+
+
+<div class="project-chart">
+<div class="row">
+<div class="col-xl-12 d-flex">
+<div class="card flex-fill">
+<div class="card-header">
+<div class="d-flex justify-content-between align-items-center">
+<h5 class="card-title">Jobs Report</h5>
+</div>
+</div>
+<div class="card-body">
+<div id="chart-bar1"></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="project-chart">
+<div class="row">
+<div class="col-xl-12 d-flex">
+<div class="card flex-fill">
+<div class="card-header">
+<div class="d-flex justify-content-between align-items-center">
+<h5 class="card-title">Users Report</h5>
+</div>
+</div>
+<div class="card-body">
+<div id="chart-bar2"></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+
+{% include 'admin_scripts.html' %}
+</body>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // Fetch data from the backend
+      fetch('/get_jobs_count/')
+        .then(response => response.json())
+        .then(data => {
+          var categories = data.categories;
+          var jobCounts = data.series[0].data;
+          
+          // Define colors for each month
+          var monthColors = [
+            '#FF0000', // Jan
+            '#00FF00', // Feb
+            '#0000FF', // Mar
+            '#FF00FF', // Apr
+            '#FFFF00', // May
+            '#00FFFF', // Jun
+            '#FF8000', // Jul
+            '#8000FF', // Aug
+            '#008000', // Sep
+            '#8000FF', // Oct
+            '#000080', // Nov
+            '#808080', // Dec
+          ];
+          
+          // Configure the chart using Highcharts options
+          Highcharts.chart('chart-bar1', {
+            chart: {
+              type: 'column'
+            },
+            title: {
+              text: ''
+            },
+            xAxis: {
+              categories: categories
+            },
+            yAxis: {
+              title: {
+                text: 'Count'
+              }
+            },
+            series: [{
+              name: 'Count',
+              data: jobCounts,
+              colors: monthColors // Assign the colors for each column
+            }]
+          });
+        });
+    });
+</script>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+      fetch('/get_users_count/')
+        .then(response => response.json())
+        .then(data => {
+          var categories = data.categories;
+          var userCounts = data.series[0].data;
+  
+          Highcharts.chart('chart-bar2', {
+            chart: {
+              type: 'column'
+            },
+            title: {
+              text: ''
+            },
+            xAxis: {
+              categories: categories,
+              title: {
+                text: 'Month'
+              }
+            },
+            yAxis: {
+              title: {
+                text: 'Number of Users'
+              }
+            },
+            series: [{
+              name: 'Users',
+              data: userCounts
+            }]
+          });
+        });
+    });
+  </script>
+</html>

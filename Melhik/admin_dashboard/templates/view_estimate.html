@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+
+{% include 'admin_head.html' %}
+<body>
+
+    {% include 'admin_header.html' %}
+
+    <div class="sidebar" id="sidebar">
+        <div class="sidebar-inner slimscroll">
+        <div id="sidebar-menu" class="sidebar-menu">
+        <ul>
+        <li class="menu-title"><span>Main</span></li>
+        <li>
+        <a href="{% url 'admin_dashboard' %}"><i data-feather="home"></i> <span>Dashboard</span></a>
+        </li>
+        <li>
+        <a href="{% url 'categories' %}"><i data-feather="copy"></i> <span>Categories</span></a>
+        </li>
+        <li>
+        <a href="{% url 'projects' %}"><i data-feather="database"></i> <span>Projects</span></a>
+        </li>
+        <li>
+        <a href="{% url 'users' %}"><i data-feather="users"></i> <span>Freelancer</span></a>
+        </li>
+        <li class="active">
+        <a href="{% url 'deposit' %}"><i data-feather="user-check"></i> <span>Deposit</span></a>
+        </li>
+        <li>
+        <a href="{% url 'withdrawn' %}"><i data-feather="user-check"></i> <span>Withdrawn</span></a>
+        </li>
+        <li>
+        <a href="{% url 'transaction' %}"><i data-feather="clipboard"></i> <span>Transaction</span></a>
+        </li>
+        <li>
+        <a href="{% url 'providers' %}"><i data-feather="user-check"></i> <span>Providers</span></a>
+        </li>
+        <li>
+        <a href="{% url 'subscription' %}"><i data-feather="user-check"></i> <span>Subscription</span></a>
+        </li>
+        <li>
+        <a href="{% url 'reports' %}"><i data-feather="pie-chart"></i> <span>Reports</span></a>
+        </li>
+        <li>
+        <a href="{% url 'roles' %}"><i data-feather="clipboard"></i> <span>Roles</span></a>
+        </li>
+        <li>
+        <a href="{% url 'skills' %}"><i data-feather="award"></i> <span>Skills</span></a>
+        </li>
+        <li>
+        <a href="{% url 'verify_identity' %}"><i data-feather="user-check"></i> <span>Verify Identity</span></a>
+        </li>
+        <li>
+        <a href="{% url 'settings' %}"><i data-feather="settings"></i> <span>Settings</span></a>
+        </li>
+        </div>
+        </div>
+        </div>
+
+<div class="page-wrapper">
+<div class="content container-fluid">
+<div class="row justify-content-center">
+<div class="col-xl-8">
+<div class="card">
+<div class="card-body">
+<div class="invoice-item">
+<div class="row">
+<div class="col-md-6">
+<div class="invoice-logo">
+<img src="assets/img/logo.png" alt="logo">
+</div>
+</div>
+<div class="col-md-6">
+<p class="invoice-details">
+<strong>Order:</strong> #00124 <br>
+<strong>Issued:</strong> 20/07/2019
+</p>
+</div>
+</div>
+</div>
+
+<div class="invoice-item">
+<div class="row">
+<div class="col-md-6">
+<div class="invoice-info">
+<strong class="customer-text">Invoice From</strong>
+<p class="invoice-details invoice-details-two">
+Darren Elder <br>
+806 Twin Willow Lane, Old Forge,<br>
+Newyork, USA <br>
+</p>
+</div>
+</div>
+<div class="col-md-6">
+<div class="invoice-info invoice-info2">
+<strong class="customer-text">Invoice To</strong>
+<p class="invoice-details">
+Walter Roberson <br>
+299 Star Trek Drive, Panama City, <br>
+Florida, 32405, USA <br>
+</p>
+</div>
+</div>
+</div>
+</div>
+
+
+<div class="invoice-item">
+<div class="row">
+<div class="col-md-12">
+<div class="invoice-info">
+<strong class="customer-text">Payment Method</strong>
+<p class="invoice-details invoice-details-two">
+Debit Card <br>
+XXXXXXXXXXXX-2541 <br>
+HDFC Bank<br>
+</p>
+</div>
+</div>
+</div>
+</div>
+
+
+<div class="invoice-item invoice-table-wrap">
+<div class="row">
+<div class="col-md-12">
+<div class="table-responsive">
+<table class="invoice-table table table-bordered">
+<thead>
+<tr>
+<th>Description</th>
+<th class="text-center">Quantity</th>
+<th class="text-center">VAT</th>
+<th class="text-end">Total</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Website Designer Required For Directory Theme</td>
+<td class="text-center">1</td>
+<td class="text-center">$0</td>
+<td class="text-end">$50</td>
+</tr>
+<tr>
+<td>Lorem Ipsum is therefore always free</td>
+<td class="text-center">1</td>
+<td class="text-center">$0</td>
+<td class="text-end">$300</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="col-md-6 col-xl-4 ml-auto">
+<div class="table-responsive">
+<table class="invoice-table-two table">
+<tbody>
+<tr>
+<th>Subtotal:</th>
+<td><span>$400</span></td>
+</tr>
+<tr>
+<th>Discount:</th>
+<td><span>-10%</span></td>
+</tr>
+<tr>
+<th>Total Amount:</th>
+<td><span>$350</span></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+
+
+<script src="assets/js/jquery-3.6.0.min.js"></script>
+
+<script src="assets/js/bootstrap.bundle.min.js"></script>
+
+<script src="assets/js/feather.min.js"></script>
+
+<script src="assets/plugins/slimscroll/jquery.slimscroll.min.js"></script>
+
+<script src="assets/js/script.js"></script>
+</body>
+
+<!-- Mirrored from kofejob.dreamguystech.com/template/admin/view-estimate.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 23 Aug 2023 20:32:41 GMT -->
+</html>

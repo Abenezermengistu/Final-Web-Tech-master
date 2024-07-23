@@ -1,0 +1,254 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+{% include 'head.html' %}
+<style>
+    .form-select {
+  display: block;
+  width: 250px; 
+  padding: 5px;
+  border: 1px solid #ccc;
+}
+
+.form-select:focus {
+  outline: none; 
+}
+
+.form-select option {
+  padding: 5px;
+}
+</style>
+<body class="dashboard-page">
+
+    <div class="main-wrapper">
+        {% include 'freelance_header.html' with freelancer=request.user %}
+
+<div class="bread-crumb-bar">
+<div class="container">
+<div class="row align-items-center inner-banner">
+<div class="col-md-12 col-12 text-center">
+<div class="breadcrumb-list">
+<nav aria-label="breadcrumb" class="page-breadcrumb">
+<ol class="breadcrumb">
+<li class="breadcrumb-item"><a href="index_2.html"><img src="{% static 'assets/img/home-icon.svg' %}" alt="Post Author"> Home</a></li>
+<li class="breadcrumb-item" aria-current="page">Freelancer</li>
+<li class="breadcrumb-item" aria-current="page">Settings</li>
+</ol>
+</nav>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+
+<div class="content content-page">
+<div class="container-fluid">
+<div class="row">
+    {% include 'dashboard_free_navbar_link.html' with freelancer=request.user %}
+
+    <div class="settings-menu">
+        <ul>
+        <li class="nav-item">
+        <a href="{% url 'freelancer_dashboard' %}" class="nav-link">
+        <i class="material-icons">verified_user</i> Dashboard
+        </a>
+        </li>
+        <li class="nav-item">
+        <a href="{% url 'freelancer_project_proposals' %}" class="nav-link">
+        <i class="material-icons">business_center</i> Projects
+        </a>
+        </li>
+        <li class="nav-item">
+        <a href="{% url 'freelancer_review' %}" class="nav-link">
+        <i class="material-icons">record_voice_over</i> Reviews
+        </a>
+        </li>
+        <li class="nav-item">
+        <a href="{% url 'chats' %}" class="nav-link">
+        <i class="material-icons">chat</i> Messages
+        </a>
+        </li>
+        <li class="nav-item">
+        <a href="{% url 'freelancer_withdraw_money' %}" class="nav-link">
+        <i class="material-icons">wifi_tethering</i> Payments
+        </a>
+        </li>
+        <li class="nav-item">
+        <a href="{% url 'freelancer_profile_settings' %}" class="nav-link active">
+        <i class="material-icons">settings</i> Settings
+        </a>
+        </li>
+        <li class="nav-item">
+        <a href="{% url 'index' %}" class="nav-link">
+        <i class="material-icons">power_settings_new</i> Logout
+        </a>
+        </li>
+        </ul>
+        </div>
+        </div>
+        </div>
+
+<div class="col-xl-9 col-md-8">
+<div class="pro-pos">
+<nav class="user-tabs mb-4">
+<ul class="nav nav-tabs nav-tabs-bottom nav-justified">
+<li class="nav-item">
+<a class="nav-link active" href="{% url 'freelancer_profile_settings' %}">Profile Settings</a>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="{% url 'freelancer_change_password' %}">Change Password</a>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="{% url 'freelancer_delete_account' %}">Delete Account</a>
+</li>
+</ul>
+</nav>
+
+<div class="setting-content">
+  <div class="card">
+    {% if messages %}
+  <ul class="messages">
+    {% for message in messages %}
+      <li>{{ message }}</li>
+    {% endfor %}
+  </ul>
+{% endif %}
+      <div class="pro-head">
+        <h3 class="pro-title without-border mb-0">Profile Basics </h3>
+        </div>
+    <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="pro-body p-0">
+        <div class="form-row pro-pad">
+
+        <div class="form-group col-md-6">
+          {{ form.email.label_tag }} 
+          {{ form.email }}
+        </div>
+      
+        <div class="form-group col-md-6">
+          {{ form.hourly_rate.label_tag }}
+          {{ form.hourly_rate }}
+        </div>
+      
+        <div class="form-group col-md-6">  
+          {{ form.contact_number.label_tag }}
+          {{ form.contact_number }}  
+        </div>
+
+        <div class="form-group col-md-6">
+          {{ form.date_of_birth.label_tag }}
+          {{ form.date_of_birth }}
+        </div>
+
+        <div class="form-group col-md-6">
+          {{ form.language.label_tag }}
+          {{ form.language }}
+        </div>
+      
+        <div class="form-group col-md-6">
+          
+
+          {{ form.profile_picture.label_tag }}
+          {{ form.profile_picture }}  
+        </div>
+      
+        <div class="form-group col-md-6">
+          {{ form.banner_image.label_tag }}
+          {{ form.banner_image }}
+        </div>
+      
+        <div class="form-group col-md-6">
+          {{ form.address.label_tag }}
+          {{ form.address }}
+        </div>
+    
+        <div class="form-group col-md-6">
+          {{ form.zipcode.label_tag }}
+          {{ form.zipcode }}
+        </div>
+
+          <div class="form-group col-md-6">
+            {{ form.overview.label_tag }}
+            {{ form.overview }}
+          </div>
+      
+        <div class="form-group col-md-6">
+          {{ form.experience_name.label_tag }}
+          {{ form.experience_name }}
+      <br>
+          {{ form.experience_company.label_tag }}
+          {{ form.experience_company }} 
+        </div>
+        
+        <div class="form-group col-md-6">
+          {{ form.experience_start_date.label_tag }}
+          {{ form.experience_start_date }}
+        </div>
+        
+        <div class="form-group col-md-6">
+          {{ form.experience_end_date.label_tag }}
+          {{ form.experience_end_date }}
+        </div>
+        
+        <div class="form-group col-md-6">
+          {{ form.experience_summary.label_tag }}
+          {{ form.experience_summary }}
+        </div>
+        
+        <div class="form-group col-md-6">
+          {{ form.degree.label_tag }}
+          {{ form.degree }}
+<br>
+          {{ form.institution.label_tag }}
+          {{ form.institution }}
+        </div>
+        
+        <div class="form-group col-md-6">
+          {{ form.start_year.label_tag }}
+          {{ form.start_year }} 
+        </div>
+        
+        <div class="form-group col-md-6">
+          {{ form.end_year.label_tag }} 
+          {{ form.end_year }}
+        </div>
+        
+        <div class="form-group col-md-6">
+          {{ form.education_summary.label_tag }}
+          {{ form.education_summary }}
+        </div>
+        
+        <div class="form-group col-md-6">
+          {{ form.linked_in.label_tag }}
+          {{ form.linked_in }}
+   
+          {{ form.git_hub.label_tag }}
+          {{ form.git_hub }}
+        </div>
+</div></div>
+        <div class="form-group">
+          <button class="btn btn-primary" type="submit" value="submit">
+            Save Changes
+          </button>
+        </div>
+      </form>
+
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+{% include 'footer.html' %}
+
+</div>
+
+{% include 'scripts.html' %}
+</body>
+<script src="https://cdn.jsdelivr.net/gh/dnaextrim/django-geolocation@master/geolocation/static/geolocation/js/geolocation.js"></script>
+
+</html>

@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Where are you now?</title>
+  </head>
+  <body>
+    <h1>Where are you now?</h1>
+    <p><a href="/user_history/">History</a></p>
+    <p>Geolocation info:
+	<ul>{% for field in client_data %}
+        	<li>{{ field }}</li>
+   	 {% endfor %}</ul></p>
+  </body>
+</html>

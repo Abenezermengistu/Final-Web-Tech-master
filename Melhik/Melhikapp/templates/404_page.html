@@ -1,0 +1,57 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+{% include 'head.html' %}
+
+<body class="dashboard-page">
+
+        <div class="main-wrapper">
+            <header class="header header-bg">
+                <nav class="navbar navbar-expand-lg header-nav">
+                    <div class="navbar-header">
+                        <a id="mobile_btn" href="javascript:void(0);">
+                            <span class="bar-icon">
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                            </span>
+                        </a>
+                        <a href="{% url 'index' %}" class="navbar-brand logo">
+                            <img src="{% static 'assets/img/logo.png' %}" class="img-fluid" alt="Logo">
+                        </a>
+                    </div>
+            </header>
+    
+        <div class="content">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-8 offset-md-2">
+
+                        <div class="empty-content text-center">
+                            <img src="{% static 'assets/img/404.png' %}" alt="logo" class="img-fluid">
+                            <h2>Page not <span class="orange-text">found</span></h2>
+                            <p>Oops! Looks like you followed a bad link.</p>
+                            <p>If you think this is a problem with us, please tell us.</p>
+                            <div class="btn-item">
+                                <a class="btn get-btn" href="{% url 'index' %}">GO TO HOME</a>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        {% include 'footer.html' %}
+    </div>
+
+
+    {% include 'scripts.html' %}
+</body>
+
+<!-- Mirrored from kofejob.dreamguystech.com/template/404-page.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 23 Aug 2023 20:29:49 GMT -->
+
+</html>

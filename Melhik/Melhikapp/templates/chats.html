@@ -1,0 +1,199 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+    <style>
+        form {
+        display: flex;
+        align-items: center;
+        }
+        
+        .input-msg-send {
+        width: 100%;
+        }
+        
+        .msg-send-btn {
+        margin-left: 35rem; 
+        }
+    </style>  
+{% include 'head.html' %}
+
+<body class="dashboard-page">
+    
+
+    <div class="main-wrapper">
+        {% include 'employer_header.html' %}
+    
+
+        <div class="content">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-12 back-text">
+                        <a href="{% url 'dashboard' %}" class="btn btn-primary back-btn"><i class="fa fa-chevron-left"></i>
+                            Back </a>
+                    </div>
+                       <div class="col-md-12">
+                        <div class="chat-window">
+                                <div class="chat-cont-left">
+                                    <div class="chat-users-list">
+                                        <div class="chat-scroll">
+    
+                                            {% for i in users%}
+                                           
+                                            {% for j in i.user.all%}
+                                            {% if j  != request.user %} 
+                                            
+                                            <a href="{% url 'messages_view' user_id=j.pk room_id=i.pk %}" class="media-chat d-flex">
+                                                <div class="media-img-wrap flex-shrink-0">
+                                                    <div class="avatar avatar">
+                                                        <img src="{{ j.photo.url }}" alt="User Image"
+                                                            class="avatar-img rounded-circle">
+                                                    </div>
+                                                </div>
+                                                <div class="media-body flex-grow-1">
+                                                    <div>
+                                                        <div class="user-name">{{ j.first_name }} {{ j.last_name }}</div>
+                                                    
+                                                    </div>
+                                
+                                                </div>
+                                            </a>
+                                            
+                                            {% endif %}
+                                         
+                                            {% endfor %}
+                                        
+                                            {% endfor %}
+
+                            
+                                            
+                                        </div>
+                                    </div>
+                                </div>
+                            
+
+                                {% if user_message %}
+                            <div class="chat-cont-right">
+                                
+                                <div class="chat-header">
+                                    <a id="back_user_list" href="javascript:void(0)" class="back-user-list">
+                                        <i class="material-icons">chevron_left</i>
+                                    </a>
+                                    <div class="media d-flex">
+                                        <div class="media-img-wrap flex-shrink-0">
+                                            <div class="avatar">
+                                                <img src="{% static 'assets/img/img-05.jpg' %}" alt="User Image"
+                                                    class="avatar-img rounded-circle">
+                                            </div>
+                                        </div>
+                                        <div class="media-body flex-grow-1">
+                                            <div class="user-name">{{user.first_name}} {{user.last_name}}</div>
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                                <div class="chat-body">
+                                    <div class="chat-scroll">
+                                        <ul class="list-unstyled">
+                                            {% for msg in user_message %}
+
+                                            {% if msg.sender != request.user  %}
+                                            <li class="media received d-flex">
+                                                <div class="avatar flex-shrink-0">
+                                                    <img src="{% static 'assets/img/img-02.jpg' %}" alt="User Image"
+                                                        class="avatar-img rounded-circle">
+                                                </div>
+
+
+                                                <div class="media-body flex-grow-1">
+                                                    <div class="msg-box">
+                                                        <div>
+                                                            <p>{{msg.content}}.</p>
+                                                            <ul class="chat-msg-info">
+                                                                <li>
+                                                                    <div class="chat-time">
+                                                                        <span>{{ msg.timestamp}}</span>
+                                                                    </div>
+                                                                </li>
+                                                            </ul>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+
+                                            </li>
+
+                                            {% else %}
+                                             <li class="media sent d-flex">
+                                                <div class="avatar flex-shrink-0">
+                                                    <img src="{% static 'assets/img/img-05.jpg' %}" alt="User Image"
+                                                        class="avatar-img rounded-circle">
+                                                </div>
+                                                <div class="media-body flex-grow-1">
+                                                    <div class="msg-box">
+                                                        <div>
+                                                            <p>{{msg.content}}
+                                                            </p>
+                                                            <ul class="chat-msg-info">
+                                                                <li>
+                                                                    <div class="chat-time">
+                                                                        <span>{{msg.timestamp}}</span>
+                                                                    </div>
+                                                                </li>
+                                                            </ul>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </li> 
+
+                                            {% endif %}
+                                            
+                                            
+                                           
+                                        {% endfor %}
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="chat-footer">
+                                    <div class="input-group">
+
+                                        <form method="post" >
+                                            {% csrf_token %}
+                                        <input type="text" name="content" class="input-msg-send form-control" placeholder="Reply..."> 
+                    
+                                        <button type="submit" class="btn btn-primary msg-send-btn rounded-pill"><i
+                                                class="fab fa-telegram-plane"></i></button>
+
+                                        </form>
+                                           
+                                    </div>
+                                </div>
+                            </div>
+                            {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        {% include 'footer.html' %}
+
+    </div>
+
+
+
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {% include 'scripts.html' %}
+</body>
+
+<!-- Mirrored from kofejob.dreamguystech.com/template/freelancer-chats.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 23 Aug 2023 20:29:30 GMT -->
+
+</html>
