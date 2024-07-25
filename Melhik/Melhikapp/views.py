@@ -648,8 +648,8 @@ def project_form(request):
             job = form.save(commit=False)
             job.author = request.user 
             job.save()
-            bot_token = '6575514030:AAFO2CwLOdy7dkZKyMosGNmZuVMPXHL0ZlQ'
-            chat_id = '-1001913256564'
+            bot_token = ''
+            chat_id = ''
             text = (
                 f"New Job Alert: {job.project_title}\n"
                 f"Category: {job.category_type}\n" 
@@ -913,7 +913,7 @@ def telegram_conversation(request):
     )
 
     # Create an updater and add the conversation handler
-    TELEGRAM_TOKEN = '6575514030:AAFO2CwLOdy7dkZKyMosGNmZuVMPXHL0ZlQ'
+    TELEGRAM_TOKEN = ''
     updater = Updater(TELEGRAM_TOKEN, use_context=True)
     updater.dispatcher.add_handler(conv_handler)
 
